@@ -86,7 +86,7 @@ Self-hosted variable fonts in `assets/fonts/`. Both confirmed variable:
 Clash Display `wght 200–700`, Bespoke Serif `wght 300–800`.
 
 - **Clash Display 700** — the name only. The largest thing on the page.
-  Tracking `-0.03em`, line-height `0.98`.
+  Tracking `-0.03em`, word-spacing `0.06em`, line-height `0.94`.
 - **Clash Display 600** — section headings, work entry titles, rail figures.
 - **Bespoke Serif 400** — all body. **Not 300**; light strokes break up at
   body size.
@@ -116,12 +116,29 @@ Every size on both pages comes from this table. No arbitrary values.
 | `--t-h3` | 25px | 31.25px | Clash 600 | Work entry titles |
 | `--t-h2` | 31.25px | 39.06px | Clash 600 | Section headings |
 | `--t-figure` | 39.06px | 48.83px | Clash 600 | Rail and entry figures |
-| `--t-display` | 48.83px | 76.29px | Clash **700** | The name. Nothing else |
+| `--t-display` | 61.04px | **119.21px** | Clash **700** | The name. Nothing else |
 
-Line-heights: `0.98` display, `1.05` h2/h3, `1.2` figures, `1.55` body,
+Line-heights: `0.94` display, `1.05` h2/h3, `1.2` figures, `1.55` body,
 `1.35` lead, `1.4` small.
 
+**The display step is deliberately four steps clear of everything else.**
+`--t-figure` tops out at 48.83px and the name sits at 119.21px — ratio steps
+6, 7 and 8 are simply unused. That gap is the hierarchy. Typography is doing
+the work that a lesser version of this site would ask motion to do, and
+Clash 700 has enough character at 119px that it does not need help. If the
+name ever looks like it needs an effect, it is not big enough yet.
+
 **Body measure 62–68 characters.** `--measure: 65ch`.
+
+**Two places run narrower than the body measure, both deliberate:**
+
+- `.lead` at **40ch** — see below.
+- `.bio__intro` at **48ch**, the short paragraph set beside the portrait in
+  About her. A narrow column beside an image reads as a caption to it, which
+  is what that paragraph is. **Only a short paragraph may sit there.** The
+  catalog was originally in that column too and its value cells were crushed
+  to 32ch, turning one-line facts into three-line wraps; it now sits below
+  the two-column block at the full measure.
 
 **The lead has its own measure: `40ch`.** `ch` scales with font-size, so
 `--measure` applied at `--t-lead` produces a line ~1015px wide, longer in
@@ -178,18 +195,32 @@ Nothing is centred by default.
 ├───────────────────────────────┤
 │ DATA ANALYST                  │  eyebrow, muted, micro
 │                               │
-│ Nadia                         │  Clash 700 / 48.83
-│ Sultan                        │  ink
-│ Rana                          │
+│ Nadia                         │  Clash 700 / 61.04
+│ Sultan                        │  ink · wipes up from below,
+│ Rana                          │  once, on load
 │                               │
 │ I build the models and the    │  claim, Bespoke 300 / 25
 │ checks that decide whether…   │  secondary
 │                               │
 │ email    resume               │  accent
+├───────────────────────────────┤
+│ About her                     │  ← NEW SECTION
 │                               │
 │ ┌───────────┐                 │
-│ │ headshot  │                 │  placeholder until supplied
-│ └───────────┘                 │
+│ │ portrait  │                 │  real size, single column
+│ └───────────┘                 │  clip-path reveal on entry
+│ ┌─────┐ ┌─────┐               │
+│ │ img │ │ img │               │  2 more, 2-up
+│ └─────┘ └─────┘               │
+│                               │
+│ first-person paragraph        │
+│                               │
+│ STUDIED    biology and        │  catalog: label / value
+│            business, Pacific  │  label micro muted
+│ LANGUAGES  English native…    │  value body secondary
+│ FROM       [NEEDS CONTENT]    │
+│                               │
+│ More about her →about.html    │
 ├═══════════════════════════════┤
 │▓ About                       ▓│  ← SAND FILL
 │▓                             ▓│
@@ -235,22 +266,36 @@ Nothing is centred by default.
 │ Nadia Sultan Rana                      Work About Contact    │
 ├──────────────────────────────────────────────────────────────┤
 │ DATA ANALYST                                                 │
-│                                            ┌──────────────┐  │
-│ Nadia Sultan                               │              │  │
-│ Rana                                       │   headshot   │  │
-│                                            │              │  │
-│ I build the models and the checks that     └──────────────┘  │
+│                                                              │
+│ Nadia Sultan                                                 │  Clash 700
+│ Rana                                                         │  119.21, ink
+│                                                              │  wipe on load
+│ I build the models and the checks that                       │
 │ decide whether a number can be trusted.                      │
 │                                                              │
 │ email    resume                                              │
+├──────────────────────────────────────────────────────────────┤
+│ About her                                       ← NEW        │
+│                                                              │
+│ ┌──────────────┐  first-person paragraph at 65ch             │
+│ │              │                                             │
+│ │   portrait   │  STUDIED     biology and business,          │
+│ │  real size   │              University of the Pacific      │
+│ │              │  NOW         M.S. Data Analytics            │
+│ └──────────────┘              Engineering, Northeastern      │
+│ ┌────┐┌────┐┌────┐ LANGUAGES  English native; Urdu,          │
+│ │img ││img ││img │            Arabic, Spanish                │
+│ └────┘└────┘└────┘ FROM       [NEEDS CONTENT]                │
+│                                                              │
+│                    More about her  →  about.html             │
 ├══════════════════════════════════════════════════════════════┤
 │▓ About                                                      ▓│  SAND
 │▓ claim (lead, 31.25)                                        ▓│
 │▓ paragraph at 65ch                                          ▓│
 │▓                                                            ▓│
-│▓  1,080        1,194         203          3                 ▓│  4-across rail
-│▓  routed to    federal       field data   systems           ▓│
-│▓  human review passages      dictionary   reconciled        ▓│
+│▓  1,080        1,194         203          3,000+            ▓│  4-across rail
+│▓  routed to    federal       field data   participants      ▓│
+│▓  human review passages      dictionary                     ▓│
 ├══════════════════════════════════════════════════════════════┤
 │ Work                                                         │
 │                                                              │
@@ -275,8 +320,8 @@ measure.
 
 ## The one memorable element
 
-**The name, in Clash Display 700, in near-black, at 76px, as the only dark
-mass on a warm page.**
+**The name, in Clash Display 700, in near-black, at 119px, as the only dark
+mass on a warm page — wiped up from below, once, on load.**
 
 It is the dark object in the room. Everything else — the sand panel, the
 walnut rules, the teal that appears once per section — stays quiet so that
@@ -287,6 +332,76 @@ Defence: the alternative anchors were a chart (wrong reference class, and it
 would make the diamond study the subject of the site) and the headshot
 (makes it a personal page rather than a work page, and it is not yet
 supplied). The name is the only element that is both hers and structural.
+
+---
+
+## Motion
+
+**Three motions on the entire site.** Each is tied to one idea. This is not a
+motion system applied to everything; it is three decisions.
+
+**If a fourth motion seems necessary, one of the three is wrong. Removing
+motion is usually the better fix.**
+
+### 1. The name, once, on load
+
+Clash 700 at `--t-display`, revealed by a **`clip-path` wipe from below**.
+`inset(100% 0 0 0)` → `inset(0 0 0 0)`, so the visible band grows upward off
+the baseline.
+
+**Not opacity. Not translate.** A fade says "this is loading". A translate
+says "this slid in from somewhere". A wipe says the letterforms were always
+there and the page is uncovering them, which is the only one of the three
+that means anything here.
+
+One beat, then still forever. It never replays.
+
+### 2. Link underlines wipe rather than fade
+
+`transform: scaleX()` from `transform-origin: left`, **180ms**,
+`cubic-bezier(0.2, 0, 0, 1)`.
+
+The resting underline stays at `--rule` so a link is identifiable without
+hovering it — the wipe is a second, accent-coloured rule drawn over the top.
+Colour alone never marks a link.
+
+**Exception, deliberate:** a link that wraps across lines gets no wipe. An
+absolutely positioned rule on a fragmented inline box draws under one
+fragment and lies about the rest. Wrapping links keep a static underline.
+
+### 3. Images reveal by clip-path as they enter
+
+Same direction as the name — up from below — so the site's motion reads as
+one idea rather than two.
+
+**Once. Never repeating.** An element that re-animates every time it
+re-enters the viewport is the single clearest tell of a generated site. The
+observer unobserves on first intersection.
+
+**The clip goes on the child, never on the observed element.** A `clip-path`
+that hides the target also empties its intersection rectangle, so the
+observer meant to reveal it can never fire and the image stays hidden for
+good. The figure stays unclipped and observable; its contents take the wipe.
+
+**Nothing may stay armed indefinitely.** Arming hides content, so the script
+carries a four-second failsafe that reveals anything the observer has not
+reached. A missed animation is a rounding error; a permanently hidden
+photograph is a broken page.
+
+This is the only thing on the site that needs JavaScript. It is arming only:
+**with JS off, every image is simply visible.** Motion is never a gate.
+
+### Reduced motion
+
+`prefers-reduced-motion: reduce` collapses all three to **no motion, final
+state immediate.** The name is simply there, underlines are simply drawn,
+images are simply visible. The script checks the media query and does not
+arm anything.
+
+### The same shape, three times
+
+All three are a clip or a wipe along one axis, with the same easing family.
+That is what makes three motions read as one decision instead of three.
 
 ---
 
@@ -310,7 +425,9 @@ supplied). The name is the only element that is both hers and structural.
   `outline: none`.
 - Body text 4.5:1 minimum, measured. See the sand table above.
 - `prefers-reduced-motion` respected.
-- **Works fully with JavaScript disabled.** There is no JavaScript.
+- **Works fully with JavaScript disabled.** There is exactly one script, and
+  it only arms an image reveal. With JS off every image is simply visible.
+  **Motion is never a gate.**
 - Self-hosted fonts, `font-display: swap`, preloaded, no layout shift.
 
 ## The kill list
@@ -337,10 +454,15 @@ supplied). The name is the only element that is both hers and structural.
 - A "→" appended to link and button text
 - Inter, or any face chosen because it is the safe default
 
-**Motion**
-- Fade-and-slide-up on scroll, hover transform on cards, counters that count
-  up, typing animations, particle backgrounds
-- **No motion beyond a link underline transition.**
+**Motion** — see the Motion section. These are the generated-site signature:
+- Fade-and-slide-up on every section as it scrolls in
+- Hover transform on every element
+- Parallax
+- Typing effects
+- Counters that count up
+- Particle or canvas backgrounds
+- Scroll-jacking
+- **Anything that repeats every time an element re-enters the viewport**
 
 **Content**
 - Stock photography or generic illustration

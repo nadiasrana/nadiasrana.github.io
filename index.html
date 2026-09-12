@@ -38,7 +38,7 @@
     <p class="masthead__name">Nadia Sultan Rana</p>
     <nav class="masthead__nav" aria-label="Sections">
       <ul>
-        <li><a href="#about">About</a></li>
+        <li><a href="#about-her">About</a></li>
         <li><a href="#work">Work</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -50,45 +50,37 @@
 <main id="main">
 
   <!-- ===================================================================
-       Hero. The name is the one dark object in the room; the eyebrow above
-       and the claim below are the two lines that carry the meaning.
+       Hero. The name is the one dark object in the room, now at the full
+       shell width and 119px: the eyebrow above and the claim below are the
+       two lines that carry the meaning. Motion 1 of 3 wipes it up from
+       below, once, on load.
        =================================================================== -->
   <div class="shell">
     <section class="hero" aria-labelledby="name-h">
-      <div class="hero__grid">
-        <div class="hero__main">
-          <p class="eyebrow">Data analyst</p>
-          <h1 class="hero__name" id="name-h">Nadia Sultan Rana</h1>
-          <p class="lead">I build the models and the checks that decide
-            whether a number can be trusted.</p>
-          <div class="hero__links">
-            <a href="mailto:nadiasrana@gmail.com">nadiasrana@gmail.com</a>
-            <span class="needs-content">[NEEDS CONTENT: r&eacute;sum&eacute;
-              PDF. Held until the Q1&ndash;Q5 conflicts resolve. This is the
-              highest-priority gap on the site: the audience is full-time
-              analytics roles and this is the link they came for.]</span>
-          </div>
-        </div>
-
-        <div class="hero__portrait">
-          <div class="portrait-placeholder">
-            <span class="needs-content">[NEEDS CONTENT: headshot. Nothing in
-              assets/img/. The box holds its place in the layout so the hero
-              is real. No stock photograph goes here.]</span>
-          </div>
-        </div>
+      <p class="eyebrow">Data analyst</p>
+      <h1 class="hero__name" id="name-h">Nadia Sultan Rana</h1>
+      <p class="lead">I build the models and the checks that decide
+        whether a number can be trusted.</p>
+      <div class="hero__links">
+        <a href="mailto:nadiasrana@gmail.com">nadiasrana@gmail.com</a>
+        <span class="needs-content">[NEEDS CONTENT: r&eacute;sum&eacute;
+          PDF. Held until the Q1&ndash;Q5 conflicts resolve. This is the
+          highest-priority gap on the site: the audience is full-time
+          analytics roles and this is the link they came for.]</span>
       </div>
     </section>
   </div>
 
   <!-- ===================================================================
-       About. The one sand-filled section on the site. Label colour steps up
-       to --secondary inside it: --muted measures 4.03:1 on sand and fails.
+       What I do. The one sand-filled section on the site. Renamed from
+       "About" so it does not collide with About her below. Label colour
+       steps up to --secondary inside it: --muted is 4.03:1 on sand, and
+       fails.
        =================================================================== -->
   <div class="panel">
     <div class="shell">
-      <section class="section" id="about" aria-labelledby="about-h">
-        <h2 class="section__head" id="about-h">About</h2>
+      <section class="section" id="approach" aria-labelledby="approach-h">
+        <h2 class="section__head" id="approach-h">What I do</h2>
 
         <p class="lead">Most of my work is making two systems agree on what a
           record means.</p>
@@ -126,6 +118,95 @@
         </ul>
       </section>
     </div>
+  </div>
+
+  <!-- ===================================================================
+       About her. Personal, and therefore the section where invention does
+       the most damage: a reader assumes biography is unmediated. Every
+       fact here is either in the verified section of CONTENT.md or marked.
+       Built to hold four photographs; none have been supplied.
+       =================================================================== -->
+  <div class="shell">
+    <section class="section" id="about-her" aria-labelledby="bio-h">
+      <h2 class="section__head" id="bio-h">About her</h2>
+
+      <div class="bio__grid">
+        <div class="bio__media">
+          <figure class="bio__figure bio__figure--portrait" data-reveal>
+            <div class="portrait-placeholder">
+              <span class="needs-content">[NEEDS CONTENT: portrait.
+                assets/img/ is empty. At real size, not a thumbnail. No stock
+                photograph.]</span>
+            </div>
+          </figure>
+
+          <div class="bio__more">
+            <figure class="bio__figure" data-reveal>
+              <div class="portrait-placeholder"></div>
+            </figure>
+            <figure class="bio__figure" data-reveal>
+              <div class="portrait-placeholder"></div>
+            </figure>
+            <figure class="bio__figure" data-reveal>
+              <div class="portrait-placeholder"></div>
+            </figure>
+          </div>
+
+          <p class="needs-content">[NEEDS CONTENT: additional photographs.
+            Three slots above, square. The layout holds for two or three, so
+            fewer is fine; the row does not need filling for its own sake.]</p>
+        </div>
+
+        <div class="bio__intro">
+          <p class="needs-content">[NEEDS CONTENT: the first-person paragraph,
+            in her words. This is the one thing on the site that cannot be
+            assembled from the record, and inventing biography is worse than
+            inventing a metric because a reader assumes this part is
+            unmediated. Three or four sentences: how she got from biology to
+            analytics, and what she is actually like to work with.]</p>
+        </div>
+      </div>
+
+      <!-- The catalog sits below the two-column block, not inside it. Beside
+           the portrait its value column was squeezed to 32ch, which turned
+           one-line facts into three-line wraps. -->
+      <dl class="catalog">
+            <div class="catalog__row">
+              <dt>Studied</dt>
+              <dd>Biological sciences and business administration, University
+                of the Pacific. <span class="nowrap">2022 &ndash; 2025.</span></dd>
+            </div>
+            <div class="catalog__row">
+              <dt>Now</dt>
+              <dd>M.S. Data Analytics Engineering, Northeastern.
+                <span class="nowrap">2026 &ndash; 2027.</span></dd>
+            </div>
+            <div class="catalog__row">
+              <dt>Languages</dt>
+              <dd>English, native. Urdu, Arabic and Spanish, limited
+                working.</dd>
+            </div>
+            <div class="catalog__row">
+              <dt>Honors</dt>
+              <dd>Dean&rsquo;s Honor List. President&rsquo;s Merit
+                Scholarship.</dd>
+            </div>
+            <div class="catalog__row">
+              <dt>From</dt>
+              <dd><span class="needs-content">[NEEDS CONTENT: where she is
+                from. Nothing on file. Not the same question as where she
+                lives now, and not inferable from either university.]</span></dd>
+            </div>
+            <div class="catalog__row">
+              <dt>Based</dt>
+              <dd><span class="needs-content">[NEEDS CONTENT: stated as the
+                Raleigh&ndash;Durham&ndash;Chapel Hill area; confirm the exact
+                wording she wants public.]</span></dd>
+            </div>
+      </dl>
+
+      <p class="bio__more-link"><a href="about.html">More about her</a></p>
+    </section>
   </div>
 
   <div class="shell">
@@ -401,6 +482,10 @@
   </div>
 
 </main>
+
+<!-- The only script on the site. It arms motion 3, the image reveal, and
+     nothing else. With JS off every image is simply visible. -->
+<script src="assets/js/reveal.js" defer></script>
 
 </body>
 </html>
