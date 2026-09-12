@@ -27,12 +27,81 @@ work.
 
 | Page | Status | Notes |
 |---|---|---|
-| Home | ✅ | Built. The one-line claim is carried by the study, not by a tagline |
+| Home | ⚠️ | Rebuilt 12 Sep 2026 on the warm-minimal system. Hero, About, Work, Projects, Stack, Contact. Six markers — see the Work figures, headshot, résumé, SQL, LinkedIn and location entries below |
 | Projects index | — | Deferred until project 2. With one item, the Work section on the home page is the index; an index page listing one entry advertises the thinness |
 | Diamond Price Drivers project page | ⚠️ | Built at `work/diamond-price-drivers.html`. Two markers left, one of them a blocker — see Q-R2 below |
 | About | ✅ | Writable now from verified background |
 | Résumé PDF | ⚠️ | Available, but hold until the Q1–Q5 conflicts in `03-open-questions.md` resolve |
 | Contact | ✅ | nadiasrana@gmail.com. Phone is on the resume — decide separately whether it goes on a public page. Default: no |
+
+---
+
+## Positioning — set 12 Sep 2026
+
+She is positioned as **data modeling, reconciliation, data quality and
+structured evaluation**. **Not pipeline engineering.** Her Archroma work log
+shows no pipeline work and the Fraqt implementation was substantially
+AI-assisted. Never write a claim she cannot defend cold in an interview.
+
+The diamond study is **one project, not the highlight**. Archroma, Fraqt and
+Northstar lead the Work section; the study sits under Projects.
+
+---
+
+## Work section figures — the only four permitted
+
+| Figure | Label on site | Attributed to |
+|---|---|---|
+| ~1,080 | records routed to human review | Fraqt ⚠️ |
+| 1,194 | federal passages structured | Fraqt ⚠️ |
+| 203 | fields in a data dictionary | Archroma ⚠️ |
+| 3 | systems reconciled | Archroma ⚠️ |
+
+⛔ **Q-ATTRIB — blocker.** The four figures are authorised. **The
+attribution is not.** The mapping above is inference from the shape of each
+role, not record. A dashed marker sits at the top of the Work section until
+it is confirmed. Getting this wrong puts a false claim about a named employer
+in front of recruiters.
+
+⚠️ **Q-FRAQT.** Fraqt job title and dates are not on file. The entry prints
+"Pre-launch." and nothing else. Fraqt now **does** appear on the site, in
+Work rather than Projects — this resolves the old open question.
+
+**Northstar figures stay off.** $45K, 20 engagements, 12 clients, $6M all wait
+for Q1. The entry names the role and says on the page that the figures are
+held. Do not add them without Q1.
+
+---
+
+## Stack — levels, not bars
+
+Grouped by category, each item labelled **Daily / Comfortable / Exposure**.
+The labels exist so the honest answer can be given instead of a skill bar.
+
+- Analysis and modeling: Excel `Daily`, Regression `Comfortable`, Confidence
+  intervals `Comfortable`, Web scraping `Comfortable`
+- Data quality: Data validation `Daily`, Data dictionaries `Daily`,
+  Reconciliation `Comfortable`
+- Reporting: Power BI `Daily`, Word `Daily`
+- Programming: **Python `Exposure`**, **TypeScript `Exposure`**
+
+**Python is now permitted, at `Exposure` only.** This overrides the ⛔ entry
+below, authorised 12 Sep 2026. The point of the level labels is that
+`Exposure` is not a claim. Do not promote either language without new
+evidence.
+
+⚠️ **Q-SQL.** "Query logic that other people could reuse" could be SQL, DAX or
+Power Query. The distinction matters to every analytics job description, so it
+is marked on the page rather than guessed. Which is it, and at what level?
+
+---
+
+## Headshot
+
+⚠️ **Q-PHOTO.** The hero reserves a portrait slot at `assets/img/`. Nothing is
+there. This supersedes the old "photograph or none?" question: the rebuilt
+design has a place for one. A marked placeholder holds the space. **No stock
+photograph.**
 
 ---
 
@@ -136,7 +205,8 @@ authorised 12 Sep 2026.
 ## ⛔ Do not write around these
 
 - **GPA 4.00.** Tier B, no transcript seen. Off the site until confirmed.
-- **Python.** Zero supporting work anywhere. Not in any skills list here.
+- ~~**Python.** Zero supporting work anywhere.~~ **Superseded 12 Sep 2026:**
+  permitted at `Exposure` only, in the Stack section. Never above that.
 - **Machine learning, ETL development.** Disproved by her own Archroma work log.
 - **Any Archroma customer or market figure.** Specifically: site-to-customer
   match counts, group keys, ship-to links, row counts, which mills the
@@ -163,8 +233,20 @@ alternative and is faster to build.
 
 ## Open content questions
 
-- Does the site lead with analytics roles or contractor work? The hierarchy
-  and the one-line claim both change. Current assumption: analytics.
-- Photograph or none? The design is stronger without one.
-- Does Fraqt appear on the site at all, and if so under Projects? It is
-  pre-launch and unregistered — same reasoning as the resume.
+- ~~Does the site lead with analytics roles or contractor work?~~ **Resolved:**
+  analytics. The hero claim is "I build the models and the checks that decide
+  whether a number can be trusted."
+- ~~Photograph or none?~~ **Resolved:** a headshot, in the hero. See Q-PHOTO.
+- ~~Does Fraqt appear on the site at all?~~ **Resolved:** yes, in Work as entry
+  02 / 03. See Q-FRAQT for what is still missing.
+
+### Open, in priority order
+
+1. **Q-ATTRIB** — which figures belong to which employer. Blocker.
+2. **Q-R2** — what each R² was computed on. Blocker.
+3. **Résumé PDF** — the link the audience came for. Held on Q1–Q5.
+4. **Q-FRAQT** — Fraqt title and dates.
+5. **Q-SQL** — SQL, DAX or Power Query, and at what level.
+6. **Q-PHOTO** — the headshot file.
+7. **LinkedIn URL** and **location wording**.
+8. **What she would do differently** on the diamond study.

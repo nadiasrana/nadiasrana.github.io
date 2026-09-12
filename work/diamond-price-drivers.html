@@ -10,12 +10,12 @@
 <!-- REMOVE AT LAUNCH, with the same marker on index.html. -->
 <meta name="robots" content="noindex, nofollow">
 
-<meta name="theme-color" content="#FFFFFF">
+<meta name="theme-color" content="#F2EDE4">
 
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23FFFFFF'/><rect x='5' y='5' width='6' height='6' fill='%239E0F51'/></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F2EDE4'/><rect x='5' y='5' width='6' height='6' fill='%231A120B'/></svg>">
 
-<link rel="preload" href="../assets/fonts/newsreader-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="../assets/fonts/atkinson-next-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/ClashDisplay-Variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/BespokeSerif-Variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
 
@@ -23,8 +23,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<div class="page">
-
+<div class="shell">
   <!-- REMOVE AT LAUNCH, together with .draft-banner in styles.css. -->
   <p class="draft-banner">
     Draft shell. Not launched, not indexed. Two dashed boxes below. The first
@@ -36,259 +35,212 @@
     <p class="masthead__name"><a href="../">Nadia Sultan Rana</a></p>
     <nav class="masthead__nav" aria-label="Sections">
       <ul>
+        <li><a href="../#about">About</a></li>
         <li><a href="../#work">Work</a></li>
-        <li><a href="../#background">Background</a></li>
+        <li><a href="../#projects">Projects</a></li>
         <li><a href="../#contact">Contact</a></li>
       </ul>
     </nav>
   </header>
-
-  <main id="main">
-
-    <!-- =================================================================
-         Title. The margin carries the same four values as the Work cell on
-         the home page, because they are the same four values. A number that
-         changes between the index and the page it indexes is a defect.
-         ================================================================= -->
-    <section class="ruled ruled--framed opener" aria-labelledby="title-h">
-      <div class="row">
-        <div class="row__cell">
-          <span class="cell-value">
-            <span class="visually-hidden">Verified: </span>918
-            <span class="cell-label">diamonds priced</span>
-          </span>
-          <span class="cell-value">
-            <span class="visually-hidden">Verified: </span>4
-            <span class="cell-label">retailers compared</span>
-          </span>
-          <span class="cell-value">
-            <span class="visually-hidden">Verified: </span>63.3%
-            <span class="cell-label">explained by the combined model</span>
-          </span>
-          <span class="cell-value">
-            <span class="visually-hidden">Verified: </span>$1,700
-            <span class="cell-label">per-carat spread between retailers</span>
-          </span>
-        </div>
-        <div class="row__body">
-          <h1 class="project__title" id="title-h">Diamond price drivers</h1>
-          <!-- A standfirst gives away the finding. The retailer spread is the
-               finding: two sellers, one filtered band, a doubling in price. -->
-          <p class="opener__lead">Two retailers sold stones from the same
-            narrow band at $1,550 and $3,249 per carat. Across 918 natural
-            pear-shaped diamonds from four retailers, clarity and color
-            together explain 63.3% of what a stone costs.</p>
-          <p class="entry__note">Spring 2026. Excel, regression, data
-            validation, web scraping.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- =================================================================
-         The account. Question, data, method, findings, limitations, and
-         what she would do differently.
-         ================================================================= -->
-    <section class="ruled ruled--framed section section--sub" aria-labelledby="q-h">
-      <h2 class="section__head" id="q-h">The question</h2>
-      <div class="row">
-        <div class="row__cell"></div>
-        <div class="row__body">
-          <p>Two questions, not one. Which published grade moves the price of
-            a pear-shaped diamond more, clarity or color? And do four
-            retailers price the same specification the same way?</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="ruled ruled--framed section section--sub" aria-labelledby="data-h">
-      <h2 class="section__head" id="data-h">The data</h2>
-      <div class="row">
-        <div class="row__cell"></div>
-        <div class="row__body">
-
-          <!-- The sentence that used to open this section named the count and
-               the retailer total, both of which the table states directly
-               underneath it. Removed rather than reworded. -->
-          <table class="findings">
-            <caption>Stones collected, by retailer</caption>
-            <thead>
-              <tr>
-                <th scope="col">Retailer</th>
-                <th scope="col" class="findings__num">Stones</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><th scope="row">Blue Nile</th><td class="findings__num">159</td></tr>
-              <tr><th scope="row">Brilliant Earth</th><td class="findings__num">376</td></tr>
-              <tr><th scope="row">James Allen</th><td class="findings__num">147</td></tr>
-              <tr><th scope="row">With Clarity</th><td class="findings__num">236</td></tr>
-            </tbody>
-            <tfoot>
-              <tr>
-                <th scope="row" class="findings__total">Total</th>
-                <td class="findings__num findings__total">918</td>
-              </tr>
-            </tfoot>
-          </table>
-
-          <p>Every stone sits in a deliberately narrow band: 0.90 to 0.99
-            carat, color D to K, clarity IF to SI2. Carat is held close to
-            constant on purpose, and held just below the 1.00 carat threshold
-            where prices jump, so that the comparison is between grades rather
-            than between sizes.</p>
-
-          <p>Per-carat prices across the set are right-skewed. The mean is
-            $2,571 against a median of $2,227, with a skewness of 1.06: a
-            small number of expensive stones pulls the mean above the typical
-            stone.</p>
-
-          <p>The filter was applied at collection rather than afterwards.
-            Color D to K and clarity IF to SI2 were set on each retailer&rsquo;s
-            own listing filters, and the surviving listings were scraped on
-            29 March 2026. How many listings that excluded is not recoverable
-            from the source data, so no figure for it appears here.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="ruled ruled--framed section section--sub" aria-labelledby="method-h">
-      <h2 class="section__head" id="method-h">Method</h2>
-      <div class="row">
-        <div class="row__cell"></div>
-        <div class="row__body">
-          <p>A single-variable linear regression of price per carat on
-            clarity, a second on color, then a combined model using both.
-            Confidence intervals on the estimates rather than point values
-            alone.</p>
-          <p>Separately, pivot tables comparing the four retailers across the
-            band, and a benchmark of retail pricing against the Rapaport
-            price guide.</p>
-          <p>Built in Excel. Reported in Word.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- The findings table. Three rows, because three models were run; the
-         combined model has no single slope, and the cell says so rather than
-         being filled to make the column look complete. -->
-    <section class="ruled ruled--framed section section--sub" aria-labelledby="find-h">
-      <h2 class="section__head" id="find-h">What I found</h2>
-      <div class="row">
-        <div class="row__cell"></div>
-        <div class="row__body">
-
-          <table class="findings findings--wide">
-            <caption>Per-carat price against grade</caption>
-            <thead>
-              <tr>
-                <th scope="col">Model</th>
-                <th scope="col" class="findings__num">R<sup>2</sup></th>
-                <th scope="col" class="findings__num">Per grade step</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Clarity alone</th>
-                <td class="findings__num">0.91</td>
-                <td class="findings__num">&minus;$529</td>
-              </tr>
-              <tr>
-                <th scope="row">Color alone</th>
-                <td class="findings__num">0.84</td>
-                <td class="findings__num">&minus;$631</td>
-              </tr>
-              <tr>
-                <th scope="row">Clarity and color combined</th>
-                <td class="findings__num">0.633</td>
-                <td class="findings__num findings__none">no single slope</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <p class="needs-content">[NEEDS CONTENT: what each R&sup2; was
-            computed on. As recorded these three cannot describe the same
-            regression &mdash; adding a second variable cannot take R&sup2;
-            from 0.91 down to 0.633. The likely answer is that the
-            single-variable figures are regressions on grade averages and the
-            combined figure is on all 918 rows, but that is a guess and it is
-            not going on the page as one. Until this line is answered the
-            table reads as an error to exactly the reader it is meant to
-            convince.]</p>
-
-          <p>Clarity accounts for more of the variation in price than color
-            does. Color has the steeper step: each grade down the color scale
-            takes $631 per carat off the price, against $529 for clarity.
-            Those are two different questions, and the answers point in
-            different directions. How much of the price a grade explains is
-            not the same as what one step of it is worth.</p>
-
-          <p>The four retailers do not agree. James Allen averaged $1,550 per
-            carat across the band; With Clarity averaged $3,249. That is a
-            spread of roughly $1,700 per carat between two sellers of stones
-            filtered to the same color, clarity and carat range, on a set
-            whose median is $2,227.</p>
-
-          <p>Benchmarked separately against the Rapaport price guide, retail
-            traded between 5% and 35% below the guide.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="ruled ruled--framed section section--sub" aria-labelledby="lim-h">
-      <h2 class="section__head" id="lim-h">Limitations</h2>
-      <div class="row">
-        <div class="row__cell"></div>
-        <div class="row__body">
-          <p>The cut premium is confounded. Excellent-cut stones averaged
-            $3,358 per carat against $2,332 for Very Good, a 44% premium. But
-            the higher-cut stones also carry better color and better clarity,
-            so that 44% cannot be attributed to cut. The figure is reported as
-            a difference between groups, not as the price of cut.</p>
-
-          <p>The confidence interval is not the one I set out to build. The
-            plan was a 30-sample interval on D-color, VVS1 stones. The data
-            did not contain enough of them to support it. Rather than build an
-            interval on a sample too thin to carry one, I relaxed the
-            constraint to H-color, SI2, where 44 diamonds were available, and
-            reported on that basis instead: a 95% confidence interval of
-            $1,684 to $1,837 per carat, with a point estimate of $1,760.15.</p>
-
-          <p class="coda">The relaxation is stated in the report rather than
-            left in the workbook. An interval forced onto the original
-            constraint would have matched the plan and carried no confidence
-            worth reporting.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="ruled ruled--framed section section--sub" aria-labelledby="next-h">
-      <h2 class="section__head" id="next-h">What I would do differently</h2>
-      <div class="row">
-        <div class="row__cell"></div>
-        <div class="row__body">
-          <p class="needs-content">[NEEDS CONTENT: her answer. Not in the
-            source and not inferable from the findings. The obvious guesses
-            (widen the carat band, collect enough D/VVS1 to build the interval
-            as planned, separate cut from color and clarity) are guesses.]</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="ruled ruled--framed section section--sub" aria-labelledby="back-h">
-      <h2 class="visually-hidden" id="back-h">Navigation</h2>
-      <div class="row">
-        <div class="row__cell"></div>
-        <div class="row__body">
-          <p><a class="return-link" href="../#work">Back to selected work</a></p>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <div class="tail"></div>
-
 </div>
+
+<main id="main">
+  <div class="shell">
+
+    <!-- =================================================================
+         Title. The rail carries the same four values the home page quotes
+         for this study. A number that changes between the index and the
+         page it indexes is a defect.
+         ================================================================= -->
+    <section class="hero" aria-labelledby="title-h">
+      <p class="eyebrow">Project</p>
+      <h1 class="project__title" id="title-h">Diamond price drivers</h1>
+      <p class="entry__meta">Spring 2026. Excel, regression, data validation,
+        web scraping.</p>
+
+      <!-- A standfirst gives away the finding. The retailer spread is the
+           finding: two sellers, one filtered band, a doubling in price. -->
+      <p class="lead">Two retailers sold stones from
+        the same narrow band at $1,550 and $3,249 per carat. Across 918
+        natural pear-shaped diamonds from four retailers, clarity and color
+        together explain 63.3% of what a stone costs.</p>
+
+      <ul class="rail">
+        <li>
+          <span class="rail__figure">918</span>
+          <span class="rail__label">diamonds priced</span>
+        </li>
+        <li>
+          <span class="rail__figure">4</span>
+          <span class="rail__label">retailers compared</span>
+        </li>
+        <li>
+          <span class="rail__figure">63.3%</span>
+          <span class="rail__label">explained by the combined model</span>
+        </li>
+        <li>
+          <span class="rail__figure">$1,700</span>
+          <span class="rail__label">per-carat spread between retailers</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section project-section" aria-labelledby="q-h">
+      <h2 class="section__head" id="q-h">The question</h2>
+      <p>Two questions, not one. Which published grade moves the price of a
+        pear-shaped diamond more, clarity or color? And do four retailers
+        price the same specification the same way?</p>
+    </section>
+
+    <section class="section project-section" aria-labelledby="data-h">
+      <h2 class="section__head" id="data-h">The data</h2>
+
+      <table class="findings">
+        <caption>Stones collected, by retailer</caption>
+        <thead>
+          <tr>
+            <th scope="col">Retailer</th>
+            <th scope="col" class="findings__num">Stones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Blue Nile</th><td class="findings__num">159</td></tr>
+          <tr><th scope="row">Brilliant Earth</th><td class="findings__num">376</td></tr>
+          <tr><th scope="row">James Allen</th><td class="findings__num">147</td></tr>
+          <tr><th scope="row">With Clarity</th><td class="findings__num">236</td></tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th scope="row" class="findings__total">Total</th>
+            <td class="findings__num findings__total">918</td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <p>Every stone sits in a deliberately narrow band: 0.90 to 0.99 carat,
+        color D to K, clarity IF to SI2. Carat is held close to constant on
+        purpose, and held just below the 1.00 carat threshold where prices
+        jump, so that the comparison is between grades rather than between
+        sizes.</p>
+
+      <p>Per-carat prices across the set are right-skewed. The mean is $2,571
+        against a median of $2,227, with a skewness of 1.06: a small number of
+        expensive stones pulls the mean above the typical stone.</p>
+
+      <p>The filter was applied at collection rather than afterwards. Color D
+        to K and clarity IF to SI2 were set on each retailer&rsquo;s own
+        listing filters, and the surviving listings were scraped on 29 March
+        2026. How many listings that excluded is not recoverable from the
+        source data, so no figure for it appears here.</p>
+    </section>
+
+    <section class="section project-section" aria-labelledby="method-h">
+      <h2 class="section__head" id="method-h">Method</h2>
+      <p>A single-variable linear regression of price per carat on clarity, a
+        second on color, then a combined model using both. Confidence
+        intervals on the estimates rather than point values alone.</p>
+      <p>Separately, pivot tables comparing the four retailers across the
+        band, and a benchmark of retail pricing against the Rapaport price
+        guide.</p>
+      <p>Built in Excel. Reported in Word.</p>
+    </section>
+
+    <section class="section project-section" aria-labelledby="find-h">
+      <h2 class="section__head" id="find-h">What I found</h2>
+
+      <table class="findings findings--wide">
+        <caption>Per-carat price against grade</caption>
+        <thead>
+          <tr>
+            <th scope="col">Model</th>
+            <th scope="col" class="findings__num">R<sup>2</sup></th>
+            <th scope="col" class="findings__num">Per grade step</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Clarity alone</th>
+            <td class="findings__num">0.91</td>
+            <td class="findings__num">&minus;$529</td>
+          </tr>
+          <tr>
+            <th scope="row">Color alone</th>
+            <td class="findings__num">0.84</td>
+            <td class="findings__num">&minus;$631</td>
+          </tr>
+          <tr>
+            <th scope="row">Clarity and color combined</th>
+            <td class="findings__num">0.633</td>
+            <td class="findings__num findings__none">no single slope</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="needs-content">[NEEDS CONTENT: what each R&sup2; was computed
+        on. As recorded these three cannot describe the same regression
+        &mdash; adding a second variable cannot take R&sup2; from 0.91 down to
+        0.633. The likely answer is that the single-variable figures are
+        regressions on grade averages and the combined figure is on all 918
+        rows, but that is a guess and it is not going on the page as one.
+        Until this line is answered the table reads as an error to exactly the
+        reader it is meant to convince.]</p>
+
+      <p>Clarity accounts for more of the variation in price than color does.
+        Color has the steeper step: each grade down the color scale takes $631
+        per carat off the price, against $529 for clarity. Those are two
+        different questions, and the answers point in different directions.
+        How much of the price a grade explains is not the same as what one
+        step of it is worth.</p>
+
+      <p>The four retailers do not agree. James Allen averaged $1,550 per
+        carat across the band; With Clarity averaged $3,249. That is a spread
+        of roughly $1,700 per carat between two sellers of stones filtered to
+        the same color, clarity and carat range, on a set whose median is
+        $2,227.</p>
+
+      <p>Benchmarked separately against the Rapaport price guide, retail
+        traded between 5% and 35% below the guide.</p>
+    </section>
+
+    <section class="section project-section" aria-labelledby="lim-h">
+      <h2 class="section__head" id="lim-h">Limitations</h2>
+
+      <p>The cut premium is confounded. Excellent-cut stones averaged $3,358
+        per carat against $2,332 for Very Good, a 44% premium. But the
+        higher-cut stones also carry better color and better clarity, so that
+        44% cannot be attributed to cut. The figure is reported as a
+        difference between groups, not as the price of cut.</p>
+
+      <p>The confidence interval is not the one I set out to build. The plan
+        was a 30-sample interval on D-color, VVS1 stones. The data did not
+        contain enough of them to support it. Rather than build an interval on
+        a sample too thin to carry one, I relaxed the constraint to H-color,
+        SI2, where 44 diamonds were available, and reported on that basis
+        instead: a 95% confidence interval of $1,684 to $1,837 per carat, with
+        a point estimate of $1,760.15.</p>
+
+      <p class="coda">The relaxation is stated in the report rather than left
+        in the workbook. An interval forced onto the original constraint would
+        have matched the plan and carried no confidence worth reporting.</p>
+    </section>
+
+    <section class="section project-section" aria-labelledby="next-h">
+      <h2 class="section__head" id="next-h">What I would do differently</h2>
+      <p class="needs-content">[NEEDS CONTENT: her answer. Not in the source
+        and not inferable from the findings. The obvious guesses (widen the
+        carat band, collect enough D/VVS1 to build the interval as planned,
+        separate cut from color and clarity) are guesses.]</p>
+    </section>
+
+    <section class="section project-section" aria-labelledby="back-h">
+      <h2 class="visually-hidden" id="back-h">Navigation</h2>
+      <p><a class="return-link" href="../#projects">Back to projects</a></p>
+    </section>
+
+    <div class="tail"></div>
+
+  </div>
+</main>
 
 </body>
 </html>
