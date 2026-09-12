@@ -155,14 +155,20 @@ p + p { margin-top: var(--s4); }
 
 /* --- Links and focus ---------------------------------------------------- */
 
+/* Links are ink, not accent. The accent has exactly one meaning on this site
+   — this value is traceable to a verified line in CONTENT.md — and a link is
+   navigation, not traceability. While there were no links in prose the double
+   duty was invisible; with a project page and a live mailto it would have
+   made the accent the most repeated colour on the page, which is the point at
+   which an accent stops meaning anything. */
 a {
-  color: var(--accent);
+  color: var(--ink);
   text-decoration-line: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.18em;
   text-decoration-color: var(--rule);
 }
-a:hover { text-decoration-color: var(--accent); }
+a:hover { text-decoration-color: var(--ink); }
 
 @media (prefers-reduced-motion: no-preference) {
   a { transition: text-decoration-color 120ms linear; }
@@ -230,7 +236,7 @@ a:hover { text-decoration-color: var(--accent); }
   letter-spacing: 0.01em;
 }
 
-/* A real nav with a real list of real anchors. Four items fit on one line at
+/* A real nav with a real list of real anchors. Three items fit on one line at
    375px, so there is no toggle to get wrong and nothing that needs JS. */
 .masthead__nav ul {
   display: flex;
@@ -244,14 +250,16 @@ a:hover { text-decoration-color: var(--accent); }
   font-family: var(--face-data);
   font-size: var(--t-small);
   letter-spacing: 0.01em;
-  color: var(--ink);
-  text-decoration-color: var(--rule);
 }
-.masthead__nav a:hover { text-decoration-color: var(--ink); }
+
+/* On a subpage the name is the way home. It keeps its weight and loses the
+   underline until hover, so the masthead does not gain a second emphasis. */
+.masthead__name a { text-decoration-color: transparent; }
+.masthead__name a:hover { text-decoration-color: var(--ink); }
 
 /* --- The ruled grid ----------------------------------------------------- */
 
-/* Desktop: [margin 5.5rem][gutter 3.25rem][text 64ch][1fr, never filled].
+/* Desktop: [margin 7rem][gutter 3.25rem][text 52ch][1fr, never filled].
    That last track is the asymmetry. Nothing on this site is centred. */
 .ruled {
   display: grid;
@@ -324,6 +332,12 @@ a:hover { text-decoration-color: var(--accent); }
     gap: var(--s2) var(--s5);
     min-height: var(--s5);
   }
+  /* An empty cell collapses here rather than drawing its rule. On desktop an
+     empty cell is a legible statement — the tick marks the place where a
+     verified quantity would go. Rotated ninety degrees it is just a hairline
+     with nothing under it, which on the project page would put six orphan
+     rules down a document that has no rules anywhere else. */
+  .row__cell:empty { display: none; }
   .row + .row .row__cell { margin-top: var(--s6); }
   .row__body { margin-top: var(--s4); }
 }
@@ -341,10 +355,10 @@ a:hover { text-decoration-color: var(--accent); }
 }
 .cell-value + .cell-value { margin-top: var(--s3); }
 
-/* The second, non-decorative state of the accent: it marks traceability, so
-   it appears once per verified value: today, six markers across three
-   populated cells. The count is a function of how much evidence exists, not
-   a style budget. */
+/* The accent marks traceability, so it appears once per verified value: on
+   the home page, ten markers across five populated cells, four of them in the
+   Work cell. The count is a function of how much evidence exists, not a style
+   budget, and it is now weighted towards the work rather than the degrees. */
 .cell-value::before {
   content: '';
   display: inline-block;
@@ -421,6 +435,11 @@ a:hover { text-decoration-color: var(--accent); }
   margin-bottom: var(--s3);
 }
 
+/* The single most important click on the site. A rule-coloured underline is
+   right for a link inside a paragraph and wrong here: a recruiter with ninety
+   seconds has to see that this title opens something. */
+.entry__title a { text-decoration-color: var(--ink); }
+
 .entry__note {
   font-family: var(--face-data);
   font-size: var(--t-small);
@@ -428,6 +447,110 @@ a:hover { text-decoration-color: var(--accent); }
   color: var(--text-muted);
   margin-top: var(--s3);
   max-width: var(--measure);
+}
+
+/* --- Project page ------------------------------------------------------- */
+
+/* One step down from the home page display. The project page is read, not
+   landed on, so the title does not need to stop anyone. */
+.project__title {
+  font-size: var(--t-h1);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--ink-display);
+  margin-bottom: var(--s3);
+}
+
+/* Sub-sections of a single document, not sections of a site. One step down
+   the spacing scale and one step down the type scale, so six headings read
+   as one argument rather than six separate pages stacked. */
+.section--sub { padding-block-start: var(--s5); }
+@media (min-width: 45rem) {
+  .section--sub { padding-block-start: var(--s6); }
+  /* A tighter head-to-body gap than a top-level section gets. At the full
+     row-gap each of these six headings floated free of the text it labels. */
+  .ruled.section--sub { row-gap: var(--s4); }
+}
+.section--sub .section__head {
+  font-size: var(--t-h3);
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+/* The only way back, at the end of a long page. Quiet, but a rule-coloured
+   underline made it disappear against the paper. No appended arrow. */
+.return-link {
+  font-family: var(--face-data);
+  font-size: var(--t-small);
+  text-decoration-color: var(--text-muted);
+}
+
+/* --- Findings table ----------------------------------------------------- */
+
+/* The only table on the site. It earns that by being the thing a reader came
+   to inspect. Rules top and bottom of the body, none between rows, no fill:
+   the convention of a results table in a journal, not a card. */
+.findings {
+  width: 100%;
+  /* Narrower than the measure. Two columns stretched to full prose width put
+     the numbers a long way from the labels they belong to. */
+  max-width: 26rem;
+  border-collapse: collapse;
+  margin-bottom: var(--s5);
+  font-family: var(--face-data);
+  font-size: var(--t-small);
+  line-height: 1.45;
+}
+
+.findings caption {
+  text-align: left;
+  padding-bottom: var(--s3);
+  font-size: var(--t-micro);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.findings th,
+.findings td {
+  padding: var(--s3) var(--s4) var(--s3) 0;
+  text-align: left;
+  vertical-align: baseline;
+  border-bottom: 1px solid var(--rule);
+}
+
+.findings thead th {
+  font-size: var(--t-micro);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  border-bottom-color: var(--ink);
+}
+
+/* Row headers are prose: they are labels a person reads, not data. */
+.findings tbody th {
+  font-family: var(--face-prose);
+  font-size: var(--t-body);
+  font-weight: 400;
+  color: var(--text);
+}
+
+.findings tbody tr:last-child th,
+.findings tbody tr:last-child td { border-bottom-color: var(--ink); }
+
+.findings__num {
+  font-variant-numeric: tabular-nums lining-nums;
+  text-align: right;
+  padding-right: 0;
+  color: var(--ink);
+}
+
+/* Keep the exponent from opening the header row's leading. */
+.findings sup {
+  font-size: 0.7em;
+  vertical-align: 0.45em;
+  line-height: 0;
 }
 
 /* --- Contact ------------------------------------------------------------ */

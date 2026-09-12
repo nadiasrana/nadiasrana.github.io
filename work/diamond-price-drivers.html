@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Diamond price drivers &mdash; Nadia Sultan Rana</title>
+<meta name="description" content="What sets the price of a pear-shaped diamond, and whether four retailers agree. 918 stones, regression against clarity and color, benchmarked against the Rapaport guide.">
+
+<!-- REMOVE AT LAUNCH, with the same marker on index.html. -->
+<meta name="robots" content="noindex, nofollow">
+
+<meta name="theme-color" content="#FFFFFF">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23FFFFFF'/><rect x='5' y='5' width='6' height='6' fill='%239E0F51'/></svg>">
+
+<link rel="preload" href="../assets/fonts/newsreader-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/atkinson-next-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="page">
+
+  <!-- REMOVE AT LAUNCH, together with .draft-banner in styles.css. -->
+  <p class="draft-banner">
+    Draft shell. Not launched, not indexed. This page cannot go public until
+    the three dashed boxes below are filled from the report. Two of them are
+    the reason the page exists.
+  </p>
+
+  <header class="masthead">
+    <p class="masthead__name"><a href="../">Nadia Sultan Rana</a></p>
+    <nav class="masthead__nav" aria-label="Sections">
+      <ul>
+        <li><a href="../#work">Work</a></li>
+        <li><a href="../#background">Background</a></li>
+        <li><a href="../#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- =================================================================
+         Title. The margin carries the same four values as the Work cell on
+         the home page, because they are the same four values. A number that
+         changes between the index and the page it indexes is a defect.
+         ================================================================= -->
+    <section class="ruled ruled--framed opener" aria-labelledby="title-h">
+      <div class="row">
+        <div class="row__cell">
+          <span class="cell-value">
+            <span class="visually-hidden">Verified: </span>918
+            <span class="cell-label">diamonds priced</span>
+          </span>
+          <span class="cell-value">
+            <span class="visually-hidden">Verified: </span>4
+            <span class="cell-label">retailers compared</span>
+          </span>
+          <span class="cell-value">
+            <span class="visually-hidden">Verified: </span>63.3%
+            <span class="cell-label">of price variation explained</span>
+          </span>
+          <span class="cell-value">
+            <span class="visually-hidden">Verified: </span>$1,700
+            <span class="cell-label">per-carat gap against the guide</span>
+          </span>
+        </div>
+        <div class="row__body">
+          <h1 class="project__title" id="title-h">Diamond price drivers</h1>
+          <!-- A standfirst gives away the finding. The version that paraphrased
+               the question instead just said what "The question" says two
+               paragraphs later. -->
+          <p class="opener__lead">Clarity moves the price of a pear-shaped
+            diamond more than color does. Across 918 stones listed by four
+            retailers, the two grades together still leave more than a third
+            of the price unexplained.</p>
+          <p class="entry__note">Spring 2026. Excel, regression, data
+            validation, web scraping.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================
+         The account. Question, data, method, findings, limitations, and
+         what she would do differently. Only the first four can be written
+         from CONTENT.md; the last two are hers to supply and are marked.
+         ================================================================= -->
+    <section class="ruled ruled--framed section section--sub" aria-labelledby="q-h">
+      <h2 class="section__head" id="q-h">The question</h2>
+      <div class="row">
+        <div class="row__cell"></div>
+        <div class="row__body">
+          <p>Two questions, not one. Which published grade moves the price of
+            a pear-shaped diamond more, clarity or color? And do four
+            retailers price the same specification the same way?</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="ruled ruled--framed section section--sub" aria-labelledby="data-h">
+      <h2 class="section__head" id="data-h">The data</h2>
+      <div class="row">
+        <div class="row__cell"></div>
+        <div class="row__body">
+          <p>918 pear-shaped diamonds listed by four retailers. I scraped the
+            listings, cleaned them into a single workbook, and did no analysis
+            until the cleaning was finished and written down.</p>
+          <p class="needs-content">[NEEDS CONTENT: the exclusion rules. How
+            many scraped records were dropped, and on what criteria? A reader
+            who cannot see what left the sample cannot judge what stayed in
+            it, and this is the section where an analyst is judged.]</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="ruled ruled--framed section section--sub" aria-labelledby="method-h">
+      <h2 class="section__head" id="method-h">Method</h2>
+      <div class="row">
+        <div class="row__cell"></div>
+        <div class="row__body">
+          <p>A single-variable linear regression of price on clarity, a second
+            on color, then a combined model using both. Confidence intervals
+            on the estimates rather than point values alone.</p>
+          <p>Separately, pivot tables comparing the four retailers at matched
+            specifications, and a benchmark of retailer pricing against the
+            Rapaport price guide.</p>
+          <p>Built in Excel. Reported in Word.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- The findings table is the only table on the site. It earns that by
+         being the thing a reader came to inspect. Three rows, because three
+         values are verified; no fourth row is inferred to balance it. -->
+    <section class="ruled ruled--framed section section--sub" aria-labelledby="find-h">
+      <h2 class="section__head" id="find-h">What I found</h2>
+      <div class="row">
+        <div class="row__cell"></div>
+        <div class="row__body">
+
+          <table class="findings">
+            <caption>Share of price variation explained, by model</caption>
+            <thead>
+              <tr>
+                <th scope="col">Model</th>
+                <th scope="col" class="findings__num">R<sup>2</sup></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Clarity alone</th>
+                <td class="findings__num">0.40</td>
+              </tr>
+              <tr>
+                <th scope="row">Color alone</th>
+                <td class="findings__num">0.29</td>
+              </tr>
+              <tr>
+                <th scope="row">Clarity and color combined</th>
+                <td class="findings__num">0.633</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>Clarity is the stronger single driver, and not by a small margin:
+            it accounts for about half again as much of the variation as color
+            does.</p>
+          <p>The more useful number is the one left over. Together the two
+            grades explain 63.3% of the variation in price, which means more
+            than a third of what these stones cost is set by something the two
+            headline grades do not capture. Anyone using clarity and color
+            alone to decide whether a price is fair is working with roughly
+            two-thirds of the picture.</p>
+          <p>On the second question, the retailer benchmark showed a $1,700
+            per-carat gap against the Rapaport guide.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="ruled ruled--framed section section--sub" aria-labelledby="lim-h">
+      <h2 class="section__head" id="lim-h">Limitations</h2>
+      <div class="row">
+        <div class="row__cell"></div>
+        <div class="row__body">
+          <p class="needs-content">[NEEDS CONTENT: her stated limitations,
+            verbatim from the report. CONTENT.md records that the report has a
+            limitations section but not what is in it. This section is the
+            reason the page exists and it has to be her list. A reconstructed
+            one would be invention, and it would be the one piece of invention
+            on the site that a reader would most want to trust.]</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="ruled ruled--framed section section--sub" aria-labelledby="next-h">
+      <h2 class="section__head" id="next-h">What I would do differently</h2>
+      <div class="row">
+        <div class="row__cell"></div>
+        <div class="row__body">
+          <p class="needs-content">[NEEDS CONTENT: her answer. Not inferable
+            from the findings, and the obvious guesses (add carat, add cut,
+            widen the retailer set) are guesses.]</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="ruled ruled--framed section section--sub" aria-labelledby="back-h">
+      <h2 class="visually-hidden" id="back-h">Navigation</h2>
+      <div class="row">
+        <div class="row__cell"></div>
+        <div class="row__body">
+          <p><a class="return-link" href="../#work">Back to selected work</a></p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="tail"></div>
+
+</div>
+
+</body>
+</html>

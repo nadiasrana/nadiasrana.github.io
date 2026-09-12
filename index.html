@@ -5,10 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Nadia Sultan Rana</title>
-<meta name="description" content="Nadia Sultan Rana — analytics and data quality work. Master&rsquo;s candidate in data analytics engineering at Northeastern.">
+<meta name="description" content="Nadia Sultan Rana &mdash; analytics and data quality work. Master&rsquo;s candidate in data analytics engineering at Northeastern.">
 
-<!-- REMOVE AT LAUNCH. CONTENT.md: the site should not be public until at
-     least two real projects exist. Until then it must not be indexed. -->
+<!-- REMOVE AT LAUNCH. CONTENT.md: one project exists, which is enough for a
+     soft launch on the github.io URL but not enough for nadiasrana.com. The
+     CNAME is deliberately absent until a second project lands. Until then
+     this must not be indexed. -->
 <meta name="robots" content="noindex, nofollow">
 
 <meta name="theme-color" content="#FFFFFF">
@@ -35,8 +37,6 @@
 
   <header class="masthead">
     <p class="masthead__name">Nadia Sultan Rana</p>
-    <!-- In-page anchors only. There are no other pages yet, and a nav item
-         that leads nowhere is worse than a nav item that is absent. -->
     <nav class="masthead__nav" aria-label="Sections">
       <ul>
         <li><a href="#work">Work</a></li>
@@ -49,7 +49,8 @@
   <main id="main">
 
     <!-- =================================================================
-         Opener. One populated margin cell.
+         Opener. Evidence before category: the study line comes before the
+         line naming the kind of work, because a specific beats a category.
          ================================================================= -->
     <section class="ruled ruled--framed opener" aria-labelledby="opener-h">
       <div class="row">
@@ -63,16 +64,15 @@
           <h1 class="opener__display" id="opener-h">I audit data and documents
             against explicit criteria, and I show the criteria.</h1>
 
-          <p class="needs-content">[NEEDS CONTENT: this line is a placeholder
-            for the specific version of itself. DESIGN.md is right that a
-            category beats nothing but a specific beats a category &mdash;
-            &ldquo;reviewed 142 pages against a seven-point rubric&rdquo;. That
-            sentence cannot be written until the first audit is finished.]</p>
+          <p class="opener__lead">One recent study priced 918 pear-shaped
+            diamonds across four retailers, and reported what the model could
+            not explain as carefully as what it could.</p>
 
-          <p class="opener__lead">Analytics and data quality work: building
-            datasets, Power BI dashboards and KPI reporting, running data
-            quality checks, and writing query logic other people can reuse.</p>
-
+          <!-- The capability list that used to sit here was a near-verbatim
+               copy of the second paragraph under Background, where it has the
+               context that makes it mean something. Saying it twice on one
+               page made the opener read as a résumé summary. Removed, not
+               moved: claim, then evidence, then status. -->
           <p class="opener__lead">Master&rsquo;s candidate in data analytics
             engineering at Northeastern, looking for full-time analytics
             roles.</p>
@@ -81,44 +81,63 @@
     </section>
 
     <!-- =================================================================
-         Work. Every margin cell here is empty, because no project exists.
-         This is the honest rendering of the site's current state and the
-         clearest argument for not launching yet. Do not populate these
-         cells with planned numbers to make the column look busier.
+         Work. One entry, one populated margin cell, and it is the densest
+         cell on the page. That is the argument: the evidence is the work,
+         not the credentials. The two planned projects stay tracked in
+         CONTENT.md and do not appear here. An unbuilt project listed beside
+         a real one advertises the thinness.
          ================================================================= -->
     <section class="ruled ruled--framed section" id="work" aria-labelledby="work-h">
       <h2 class="section__head" id="work-h">Selected work</h2>
 
       <div class="row row--h3">
-        <div class="row__cell"></div>
+        <div class="row__cell">
+          <span class="cell-value">
+            <span class="visually-hidden">Verified: </span>918
+            <span class="cell-label">diamonds priced</span>
+          </span>
+          <span class="cell-value">
+            <span class="visually-hidden">Verified: </span>4
+            <span class="cell-label">retailers compared</span>
+          </span>
+          <span class="cell-value">
+            <span class="visually-hidden">Verified: </span>63.3%
+            <span class="cell-label">of price variation explained</span>
+          </span>
+          <span class="cell-value">
+            <span class="visually-hidden">Verified: </span>$1,700
+            <span class="cell-label">per-carat gap against the guide</span>
+          </span>
+        </div>
         <div class="row__body">
           <article class="entry">
-            <h3 class="entry__title">Rubric-based document quality audit</h3>
-            <p class="needs-content">[NEEDS CONTENT: does not exist yet. Planned
-              as public university student-services pages scored against a
-              written rubric. No count, no criterion total and no findings may
-              appear here, or in the margin, until the audit is done.]</p>
-            <p class="entry__note">Not published.</p>
-          </article>
-
-          <article class="entry">
-            <h3 class="entry__title">Data quality validation workbook</h3>
-            <p class="needs-content">[NEEDS CONTENT: does not exist yet. Planned
-              as a reproducible validation workbook over a synthetic dataset.]</p>
-            <p class="entry__note">Not published.</p>
+            <h3 class="entry__title"><a href="work/diamond-price-drivers.html">Diamond
+              price drivers</a></h3>
+            <p>Which published grade actually moves the price of a pear-shaped
+              diamond, and whether four retailers agree on what a stone is
+              worth. Scraped listings cleaned into one workbook,
+              single-variable and combined regressions, confidence intervals,
+              and a benchmark against the Rapaport price guide.</p>
+            <p>Clarity beat color. The combined model still left more than a
+              third of the variation unexplained, and the report says so.</p>
+            <p class="entry__note">Spring 2026. Excel, regression, data
+              validation, web scraping.</p>
           </article>
         </div>
       </div>
     </section>
 
     <!-- =================================================================
-         Background. Two populated margin cells, one empty.
+         Background. Three populated margin cells.
          ================================================================= -->
     <section class="ruled ruled--framed section" id="background" aria-labelledby="bg-h">
       <h2 class="section__head" id="bg-h">Background</h2>
 
       <div class="row">
         <div class="row__cell">
+          <!-- No elapsed-time figure here. It would be derived from an end
+               date CONTENT.md records as disputed (May vs Dec 2025), so the
+               number could simply be wrong. The range stays coarse. -->
           <span class="cell-value">
             <span class="visually-hidden">Verified: </span>2022&ndash;2025
             <span class="cell-label">university of the pacific</span>
@@ -127,15 +146,10 @@
             <span class="visually-hidden">Verified: </span>2
             <span class="cell-label">bachelor&rsquo;s degrees</span>
           </span>
-          <span class="cell-value">
-            <span class="visually-hidden">Verified: </span>2y 9m
-            <span class="cell-label">elapsed</span>
-          </span>
         </div>
         <div class="row__body">
           <p>Two bachelor&rsquo;s degrees from the University of the Pacific,
-            biological sciences and business administration, awarded in two
-            years and nine months.</p>
+            biological sciences and business administration.</p>
           <p>Alongside and after them, operations analytics for the university:
             assembling datasets, building Power BI dashboards, reporting KPIs,
             running data quality checks, and writing query logic that other
@@ -164,13 +178,19 @@
         </div>
       </div>
 
+      <!-- The margin here prints the season only. Four sources gave four
+           different date answers, and "Summer 2026" is the form CONTENT.md
+           settled on to contain that. Never widen it to a month range. -->
       <div class="row">
-        <div class="row__cell"></div>
+        <div class="row__cell">
+          <span class="cell-value">
+            <span class="visually-hidden">Verified: </span>Summer 2026
+            <span class="cell-label">archroma</span>
+          </span>
+        </div>
         <div class="row__body">
-          <p class="needs-content">[NEEDS CONTENT: Archroma. Title, team and
-            dates unresolved &mdash; sources conflict between Procurement and
-            Commercial Excellence, and the end date is unconfirmed. Nothing
-            here, and no date in the margin, until she confirms all three.]</p>
+          <p>Most recently, a data analytics internship at Archroma, on the
+            Commercial Excellence team.</p>
         </div>
       </div>
     </section>
@@ -181,16 +201,15 @@
     <section class="ruled ruled--framed contact" id="contact" aria-labelledby="contact-h">
       <h2 class="section__head" id="contact-h">Contact</h2>
       <ul class="contact__list">
-        <li><span class="needs-content">[NEEDS CONTENT: which email address is
-          public?]</span></li>
+        <li><a href="mailto:nadiasrana@gmail.com">nadiasrana@gmail.com</a></li>
         <li><span class="needs-content">[NEEDS CONTENT: LinkedIn URL &mdash; no
           verified URL on file, only a PDF export.]</span></li>
         <li><span class="needs-content">[NEEDS CONTENT: location &mdash; stated
           as the Raleigh&ndash;Durham&ndash;Chapel Hill area; confirm the exact
           wording she wants public.]</span></li>
         <li><span class="needs-content">[NEEDS CONTENT: r&eacute;sum&eacute;
-          PDF &mdash; blocked on the Archroma details above. High priority:
-          the audience is full-time analytics roles.]</span></li>
+          PDF &mdash; held until the Q1&ndash;Q5 conflicts resolve. High
+          priority: the audience is full-time analytics roles.]</span></li>
       </ul>
     </section>
 
