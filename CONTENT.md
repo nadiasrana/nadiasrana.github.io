@@ -27,7 +27,7 @@ work.
 
 | Page | Status | Notes |
 |---|---|---|
-| Home | ⚠️ | Rebuilt 12 Sep 2026 on the warm-minimal system. Hero, About, Work, Projects, Stack, Contact. Six markers — see the Work figures, headshot, résumé, SQL, LinkedIn and location entries below |
+| Home | ⚠️ | Rebuilt 12 Sep 2026 on the warm-minimal system. Hero, About, Work, Projects, Stack, Contact. Five markers — headshot, résumé, SQL, LinkedIn, location. Work attribution is resolved |
 | Projects index | — | Deferred until project 2. With one item, the Work section on the home page is the index; an index page listing one entry advertises the thinness |
 | Diamond Price Drivers project page | ⚠️ | Built at `work/diamond-price-drivers.html`. Two markers left, one of them a blocker — see Q-R2 below |
 | About | ✅ | Writable now from verified background |
@@ -48,20 +48,33 @@ Northstar lead the Work section; the study sits under Projects.
 
 ---
 
-## Work section figures — the only four permitted
+## Work section figures — attribution ✅ RESOLVED
 
-| Figure | Label on site | Attributed to |
+✅ **Q-ATTRIB — closed 12 Sep 2026. Do not re-open.**
+
+| Figure | Label | Employer |
 |---|---|---|
-| ~1,080 | records routed to human review | Fraqt ⚠️ |
-| 1,194 | federal passages structured | Fraqt ⚠️ |
-| 203 | fields in a data dictionary | Archroma ⚠️ |
-| 3 | systems reconciled | Archroma ⚠️ |
+| ~1,080 | ambiguous records routed to human review | **Archroma** ✅ |
+| 203 | field data dictionary | **Archroma** ✅ |
+| 3 | source systems reconciled | **Archroma** ✅ |
+| 31 | item defect log | **Archroma** ✅ |
+| 40 | point release audit | **Archroma** ✅ |
+| 1,194 | public federal source passages structured | **Fraqt** ✅ |
 
-⛔ **Q-ATTRIB — blocker.** The four figures are authorised. **The
-attribution is not.** The mapping above is inference from the shape of each
-role, not record. A dashed marker sits at the top of the Work section until
-it is confirmed. Getting this wrong puts a false claim about a named employer
-in front of recruiters.
+**Source of the resolution:** her Archroma work-log export. It shows entity
+resolution across three previously unlinked systems, a geographic-corroboration
+matching rule, and ambiguous records routed to human review rather than
+resolved silently. The 1,194 passages are the Fraqt retrieval corpus.
+
+**A previous session guessed this and got it wrong**, putting the ~1,080
+routed records under Fraqt. The routing is Archroma's, and it is the strongest
+single thing on the page: it is the judgement call, not the volume. Fraqt has
+**one** figure and the entry shows one. Do not pad it.
+
+Archroma has five figures; the entry shows three in the figure row (3 systems,
+1,080 routed, 203 fields) and carries the defect log and release audit in
+prose. **Power BI is not an Archroma tag** — it belongs to the University of
+the Pacific operations analytics.
 
 ⚠️ **Q-FRAQT.** Fraqt job title and dates are not on file. The entry prints
 "Pre-launch." and nothing else. Fraqt now **does** appear on the site, in
@@ -242,11 +255,10 @@ alternative and is faster to build.
 
 ### Open, in priority order
 
-1. **Q-ATTRIB** — which figures belong to which employer. Blocker.
-2. **Q-R2** — what each R² was computed on. Blocker.
-3. **Résumé PDF** — the link the audience came for. Held on Q1–Q5.
-4. **Q-FRAQT** — Fraqt title and dates.
-5. **Q-SQL** — SQL, DAX or Power Query, and at what level.
-6. **Q-PHOTO** — the headshot file.
-7. **LinkedIn URL** and **location wording**.
-8. **What she would do differently** on the diamond study.
+1. **Q-R2** — what each R² was computed on. Blocker.
+2. **Résumé PDF** — the link the audience came for. Held on Q1–Q5.
+3. **Q-FRAQT** — Fraqt title and dates.
+4. **Q-SQL** — SQL, DAX or Power Query, and at what level.
+5. **Q-PHOTO** — the headshot file.
+6. **LinkedIn URL** and **location wording**.
+7. **What she would do differently** on the diamond study.

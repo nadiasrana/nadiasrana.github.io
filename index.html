@@ -132,69 +132,69 @@
     <section class="section" id="work" aria-labelledby="work-h">
       <h2 class="section__head" id="work-h">Work</h2>
 
-      <p class="needs-content">[NEEDS CONTENT: two things, both blocking.
-        (1) Confirm which figures belong to which employer. The mapping below
-        &mdash; 203 fields and 3 systems to Archroma, 1,194 passages and
-        1,080 routed records to Fraqt &mdash; is inference, not record. The
-        figures themselves are authorised; the attribution is not.
-        (2) Fraqt job title and dates. Neither is on file.]</p>
-
       <article class="entry entry--1">
         <p class="entry__count">01 / 03</p>
         <h3 class="entry__title">Archroma</h3>
         <p class="entry__meta">Data analytics intern, Commercial Excellence.
           Summer 2026.</p>
         <div class="entry__body">
-          <p>Three systems held the same commercial records in three
-            different shapes. I reconciled them, and wrote the data
-            dictionary that pinned the definitions down, so the next person
-            to ask what a field means does not have to guess.</p>
+          <p>Three source systems held records for the same commercial
+            entities and had never been linked. I did the entity resolution
+            across them, using a matching rule that had to corroborate a
+            candidate geographically before it would accept the match, and
+            wrote the 203-field data dictionary that fixed the definitions in
+            place afterwards.</p>
+          <p>Roughly 1,080 records stayed ambiguous under that rule. Those
+            went to human review rather than being resolved silently, which
+            is the decision in the whole job: a match nobody can justify is
+            worse than a gap everybody can see.</p>
+          <p>The same pass produced a 31-item defect log and a 40-point
+            release audit.</p>
         </div>
         <ul class="entry__figures">
+          <li>
+            <span class="rail__figure">3</span>
+            <span class="rail__label">source systems reconciled</span>
+          </li>
+          <li>
+            <span class="rail__figure">1,080</span>
+            <span class="rail__label">ambiguous records routed to human review</span>
+          </li>
           <li>
             <span class="rail__figure">203</span>
             <span class="rail__label">fields documented</span>
           </li>
-          <li>
-            <span class="rail__figure">3</span>
-            <span class="rail__label">systems reconciled</span>
-          </li>
         </ul>
         <ul class="tags">
+          <li>Entity resolution</li>
           <li>Reconciliation</li>
           <li>Data dictionary</li>
-          <li>Data quality</li>
-          <li>Power BI</li>
+          <li>Human review</li>
         </ul>
       </article>
 
       <article class="entry entry--2">
         <p class="entry__count">02 / 03</p>
         <h3 class="entry__title">Fraqt</h3>
+        <!-- One figure, because one figure is what is on record for this
+             role. Padding it out with Archroma's numbers is how the last
+             version got the attribution wrong. -->
         <p class="entry__meta">Pre-launch.</p>
         <div class="entry__body">
-          <p>Structured 1,194 passages of federal source material into a
-            schema a retrieval system could query, and wrote the rules that
-            route roughly 1,080 records to a human rather than letting an
-            automated answer stand.</p>
-          <p>The judgment here is in the routing criteria: deciding what a
-            machine is allowed to be confident about, and writing that down
-            so the decision can be argued with.</p>
+          <p>Structured 1,194 passages of public federal source material into
+            the retrieval corpus: deciding what counts as one passage, what
+            has to travel with it for a citation to hold, and where a
+            document should be split.</p>
         </div>
         <ul class="entry__figures">
           <li>
             <span class="rail__figure">1,194</span>
-            <span class="rail__label">passages structured</span>
-          </li>
-          <li>
-            <span class="rail__figure">1,080</span>
-            <span class="rail__label">records routed to review</span>
+            <span class="rail__label">federal source passages structured</span>
           </li>
         </ul>
         <ul class="tags">
-          <li>Structured evaluation</li>
           <li>Schema design</li>
-          <li>Human review</li>
+          <li>Corpus structuring</li>
         </ul>
       </article>
 

@@ -281,8 +281,11 @@ a:hover { text-decoration-color: var(--accent); }
   letter-spacing: -0.03em;
   /* -0.03em tightens the word spaces along with the letter spaces, and at
      display size that ran the three words together into NadiaSultanRana.
-     Tracking is optical for the letters; the word gaps get it back. */
-  word-spacing: 0.1em;
+     Tracking is optical for the letters; the word gaps get it back.
+     0.06em, not 0.1em: at 76px that is a 13px gap against 16px, and 13px
+     already separates the three words. The smaller correction that works is
+     the right one — 16px was starting to read as deliberate letterspacing. */
+  word-spacing: 0.06em;
   color: var(--ink);
   text-wrap: balance;
 }
