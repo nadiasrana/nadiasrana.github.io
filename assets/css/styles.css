@@ -551,42 +551,87 @@ a:hover { text-decoration-color: var(--accent); }
 .findings tbody tr:last-child th,
 .findings tbody tr:last-child td { border-bottom: 1px solid var(--ink); }
 
+/* A group or a total closes below, so the rule above it goes light and the
+   ink rule moves to the real bottom of the table. */
 .findings tbody:has(+ tfoot) tr:last-child th,
-.findings tbody:has(+ tfoot) tr:last-child td {
+.findings tbody:has(+ tfoot) tr:last-child td,
+.findings tbody:has(+ tbody) tr:last-child th,
+.findings tbody:has(+ tbody) tr:last-child td {
   border-bottom: 1px solid var(--rule);
 }
-.findings__total {
+
+/* A row group label. Two aggregation levels in one table need saying out
+   loud, in the table, not only in the prose underneath it. */
+.findings .findings__group th {
+  padding-bottom: var(--s1);
+  font-family: var(--face-body);
+  font-size: var(--t-micro);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.findings tbody + tbody .findings__group th { padding-top: var(--s5); }
+/* These three modifiers are scoped under .findings deliberately. Written bare
+   they are (0,1,0) and lose to `.findings th, .findings td` at (0,1,1), which
+   sets text-align, padding and border. That silently left the numeric columns
+   left-aligned and the total row without its rule — invisible while most
+   values happened to be the same width, and obvious the moment a 3-digit n
+   sat under a 1-digit one. Caught by measuring, not by looking. */
+.findings .findings__total {
   border-bottom: 1px solid var(--ink);
   font-weight: 500;
   color: var(--ink);
 }
 
-.findings__num {
+/* Right-aligned columns take their separation on the left. padding-right: 0
+   puts the last column flush to the table edge; without the matching
+   padding-left the adjacent numeric columns collide as soon as the table is
+   narrow, which at 375px ran "7" into "0.909". */
+.findings .findings__num {
   font-family: var(--face-display);
   font-weight: 500;
   font-variant-numeric: tabular-nums lining-nums;
   text-align: right;
+  padding-left: var(--s4);
   padding-right: 0;
   color: var(--ink);
 }
 
-.findings__none {
+/* A number never breaks. At 375px "−$528.70" was wrapping after the minus,
+   leaving a bare sign on its own line. Headers may still wrap: "Per grade
+   step" held to one line would set the column far wider than its data. */
+.findings tbody .findings__num { white-space: nowrap; }
+.findings .findings__none { white-space: normal; }
+
+.findings .findings__none {
   font-family: var(--face-body);
   font-size: var(--t-micro);
   font-weight: 400;
   color: var(--muted);
 }
 
+/* Four columns at 375px need every pixel of the gutters back. */
 @media (max-width: 44.9375rem) {
   .findings--wide th,
   .findings--wide td { padding-right: var(--s3); }
+  .findings--wide .findings__num {
+    padding-left: var(--s3);
+    padding-right: 0;
+  }
 }
 
-/* The sentence a section is built to land on. Colour and space, not size. */
+/* The sentence an argument lands on. Colour and space, not size. Used once
+   per limitation, not once per page: each one lands its own point. */
 .coda {
   margin-top: var(--s6);
   color: var(--ink);
 }
+
+/* A coda that has something after it needs the same air below as above, or
+   it reads as the opening of the next limitation rather than the close of
+   its own. Only when something follows: trailing space is the section's job. */
+.coda + p { margin-top: var(--s6); }
 
 /* --- Build artifacts. These must not survive to production --------------- */
 

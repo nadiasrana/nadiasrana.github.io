@@ -26,9 +26,9 @@
 <div class="shell">
   <!-- REMOVE AT LAUNCH, together with .draft-banner in styles.css. -->
   <p class="draft-banner">
-    Draft shell. Not launched, not indexed. Two dashed boxes below. The first
-    is a blocker: as recorded, the single-variable and combined R&sup2; values
-    cannot describe the same regression.
+    Draft shell. Not launched, not indexed. One dashed box below, and it is
+    no longer a blocker: the R&sup2; question is resolved and the table now
+    labels both aggregation levels.
   </p>
 
   <header class="masthead">
@@ -148,49 +148,62 @@
     <section class="section project-section" aria-labelledby="find-h">
       <h2 class="section__head" id="find-h">What I found</h2>
 
+      <!-- Two aggregation levels in one table, split into two row groups and
+           labelled, with n on every row. Read as a flat list these numbers
+           look like an OLS violation; they are not one, and the table has to
+           make that impossible to misread on its own. -->
       <table class="findings findings--wide">
         <caption>Per-carat price against grade</caption>
         <thead>
           <tr>
             <th scope="col">Model</th>
+            <th scope="col" class="findings__num">n</th>
             <th scope="col" class="findings__num">R<sup>2</sup></th>
             <th scope="col" class="findings__num">Per grade step</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">Clarity alone</th>
-            <td class="findings__num">0.91</td>
-            <td class="findings__num">&minus;$529</td>
+          <tr class="findings__group">
+            <th colspan="4" scope="colgroup">Fitted on grade averages, the
+              other grade held fixed</th>
           </tr>
           <tr>
-            <th scope="row">Color alone</th>
-            <td class="findings__num">0.84</td>
-            <td class="findings__num">&minus;$631</td>
+            <th scope="row">Clarity, color held at D</th>
+            <td class="findings__num">7</td>
+            <td class="findings__num">0.909</td>
+            <td class="findings__num">&minus;$528.70</td>
+          </tr>
+          <tr>
+            <th scope="row">Color, clarity held at VVS1</th>
+            <td class="findings__num">8</td>
+            <td class="findings__num">0.839</td>
+            <td class="findings__num">&minus;$631.44</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr class="findings__group">
+            <th colspan="4" scope="colgroup">Fitted on individual stones</th>
           </tr>
           <tr>
             <th scope="row">Clarity and color combined</th>
+            <td class="findings__num">918</td>
             <td class="findings__num">0.633</td>
             <td class="findings__num findings__none">no single slope</td>
           </tr>
         </tbody>
       </table>
 
-      <p class="needs-content">[NEEDS CONTENT: what each R&sup2; was computed
-        on. As recorded these three cannot describe the same regression
-        &mdash; adding a second variable cannot take R&sup2; from 0.91 down to
-        0.633. The likely answer is that the single-variable figures are
-        regressions on grade averages and the combined figure is on all 918
-        rows, but that is a guess and it is not going on the page as one.
-        Until this line is answered the table reads as an error to exactly the
-        reader it is meant to convince.]</p>
+      <p>Clarity&rsquo;s grade averages fall more cleanly than color&rsquo;s,
+        0.909 against 0.839 on the same kind of fit. Color has the steeper
+        step: $631.44 per carat for each grade down the color scale, against
+        $528.70 for clarity.</p>
 
-      <p>Clarity accounts for more of the variation in price than color does.
-        Color has the steeper step: each grade down the color scale takes $631
-        per carat off the price, against $529 for clarity. Those are two
-        different questions, and the answers point in different directions.
-        How much of the price a grade explains is not the same as what one
-        step of it is worth.</p>
+      <p>Those are two different measurements, and neither is the third one.
+        How tightly eight averages sit on a line is not what one grade step is
+        worth, and neither is how much of an individual stone&rsquo;s price
+        the two grades explain. That last one is the 63.3%, and it is the
+        lowest of the three for a reason. The limitations below say what the
+        reason is.</p>
 
       <p>The four retailers do not agree. James Allen averaged $1,550 per
         carat across the band; With Clarity averaged $3,249. That is a spread
@@ -204,6 +217,23 @@
 
     <section class="section project-section" aria-labelledby="lim-h">
       <h2 class="section__head" id="lim-h">Limitations</h2>
+
+      <p>The two single-variable fits are not comparable with the combined
+        one, and putting all three in a table invites exactly that comparison.
+        The single-variable regressions were run on pivot-table grade
+        averages with the other grade held fixed: seven points for clarity
+        with color held at D, eight for color with clarity held at VVS1. The
+        combined model was run on all 918 individual stones.</p>
+
+      <p>Averaging inside each grade removes the variation between stones that
+        share that grade. What is left is a smooth line, and a smooth line
+        fits well. Aggregation inflates R&sup2;, so 0.909 against eight points
+        is not a better result than 0.633 against 918 stones. It is a
+        different measurement.</p>
+
+      <p class="coda">The two numbers answer two questions: how cleanly grade
+        averages decline, and how much of one diamond&rsquo;s price those
+        grades explain. Only the second one tells a buyer anything.</p>
 
       <p>The cut premium is confounded. Excellent-cut stones averaged $3,358
         per carat against $2,332 for Very Good, a 44% premium. But the

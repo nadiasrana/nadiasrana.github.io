@@ -29,7 +29,7 @@ work.
 |---|---|---|
 | Home | ⚠️ | Rebuilt 12 Sep 2026 on the warm-minimal system. Hero, About, Work, Projects, Stack, Contact. Five markers — headshot, résumé, SQL, LinkedIn, location. Work attribution is resolved |
 | Projects index | — | Deferred until project 2. With one item, the Work section on the home page is the index; an index page listing one entry advertises the thinness |
-| Diamond Price Drivers project page | ⚠️ | Built at `work/diamond-price-drivers.html`. Two markers left, one of them a blocker — see Q-R2 below |
+| Diamond Price Drivers project page | ⚠️ | Built at `work/diamond-price-drivers.html`. One marker left, no blockers. Q-R2 closed 12 Sep 2026 |
 | About | ✅ | Writable now from verified background |
 | Résumé PDF | ⚠️ | Available, but hold until the Q1–Q5 conflicts in `03-open-questions.md` resolve |
 | Contact | ✅ | nadiasrana@gmail.com. Phone is on the resume — decide separately whether it goes on a public page. Default: no |
@@ -176,10 +176,27 @@ $1,700 gap to Rapaport, is stale.
 
 ### Findings
 
-- Single-variable R²: **clarity 0.91**, **color 0.84**
-- Slopes: clarity **−$529/ct per grade**, color **−$631/ct per grade**. Color
-  has the steeper step; clarity explains more of the variation
-- Combined multivariate model: **63.3%**
+✅ **Q-R2 — closed 12 Sep 2026. Do not re-open. There is no OLS violation.**
+
+The single-variable regressions were run on **pivot-table grade averages with
+the other variable held fixed**, not on the 918 raw rows. Different datasets
+at different aggregation levels, so R² 0.909 on 7 points and R² 0.633 on 918
+rows are not in conflict.
+
+| Fit | Basis | n | Coding | Slope | R² |
+|---|---|---|---|---|---|
+| Clarity | grade averages, color held at **D** | 7 | IF–SI2 as 1–7 | −528.70 /grade | 0.9089 |
+| Color | grade averages, clarity held at **VVS1** | 8 | D–K as 1–8 | −631.44 /grade | 0.8393 |
+| Combined | **individual stones** | 918 | multivariate | no single slope | 0.633 |
+
+**Source:** both single-variable regressions re-run against the source
+workbook, returning −631.42 / 0.8393 and −528.86 / 0.9089. Matches to four
+decimals.
+
+The page shows R² at three decimals (0.909, 0.839, 0.633) for a consistent
+column, and slopes at the supplied cent precision. The table carries `n` on
+every row and splits into two labelled row groups, because read as a flat
+list these numbers look like an error to a numerate reader.
 - Retailer spread: **James Allen $1,550/ct**, **With Clarity $3,249/ct** — a
   gap of roughly **$1,700/ct**. This is between retailers
 - Rapaport, **separate finding**: retail trades **5–35% below** the guide. Do
@@ -187,19 +204,25 @@ $1,700 gap to Rapaport, is stale.
 - Market context: right-skewed, **skewness 1.06**, mean **$2,571/ct**, median
   **$2,227/ct**
 
-### Limitations — both on the page
+### Limitations — all three on the page
 
-1. **Cut premium is confounded.** Excellent cut averages $3,358/ct against
+1. **Aggregation inflates R².** The single-variable fits are on grade
+   averages, the combined model on 918 individual stones. Averaging removes
+   within-cell variance, so a fit against 8 smooth points is not comparable
+   to a fit against 918 stones. The two answer different questions: how
+   cleanly grade averages decline, versus how much of one diamond's price
+   those grades explain. **This leads the section on the page.**
+2. **Cut premium is confounded.** Excellent cut averages $3,358/ct against
    $2,332/ct for Very Good, a 44% premium, but higher-cut stones also carry
    better color and clarity, so the premium is not cleanly attributable to cut
-2. **The confidence interval required constraint relaxation.** Insufficient
+3. **The confidence interval required constraint relaxation.** Insufficient
    D-color and VVS1 data points existed, so the 30-sample interval was built
    on H-SI2 instead, where 44 diamonds were available. 95% CI **$1,684–$1,837/ct**,
    point estimate **$1,760.15**
 
-The second limitation carries the weight on the page. Declining to proceed as
-planned because the data would not support it is the same instinct as the rest
-of the site.
+Limitations 1 and 3 each carry a weighted closing line on the page. Declining
+to proceed as planned because the data would not support it, and refusing to
+let a flattering R² stand unqualified, are the same instinct.
 
 ### Exclusion count — deliberately absent
 
@@ -211,12 +234,8 @@ can inspect her reasoning. The limitations section is the whole point — it is
 the same instinct as the rest of her work and it is what separates this from a
 coursework write-up.
 
-⛔ **Q-R2 — blocker, page cannot go public.** What was each R² computed on?
-As recorded the three cannot describe the same regression: adding a second
-variable cannot take R² from 0.91 down to 0.633. The likely answer is that the
-single-variable figures are regressions on grade averages while the combined
-figure is on all 918 rows — but that is a guess and it is not going on the page
-as one. A dashed marker sits in the findings section until this is answered.
+✅ **Q-R2 is closed.** See the Findings table above for the resolution and its
+source. The page no longer carries a marker for it.
 
 ⚠️ **Still needed: what she would do differently.** Not in the source, not
 inferable. Marker stays.
@@ -284,10 +303,9 @@ alternative and is faster to build.
 
 ### Open, in priority order
 
-1. **Q-R2** — what each R² was computed on. Blocker.
-2. **Résumé PDF** — the link the audience came for. Held on Q1–Q5.
-3. **Q-FRAQT** — Fraqt title and dates.
-4. **Q-SQL** — SQL, DAX or Power Query, and at what level.
-5. **Q-PHOTO** — the headshot file.
-6. **LinkedIn URL** and **location wording**.
-7. **What she would do differently** on the diamond study.
+1. **Résumé PDF** — the link the audience came for. Held on Q1–Q5.
+2. **Q-FRAQT** — Fraqt title and dates.
+3. **Q-SQL** — SQL, DAX or Power Query, and at what level.
+4. **Q-PHOTO** — the headshot file.
+5. **LinkedIn URL** and **location wording**.
+6. **What she would do differently** on the diamond study.
