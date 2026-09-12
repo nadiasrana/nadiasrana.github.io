@@ -29,8 +29,9 @@
 <!-- REMOVE AT LAUNCH, together with .draft-banner in styles.css. -->
 <div class="shell">
   <p class="draft-banner">
-    Draft shell. Not launched, not indexed. Dashed boxes mark content that
-    does not exist yet and must not be invented.
+    Draft shell. Not launched, not indexed. Dashed boxes are of two kinds:
+    NEEDS CONTENT marks something that does not exist yet and must not be
+    invented; VERIFY marks something real that is not cleared to publish.
   </p>
 
   <header class="masthead">
@@ -114,9 +115,13 @@
             <span class="rail__figure">203</span>
             <span class="rail__label">fields in a data dictionary</span>
           </li>
+          <!-- Was "3 systems reconciled". Two problems at once: it repeated a
+               third of the Archroma figure row sitting one screen below, and
+               a bare 3 beside 1,080 and 1,194 read as a typo rather than a
+               quantity. 3,000+ covers a fourth role instead. -->
           <li>
-            <span class="rail__figure">3</span>
-            <span class="rail__label">systems reconciled</span>
+            <span class="rail__figure">3,000+</span>
+            <span class="rail__label">participants in a program reported on</span>
           </li>
         </ul>
       </section>
@@ -126,14 +131,14 @@
   <div class="shell">
 
     <!-- =================================================================
-         Work. Archroma, Fraqt, Northstar. The diamond study is a project,
-         not the lead. Stepped indent at desktop is the page's asymmetry.
+         Work. Five entries, ordered by recency. The diamond study is a
+         project, not the lead. Stepped indent at desktop is the asymmetry.
          ================================================================= -->
     <section class="section" id="work" aria-labelledby="work-h">
       <h2 class="section__head" id="work-h">Work</h2>
 
       <article class="entry entry--1">
-        <p class="entry__count">01 / 03</p>
+        <p class="entry__count">01 / 05</p>
         <h3 class="entry__title">Archroma</h3>
         <p class="entry__meta">Data analytics intern, Commercial Excellence.
           Summer 2026.</p>
@@ -180,7 +185,7 @@
       </article>
 
       <article class="entry entry--2">
-        <p class="entry__count">02 / 03</p>
+        <p class="entry__count">02 / 05</p>
         <h3 class="entry__title">Fraqt</h3>
         <!-- One figure, because one figure is what is on record for this
              role. Padding it out with Archroma's numbers is how the last
@@ -205,7 +210,71 @@
       </article>
 
       <article class="entry entry--3">
-        <p class="entry__count">03 / 03</p>
+        <p class="entry__count">03 / 05</p>
+        <h3 class="entry__title">Summer Conference, University of the
+          Pacific</h3>
+        <p class="entry__meta">Operations analytics assistant. Stockton, CA.
+          May &ndash; August 2025.</p>
+        <div class="entry__body">
+          <p>A program serving more than 3,000 participants, reported on
+            from datasets held in three different tools. I validated the SQL,
+            Excel and SPSS data behind the reporting, then published Power BI
+            dashboards that could be re-run for each recurring report instead
+            of rebuilt for it.</p>
+        </div>
+        <ul class="entry__figures">
+          <li>
+            <span class="rail__figure">3,000+</span>
+            <span class="rail__label">participants in the program reported on</span>
+          </li>
+        </ul>
+        <ul class="tags">
+          <li>Data validation</li>
+          <li>SQL</li>
+          <li>Excel</li>
+          <li>SPSS</li>
+          <li>Power BI</li>
+        </ul>
+      </article>
+
+      <article class="entry entry--4">
+        <p class="entry__count">04 / 05</p>
+        <h3 class="entry__title">Eberhardt Student Investment Fund</h3>
+        <p class="entry__meta">Student investment analyst, University of the
+          Pacific. Stockton, CA. <span class="nowrap">January &ndash; May
+          2025.</span></p>
+        <div class="entry__body">
+          <!-- The $6M is stated once, in the figure row. It was in this
+               sentence as well, two lines above the figure repeating it. One
+               occurrence also means the VERIFY gate has one thing to drop. -->
+          <p>Equity research on S&amp;P 500 companies for a student-managed
+            portfolio: financial statements, earnings materials, the
+            assumptions a valuation rests on, and what the downside looked
+            like if those assumptions were wrong.</p>
+          <p>Each write-up carried its sources, its thesis, the catalysts, the
+            valuation logic and the risk factors, because it had to survive a
+            faculty-led investment committee arguing with it.</p>
+          <p class="needs-content">[VERIFY before launch: the $6M figure.
+            Confirm the fund states its portfolio size publicly. Student-managed
+            fund AUM usually is, but this is her only unverified public number
+            and it names a real institution. If it is not public, the entry
+            drops the figure and keeps the rest.]</p>
+        </div>
+        <ul class="entry__figures">
+          <li>
+            <span class="rail__figure">$6M</span>
+            <span class="rail__label">student-managed portfolio, approaching</span>
+          </li>
+        </ul>
+        <ul class="tags">
+          <li>Financial analysis</li>
+          <li>Valuation</li>
+          <li>Research documentation</li>
+        </ul>
+      </article>
+
+      <article class="entry entry--5">
+        <p class="entry__count">05 / 05</p>
         <h3 class="entry__title">Northstar Insight Group</h3>
         <p class="entry__meta">Co-founder. January 2023 &ndash; December 2024.</p>
         <div class="entry__body">
@@ -259,6 +328,8 @@
         <h3 class="eyebrow stack-group__head">Analysis and modeling</h3>
         <ul>
           <li><span>Excel</span> <span class="stack__level">Daily</span></li>
+          <li><span>SQL</span> <span class="stack__level">Comfortable</span></li>
+          <li><span>SPSS</span> <span class="stack__level">Exposure</span></li>
           <li><span>Regression</span> <span class="stack__level">Comfortable</span></li>
           <li><span>Confidence intervals</span> <span class="stack__level">Comfortable</span></li>
           <li><span>Web scraping</span> <span class="stack__level">Comfortable</span></li>
@@ -301,11 +372,13 @@
         </ul>
       </div>
 
-      <p class="needs-content">[NEEDS CONTENT: SQL and databases. CONTENT.md
-        records &ldquo;query logic that other people could reuse&rdquo;, which
-        could be SQL, DAX or Power Query. The distinction matters to every
-        analytics job description, so it is not being guessed at. Which is
-        it, and at what level?]</p>
+      <p class="needs-content">[NEEDS CONTENT: the SQL level, and what the
+        Pacific operations &ldquo;query logic that other people could
+        reuse&rdquo; actually was. The Summer Conference role names SQL
+        outright, so SQL is listed and the old question of whether it existed
+        is answered. Whether that reusable query logic was also SQL, or DAX
+        and Power Query inside Power BI, is still open &mdash; and it decides
+        whether Comfortable is right or an understatement.]</p>
     </section>
 
     <!-- =================================================================

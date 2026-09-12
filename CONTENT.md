@@ -27,7 +27,7 @@ work.
 
 | Page | Status | Notes |
 |---|---|---|
-| Home | ⚠️ | Rebuilt 12 Sep 2026 on the warm-minimal system. Hero, About, Work, Projects, Stack, Contact. Five markers — headshot, résumé, SQL, LinkedIn, location. Work attribution is resolved |
+| Home | ⚠️ | Warm-minimal system. Hero, About, Work (5 entries), Projects, Stack, Contact. Six markers — headshot, résumé, SQL level, Eberhardt $6M, LinkedIn, location |
 | Projects index | — | Deferred until project 2. With one item, the Work section on the home page is the index; an index page listing one entry advertises the thinness |
 | Diamond Price Drivers project page | ⚠️ | Built at `work/diamond-price-drivers.html`. One marker left, no blockers. Q-R2 closed 12 Sep 2026 |
 | About | ✅ | Writable now from verified background |
@@ -43,8 +43,8 @@ structured evaluation**. **Not pipeline engineering.** Her Archroma work log
 shows no pipeline work and the Fraqt implementation was substantially
 AI-assisted. Never write a claim she cannot defend cold in an interview.
 
-The diamond study is **one project, not the highlight**. Archroma, Fraqt and
-Northstar lead the Work section; the study sits under Projects.
+The diamond study is **one project, not the highlight**. Five work entries
+lead; the study sits under Projects.
 
 ---
 
@@ -100,9 +100,64 @@ that characterises the Archroma work, so it does not go in the entry tags.
 "Pre-launch." and nothing else. Fraqt now **does** appear on the site, in
 Work rather than Projects — this resolves the old open question.
 
-**Northstar figures stay off.** $45K, 20 engagements, 12 clients, $6M all wait
-for Q1. The entry names the role and says on the page that the figures are
-held. Do not add them without Q1.
+**Northstar figures stay off.** $45K, 20 engagements and 12 clients wait for
+Q1. The entry names the role and says on the page that the figures are held.
+Do not add them without Q1.
+
+---
+
+## Work order — five entries, by recency
+
+| # | Entry | Dates |
+|---|---|---|
+| 01 | Archroma | Summer 2026 |
+| 02 | Fraqt | pre-launch ⚠️ |
+| 03 | Summer Conference, University of the Pacific | May – Aug 2025 |
+| 04 | Eberhardt Student Investment Fund | Jan – May 2025 |
+| 05 | Northstar Insight Group | Jan 2023 – Dec 2024 |
+
+⚠️ **Fraqt's slot at 02 is provisional.** It is ordered there because
+"pre-launch" implies current, but Q-FRAQT means there are no dates to sort on.
+If the dates land and it predates mid-2025, the order changes.
+
+⚠️ **Locations are on two entries only.** Stockton, CA is on 03 and 04 because
+the resume supplies it. Nothing is on file for Archroma, Fraqt or Northstar.
+Either get the other three or drop all five; two of five reads as an oversight.
+
+### 03 — Summer Conference, University of the Pacific ✅
+
+Operations analytics assistant. Stockton, CA. May – August 2025.
+
+- Programme serving **3,000+ participants**
+- Validated **SQL, Excel and SPSS** datasets behind the reporting
+- Published reusable **Power BI** dashboards for recurring stakeholder
+  reporting
+- Tags: Data validation · SQL · Excel · SPSS · Power BI
+
+**This role is the source that confirms SQL**, which had been an open question.
+
+### 04 — Eberhardt Student Investment Fund ⚠️
+
+Student investment analyst, University of the Pacific. Stockton, CA.
+January – May 2025.
+
+- Equity research on **S&P 500** companies for a student-managed portfolio
+  **approaching $6M**
+- Financial statements, earnings materials, valuation assumptions, downside
+  risks
+- Write-ups documented sources, thesis, catalysts, valuation logic and risk
+  factors for a faculty-led investment committee
+- Tags: Financial analysis · Valuation · Research documentation
+
+⛔ **[VERIFY] the $6M before launch.** Confirm the fund states its portfolio
+size publicly. Student-managed fund AUM usually is, but this figure names a
+real institution and it is the only unverified public number on the site. A
+marker sits on the entry. **If it is not public, drop the figure and keep the
+rest of the entry** — it stands up without it.
+
+This supersedes the old blanket block on "$6M" in the ⛔ list, which grouped it
+with the Northstar figures. Those still wait for Q1; this one waits only on a
+public-source check.
 
 ---
 
@@ -111,8 +166,9 @@ held. Do not add them without Q1.
 Grouped by category, each item labelled **Daily / Comfortable / Exposure**.
 The labels exist so the honest answer can be given instead of a skill bar.
 
-- Analysis and modeling: Excel `Daily`, Regression `Comfortable`, Confidence
-  intervals `Comfortable`, Web scraping `Comfortable`
+- Analysis and modeling: Excel `Daily`, **SQL `Comfortable`**,
+  **SPSS `Exposure`**, Regression `Comfortable`, Confidence intervals
+  `Comfortable`, Web scraping `Comfortable`
 - Data quality: Data validation `Daily`, Data dictionaries `Daily`,
   Reconciliation `Comfortable`
 - Enterprise systems: **SAP `Exposure`**
@@ -132,9 +188,39 @@ below, authorised 12 Sep 2026. The point of the level labels is that
 `Exposure` is not a claim. Do not promote either language without new
 evidence.
 
-⚠️ **Q-SQL.** "Query logic that other people could reuse" could be SQL, DAX or
-Power Query. The distinction matters to every analytics job description, so it
-is marked on the page rather than guessed. Which is it, and at what level?
+✅ **Q-SQL is half closed.** The Summer Conference role names **SQL**
+outright, so SQL is real and is listed. `Comfortable` is a floor set from
+validating SQL datasets in a paid role plus "query logic that other people
+could reuse"; **SPSS `Exposure`** is a floor set from that one role.
+
+⚠️ **Still open:** whether the Pacific operations "query logic" was also SQL,
+or DAX and Power Query inside Power BI. That decides whether `Comfortable` is
+right or an understatement. Marked on the page.
+
+---
+
+## Education dates ✅ RESOLVED — and one claim that dies with them
+
+✅ **Closed 12 Sep 2026. Do not re-open.** University of the Pacific ran
+**August 2022 – December 2025**. The "May 2025" on LinkedIn is wrong.
+
+Two consequences, both of which have bitten earlier drafts:
+
+1. **There is no Aug–Dec 2025 gap.** She was enrolled. Do not explain,
+   apologise for, or fill a gap that does not exist.
+2. ⛔ **The compression claim is dead.** "Two degrees in two years and nine
+   months", "in under three years", or any variant is **wrong**: Aug 2022 to
+   Dec 2025 is **3 years 4 months**. It is a normal-length dual degree and it
+   does not need a superlative. Earlier drafts carried "awarded in two years
+   and nine months" and a `2y 9m elapsed` figure. Both are gone. Do not
+   reintroduce either.
+
+The dual biology-plus-business degree is still the distinctive fact. The
+distinctiveness is the **combination**, not the speed.
+
+⚠️ Note: the rebuilt home page has **no education section at all** — Pacific
+appears nowhere on the site, and Northeastern only inside the About
+paragraph. That is a gap worth a decision, not an oversight to fix silently.
 
 ---
 
@@ -250,8 +336,8 @@ authorised 12 Sep 2026.
 
 - M.S. Data Analytics and Engineering, Northeastern, Jan 2026 – May 2027
 - B.S. Biological Sciences **and** B.S. Business Administration, University of
-  the Pacific. ⚠️ End date disputed: May 2025 on LinkedIn, Dec 2025 on the
-  resume. Use "2022–2025" until resolved
+  the Pacific. ✅ **End date confirmed 12 Sep 2026: December 2025.** The
+  LinkedIn "May 2025" is wrong. Print **August 2022 – December 2025**
 - Dean's Honor List; President's Merit Scholarship
 - Data Analytics Intern, Archroma, Commercial Excellence — **print as
   `Summer 2026`**
@@ -275,8 +361,10 @@ authorised 12 Sep 2026.
   licensed market dataset. Method metrics are fine; business metrics are not.
 - **Fraqt implementation specifics.** No framework names, no index types, no
   dimensions, no test counts. Design decisions only.
-- **Northstar and Eberhardt figures** ($45K, 20 engagements, 12 clients, $6M)
-  until Q1 and Q8 resolve. The roles can be named; the numbers wait.
+- **Northstar figures** ($45K, 20 engagements, 12 clients) until Q1 and Q8
+  resolve. The role can be named; the numbers wait.
+- ~~Eberhardt $6M~~ **Superseded 12 Sep 2026:** conditionally cleared, gated
+  only on confirming the fund states it publicly. See Work entry 04.
 
 ---
 
@@ -305,7 +393,8 @@ alternative and is faster to build.
 
 1. **Résumé PDF** — the link the audience came for. Held on Q1–Q5.
 2. **Q-FRAQT** — Fraqt title and dates.
-3. **Q-SQL** — SQL, DAX or Power Query, and at what level.
-4. **Q-PHOTO** — the headshot file.
-5. **LinkedIn URL** and **location wording**.
-6. **What she would do differently** on the diamond study.
+3. **$6M** — confirm the Eberhardt figure is publicly stated. Gates launch.
+4. **Q-SQL** — the SQL level, and what the Pacific query logic was.
+5. **Q-PHOTO** — the headshot file.
+6. **LinkedIn URL** and **location wording**.
+7. **What she would do differently** on the diamond study.

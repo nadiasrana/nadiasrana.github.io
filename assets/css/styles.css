@@ -145,6 +145,9 @@ a:hover { text-decoration-color: var(--accent); }
   outline-offset: 3px;
 }
 
+/* For a date range or a figure that must not break across lines. */
+.nowrap { white-space: nowrap; }
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -373,8 +376,14 @@ a:hover { text-decoration-color: var(--accent); }
    never pushes the body text past its measure. */
 @media (min-width: 45rem) {
   .entry + .entry { margin-top: var(--s8); }
-  .entry--2 { margin-left: var(--s5); }
-  .entry--3 { margin-left: var(--s8); }
+  /* Five steps, every one a value from the spacing scale, accelerating. The
+     old three-entry version jumped 0 / s5 / s8; with five entries that ran
+     out of page. Deepest step is still s8, so entry five keeps 896px of the
+     1008px shell and the 65ch body never reaches its edge. */
+  .entry--2 { margin-left: var(--s4); }
+  .entry--3 { margin-left: var(--s6); }
+  .entry--4 { margin-left: var(--s7); }
+  .entry--5 { margin-left: var(--s8); }
 }
 
 .entry__count {
