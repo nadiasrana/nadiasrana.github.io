@@ -73,8 +73,28 @@ single thing on the page: it is the judgement call, not the volume. Fraqt has
 
 Archroma has five figures; the entry shows three in the figure row (3 systems,
 1,080 routed, 203 fields) and carries the defect log and release audit in
-prose. **Power BI is not an Archroma tag** — it belongs to the University of
-the Pacific operations analytics.
+prose.
+
+### Tools attributable to Archroma ✅ — SAP, Power BI, Excel
+
+✅ **Closed 12 Sep 2026. Do not drop these again.**
+
+**SAP, Power BI and Excel are Archroma tools** and all three are tags on the
+entry. **Source: Nadia's own public LinkedIn post about the Archroma
+internship**, which names all three. She published it herself, so it is safe
+to reuse.
+
+These three are **the only tools attributable to Archroma.** Her work-log
+export names none, so nothing else goes in the Archroma tags on the strength
+of a guess.
+
+Power BI and Excel are **additionally** used at the University of the Pacific
+operations role. Both attributions are true; a previous session removed Power
+BI from Archroma on the mistaken assumption that the Pacific attribution was
+exclusive.
+
+**PowerPoint is Stack-only.** It is a general competency rather than something
+that characterises the Archroma work, so it does not go in the entry tags.
 
 ⚠️ **Q-FRAQT.** Fraqt job title and dates are not on file. The entry prints
 "Pre-launch." and nothing else. Fraqt now **does** appear on the site, in
@@ -95,8 +115,17 @@ The labels exist so the honest answer can be given instead of a skill bar.
   intervals `Comfortable`, Web scraping `Comfortable`
 - Data quality: Data validation `Daily`, Data dictionaries `Daily`,
   Reconciliation `Comfortable`
-- Reporting: Power BI `Daily`, Word `Daily`
+- Enterprise systems: **SAP `Exposure`**
+- Reporting: Power BI `Daily`, Word `Daily`, PowerPoint `Comfortable`
 - Programming: **Python `Exposure`**, **TypeScript `Exposure`**
+
+⚠️ **SAP is set to `Exposure` as a floor, not a finding.** The evidence is her
+public post naming it for one internship summer, with no detail on depth.
+`Exposure` is the level that is true on any reading of that. If she used it
+routinely, raise it — but raise it on her word, not on inference.
+
+`PowerPoint Comfortable` is set from it being a general competency. It is not
+named in the LinkedIn post, so it earns no Archroma attribution.
 
 **Python is now permitted, at `Exposure` only.** This overrides the ⛔ entry
 below, authorised 12 Sep 2026. The point of the level labels is that
