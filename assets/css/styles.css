@@ -488,16 +488,19 @@ a:hover { text-decoration-color: var(--ink); }
 
 /* --- Findings table ----------------------------------------------------- */
 
-/* The only table on the site. It earns that by being the thing a reader came
-   to inspect. Rules top and bottom of the body, none between rows, no fill:
-   the convention of a results table in a journal, not a card. */
+/* The only two tables on the site, both on the project page: one describes
+   the sample, one describes the result. They earn it by being what a reader
+   came to inspect. Rules under the header and at the foot, none between rows,
+   no fill: the convention of a results table in a journal, not a card. */
 .findings {
   width: 100%;
   /* Narrower than the measure. Two columns stretched to full prose width put
      the numbers a long way from the labels they belong to. */
   max-width: 26rem;
   border-collapse: collapse;
-  margin-bottom: var(--s5);
+  /* Space above as well as below. Without it the caption reads as a run-on
+     from the paragraph before the table. */
+  margin-block: var(--s5);
   font-family: var(--face-data);
   font-size: var(--t-small);
   line-height: 1.45;
@@ -512,12 +515,15 @@ a:hover { text-decoration-color: var(--ink); }
   color: var(--text-muted);
 }
 
+/* No rule between rows. Three rules carry a results table: under the head,
+   under the body, and under a total if there is one. A rule per row is the
+   thing that makes a table look like a spreadsheet screenshot. */
 .findings th,
 .findings td {
   padding: var(--s3) var(--s4) var(--s3) 0;
   text-align: left;
   vertical-align: baseline;
-  border-bottom: 1px solid var(--rule);
+  border: 0;
 }
 
 .findings thead th {
@@ -525,7 +531,7 @@ a:hover { text-decoration-color: var(--ink); }
   font-weight: 500;
   letter-spacing: 0.04em;
   color: var(--text-muted);
-  border-bottom-color: var(--ink);
+  border-bottom: 1px solid var(--ink);
 }
 
 /* Row headers are prose: they are labels a person reads, not data. */
@@ -537,13 +543,50 @@ a:hover { text-decoration-color: var(--ink); }
 }
 
 .findings tbody tr:last-child th,
-.findings tbody tr:last-child td { border-bottom-color: var(--ink); }
+.findings tbody tr:last-child td { border-bottom: 1px solid var(--ink); }
+
+/* Three columns need the full measure; two do not. */
+.findings--wide { max-width: var(--measure); }
+
+/* A summed row closes the table instead, so the body rule above it goes light
+   and the ink rule moves down to the total. */
+.findings tbody:has(+ tfoot) tr:last-child th,
+.findings tbody:has(+ tfoot) tr:last-child td {
+  border-bottom: 1px solid var(--rule);
+}
+.findings__total {
+  border-bottom: 1px solid var(--ink);
+  font-weight: 500;
+  color: var(--ink);
+}
 
 .findings__num {
   font-variant-numeric: tabular-nums lining-nums;
   text-align: right;
   padding-right: 0;
   color: var(--ink);
+}
+
+/* A cell with no value says so in words. An em dash here would read as a
+   missing number rather than an inapplicable one. */
+.findings__none {
+  font-variant-numeric: normal;
+  font-size: var(--t-micro);
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
+}
+
+/* Three columns at 375px need every pixel of the gutter back. */
+@media (max-width: 44.9375rem) {
+  .findings--wide th,
+  .findings--wide td { padding-right: var(--s3); }
+}
+
+/* The sentence a section is built to land on. Hierarchy from colour and
+   space rather than size, so it does not read as a pull quote. */
+.coda {
+  color: var(--ink);
+  margin-top: var(--s5);
 }
 
 /* Keep the exponent from opening the header row's leading. */

@@ -27,9 +27,9 @@ work.
 
 | Page | Status | Notes |
 |---|---|---|
-| Home | ⚠️ | Needs the one-line claim. Build it from the through-line, not from a tagline |
-| Projects index | ⚠️ | One entry. Enough to exist, not enough to launch on the domain |
-| Diamond Price Drivers project page | ✅ | Real content available. The site's first real page |
+| Home | ✅ | Built. The one-line claim is carried by the study, not by a tagline |
+| Projects index | — | Deferred until project 2. With one item, the Work section on the home page is the index; an index page listing one entry advertises the thinness |
+| Diamond Price Drivers project page | ⚠️ | Built at `work/diamond-price-drivers.html`. Two markers left, one of them a blocker — see Q-R2 below |
 | About | ✅ | Writable now from verified background |
 | Résumé PDF | ⚠️ | Available, but hold until the Q1–Q5 conflicts in `03-open-questions.md` resolve |
 | Contact | ✅ | nadiasrana@gmail.com. Phone is on the resume — decide separately whether it goes on a public page. Default: no |
@@ -40,23 +40,79 @@ work.
 
 Spring 2026 · Excel, Word, regression, data validation, web scraping
 
-- Pricing workbook for 918 pear-shaped diamonds across four retailers, built
-  from cleaned web-scraped records with pivot tables, regressions, confidence
-  intervals, and retailer benchmarks
-- Clarity was the stronger single-variable price driver, R² 0.40 against 0.29
-  for color, combined model 63.3%
-- Reported methodology, limitations, and a $1,700/ct retailer gap against the
-  Rapaport guide
+**Corrected 12 Sep 2026.** The R² figures and the $1,700 finding recorded here
+previously were both wrong. Anything quoting R² 0.40/0.29, or attaching the
+$1,700 gap to Rapaport, is stale.
+
+### Scope
+
+- Natural pear-shaped diamonds, **0.90–0.99 ct**, color **D–K**, clarity
+  **IF–SI2**
+- Carat held near-constant on purpose, just below the 1.00 ct threshold where
+  prices jump, so the comparison is between grades and not between sizes
+- Collected **29 March 2026** by browser scraping, with the color and clarity
+  filter applied at collection on each retailer's own listing filters
+
+### Sample — 918 total, retailers nameable
+
+| Retailer | Stones |
+|---|---|
+| Blue Nile | 159 |
+| Brilliant Earth | 376 |
+| James Allen | 147 |
+| With Clarity | 236 |
+| **Total** | **918** |
+
+### Findings
+
+- Single-variable R²: **clarity 0.91**, **color 0.84**
+- Slopes: clarity **−$529/ct per grade**, color **−$631/ct per grade**. Color
+  has the steeper step; clarity explains more of the variation
+- Combined multivariate model: **63.3%**
+- Retailer spread: **James Allen $1,550/ct**, **With Clarity $3,249/ct** — a
+  gap of roughly **$1,700/ct**. This is between retailers
+- Rapaport, **separate finding**: retail trades **5–35% below** the guide. Do
+  not weld this to the $1,700 figure
+- Market context: right-skewed, **skewness 1.06**, mean **$2,571/ct**, median
+  **$2,227/ct**
+
+### Limitations — both on the page
+
+1. **Cut premium is confounded.** Excellent cut averages $3,358/ct against
+   $2,332/ct for Very Good, a 44% premium, but higher-cut stones also carry
+   better color and clarity, so the premium is not cleanly attributable to cut
+2. **The confidence interval required constraint relaxation.** Insufficient
+   D-color and VVS1 data points existed, so the 30-sample interval was built
+   on H-SI2 instead, where 44 diamonds were available. 95% CI **$1,684–$1,837/ct**,
+   point estimate **$1,760.15**
+
+The second limitation carries the weight on the page. Declining to proceed as
+planned because the data would not support it is the same instinct as the rest
+of the site.
+
+### Exclusion count — deliberately absent
+
+The pre-filter record count is not recoverable from the source. The page states
+the filter and says the count is not recoverable. **Do not estimate it.**
 
 **Why this page matters more than the design.** It is the only place a reader
-can inspect her reasoning. The page needs: the question, the method, what she
-found, the limitations she stated, and what she would do differently. The
-limitations section is the whole point — it is the same instinct as the rest
-of her work and it is what separates this from a coursework write-up.
+can inspect her reasoning. The limitations section is the whole point — it is
+the same instinct as the rest of her work and it is what separates this from a
+coursework write-up.
 
-[VERIFY] Are the workbook and Word report still available to publish, and do
-the four retailers' terms permit republishing derived data? If either answer
-is no, the page describes the method and findings without attaching files.
+⛔ **Q-R2 — blocker, page cannot go public.** What was each R² computed on?
+As recorded the three cannot describe the same regression: adding a second
+variable cannot take R² from 0.91 down to 0.633. The likely answer is that the
+single-variable figures are regressions on grade averages while the combined
+figure is on all 918 rows — but that is a guess and it is not going on the page
+as one. A dashed marker sits in the findings section until this is answered.
+
+⚠️ **Still needed: what she would do differently.** Not in the source, not
+inferable. Marker stays.
+
+[VERIFY] The workbook and Word report are not published and the page does not
+offer files. Retailer names and derived per-retailer figures **are** published,
+authorised 12 Sep 2026.
 
 ---
 
