@@ -69,7 +69,7 @@ five of them pages.
 | Diamond Price Drivers `/projects/diamond-price-drivers/` | ⚠️ | One marker left: what she would do differently |
 | 404 `/404.html` | ✅ | Built |
 | `sitemap.xml`, `robots.txt` | ✅ | Built. `robots.txt` is `Disallow: /` while `site.draft` is true |
-| Résumé PDF | ⚠️ | Available, but hold until the Q1–Q5 conflicts in `03-open-questions.md` resolve |
+| Résumé PDF | ⛔ | In the repo, confirmed text-based, **not published**. Held on the six-item list under *Résumé PDF* below, which is the complete definition of the hold |
 | Contact | ✅ | nadiasrana@gmail.com. Phone stays off the public page. Default: no |
 
 **Deployment note:** there is deliberately **no `CNAME`**. `site.url` is the
@@ -175,14 +175,15 @@ Do not add them without Q1.
 | # | Entry | Dates |
 |---|---|---|
 | 01 | Archroma | Summer 2026 |
-| 02 | Fraqt | pre-launch ⚠️ |
+| 02 | Fraqt | June – Aug 2026 ✅ |
 | 03 | Summer Conference, University of the Pacific | May – Aug 2025 |
 | 04 | Eberhardt Student Investment Fund | Jan – May 2025 |
 | 05 | Northstar Insight Group | Jan 2023 – Dec 2024 |
 
-⚠️ **Fraqt's slot at 02 is provisional.** It is ordered there because
-"pre-launch" implies current, but Q-FRAQT means there are no dates to sort on.
-If the dates land and it predates mid-2025, the order changes.
+✅ **Fraqt's slot at 02 is confirmed, 13 Sep 2026.** It was provisional while
+Q-FRAQT meant there were no dates to sort on. June – August 2026 sorts it
+exactly where it already sat: concurrent with Archroma, which runs later into
+the summer and so leads. The order is settled.
 
 ✅ **Locations — the row is BACK, 13 Sep 2026.** Superseding the earlier
 decision to drop the field. `Location` is a row in `RecordMetadata` Schema A
@@ -313,9 +314,29 @@ Two consequences, both of which have bitten earlier drafts:
 The dual biology-plus-business degree is still the distinctive fact. The
 distinctiveness is the **combination**, not the speed.
 
-⚠️ Note: the rebuilt home page has **no education section at all** — Pacific
-appears nowhere on the site, and Northeastern only inside the About
-paragraph. That is a gap worth a decision, not an oversight to fix silently.
+✅ **Corrected 13 Sep 2026. The previous note here was false** and is recorded
+rather than quietly deleted, because a drifting authority document is how the
+five Work entries were lost for two rebuilds.
+
+It read, and this is quoted for the record rather than deleted:
+
+> the rebuilt home page has no education section at all — Pacific appears
+> nowhere on the site, and Northeastern only inside the About paragraph.
+
+Both halves are wrong against the current build:
+
+| Claim | Actual |
+|---|---|
+| "Pacific appears nowhere on the site" | On `/about/` in **The record** and twice in **Selected milestones**, and on `/` in **work entry 03** |
+| "Northeastern only inside the About paragraph" | On `/about/` in **The record**, on `/` in the **hero kicker** and in **Now** |
+
+⚠️ **What survives of the original point:** there is still no dedicated
+*education section*. The degrees are carried by `The record` on `/about/`
+rather than by a block of their own, and the home page states the master's
+without the bachelor's. That remains a decision worth making deliberately —
+but it is a question about emphasis, not about absence.
+
+**This class of error is now machine-checked.** See *Site contract* below.
 
 ---
 
@@ -611,6 +632,86 @@ findings summary. It doubles as preparation for AI-evaluation assessment work.
 
 An Excel data-quality validation system over a synthetic dataset is the
 alternative and is faster to build.
+
+---
+
+## Site contract — machine-checked
+
+**Added 13 Sep 2026.** This table is **parsed by `tools/verify.mjs` and
+asserted against the built site on every run.** A row that stops being true
+fails the build.
+
+It exists because this document drifted out of step with the site four times,
+and one of those — the education note quoted under *Education dates* — was
+flatly false while `CONTENT.md` remained the authority a rebuild would trust. That is the
+mechanism by which the five Work entries were deleted and went unnoticed for
+two rebuilds. Prose claims about what is on the site cannot be checked; this
+table can.
+
+**Semantics.** `present` is checked against page body text **with marker
+blocks stripped**, so a string that survives only inside a `[NEEDS CONTENT]`
+placeholder does not count as published. `absent` is checked against **all**
+rendered text including markers, because a marker that quotes a blocked
+figure publishes it.
+
+**Maintaining it.** Add a row whenever this document starts depending on
+something being on the site, or off it. Do not delete a row to make the build
+pass — a failing row means the site and this document disagree, and one of
+them is wrong.
+
+### Must be present
+
+| String | Why it matters |
+|---|---|
+| `University of the Pacific` | The dual degree. Was claimed absent here and is not |
+| `Northeastern` | Current degree |
+| `August 2022` | Pacific start — the confirmed date, not LinkedIn's |
+| `December 2025` | Pacific end — kills the compression claim |
+| `Honor List` | Verified honour |
+| `Merit Scholarship` | Verified honour |
+| `Delta Sigma Pi` | Verified service, and the origin of the rubric instinct |
+| `North Carolina` | Where she is from |
+| `Raleigh, NC` | Where she is based |
+| `linkedin.com/in/nadiasrana` | Confirmed from her profile export |
+| `Archroma` | Work entry 01 |
+| `Fraqt` | Work entry 02 |
+| `Summer Conference` | Work entry 03 |
+| `Eberhardt` | Work entry 04 |
+| `Northstar` | Work entry 05 |
+| `Charlotte, NC` | Archroma location |
+| `Stockton, CA` | Pacific locations |
+| `Remote, U.S.` | Northstar location |
+| `1,080` | Archroma's headline figure, the strongest item on the page |
+| `1,194` | Fraqt's only figure |
+| `203` | The data dictionary |
+| `31-item` | Defect log, carried in prose |
+| `40-point` | Release audit, carried in prose |
+| `3,000` | Summer Conference participants |
+| `$6M` | Eberhardt, cleared 13 Sep 2026 |
+| `918` | The diamond study sample |
+| `0.909` | Clarity on grade averages |
+| `0.839` | Color on grade averages |
+| `0.335` | Clarity on individual stones |
+| `0.332` | Color on individual stones |
+| `0.633` | The combined model |
+| `$1,760.15` | The rebuilt confidence interval's point estimate |
+
+### Must be absent
+
+| String | Why it is blocked |
+|---|---|
+| `GPA` | Tier B, no transcript seen |
+| `4.00` | The GPA figure itself |
+| `$45K` | Northstar revenue, held on Q1 |
+| `20 engagements` | Northstar, held on Q1 |
+| `12 clients` | Northstar, held on Q1 |
+| `Carlson` | Not on the verified list; `CLAUDE.md` rule 4 |
+| `PostgreSQL` | Not in the verified stack |
+| `machine learning` | Disproved by her own work log |
+| `two years and nine months` | The dead compression claim |
+| `919` | Her phone number stays off a public page |
+| `Founding Data Lead` | Reviewed and rejected — see *Q-FRAQT* |
+| `0.40 versus 0.29` | The résumé's R², which matches no reproduced basis |
 
 ---
 

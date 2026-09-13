@@ -314,6 +314,94 @@ for (const m of allHtml.matchAll(/class="marker[^"]*">([\s\S]*?)<\/p>/g)) {
   }
 }
 
+/* ---- The CONTENT.md site contract ------------------------------------- */
+// CONTENT.md is the authority, and it drifted out of step with the site four
+// times — once claiming "Pacific appears nowhere on the site" while Pacific
+// was on two pages. A stale authority document is how the five Work entries
+// were deleted and went unnoticed for two rebuilds.
+//
+// Prose claims cannot be checked. The "Site contract" table in CONTENT.md
+// can: it is parsed here and asserted against the built output, and a row
+// that stops being true fails the build.
+const contentMd = await readFile('CONTENT.md', 'utf8');
+
+// `present` is checked against body text with markers stripped, so a string
+// surviving only inside a [NEEDS CONTENT] placeholder does not count as
+// published. `absent` is checked against everything, because a marker that
+// quotes a blocked figure publishes it.
+const strip = (h) => {
+  const main = h.match(/<main[^>]*>([\s\S]*?)<\/main>/);
+  const body = (main ? main[1] : h).replace(/<p class="marker">[\s\S]*?<\/p>/g, '');
+  return decode(body.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' '));
+};
+function decode(t) {
+  return t
+    .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"').replace(/&#39;|&rsquo;|&#x27;/g, "'")
+    .replace(/&minus;/g, '−').replace(/&ndash;/g, '–')
+    .replace(/&mdash;/g, '—').replace(/&middot;/g, '·')
+    .replace(/&nbsp;/g, ' ').replace(/&sup2;/g, '²');
+}
+// Joined with a separator no contract needle can contain, so a match cannot
+// be manufactured by two pages abutting.
+const publishedText = (await Promise.all(pages.map((p) => readFile(p, 'utf8'))))
+  .map(strip)
+  .join('  ~~PAGE~~  ');
+const allText = decode(allHtml.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' '));
+
+const contractSection = contentMd.split('## Site contract')[1];
+ok(contractSection !== undefined, 'CONTENT.md has no "Site contract" section to check');
+
+if (contractSection) {
+  const upTo = contractSection.split(/\n---\n/)[0];
+  const [, presentBlock = '', absentBlock = ''] = upTo.split(/### Must be (?:present|absent)/);
+  const rows = (block) =>
+    [...block.matchAll(/^\|\s*`([^`]+)`\s*\|/gm)].map((m) => m[1]);
+
+  const mustBePresent = rows(presentBlock);
+  const mustBeAbsent = rows(absentBlock);
+
+  ok(mustBePresent.length >= 20, `site contract: only ${mustBePresent.length} present-rows parsed`);
+  ok(mustBeAbsent.length >= 8, `site contract: only ${mustBeAbsent.length} absent-rows parsed`);
+
+  for (const needle of mustBePresent) {
+    ok(
+      publishedText.includes(needle),
+      `site contract: CONTENT.md says "${needle}" is on the site, and it is not`
+    );
+  }
+  for (const needle of mustBeAbsent) {
+    ok(
+      !allText.includes(needle),
+      `site contract: CONTENT.md blocks "${needle}", and it is on the site`
+    );
+  }
+  console.log(
+    `
+=== site contract: ${mustBePresent.length} present + ${mustBeAbsent.length} absent checked ===`
+  );
+}
+
+// Secondary net, reported rather than failed: CONTENT.md prose sometimes
+// makes absolute claims about site state ("appears nowhere on the site").
+// Those are falsifiable, unmaintainable, and exactly what went wrong here,
+// so every line making one is surfaced for a human to check against the
+// contract table above.
+const ABSOLUTE_CLAIM = /appears? nowhere|nowhere on the site|does not appear anywhere/i;
+let claimLines = 0;
+for (const raw of contentMd.split(String.fromCharCode(10))) {
+  const line = raw.trim();
+  if (!ABSOLUTE_CLAIM.test(line)) continue;
+  claimLines++;
+  // A table row is already machine-checked, and a blockquote is a quotation
+  // of a claim rather than a claim. Neither is an assertion this file makes.
+  if (line.startsWith('|') || line.startsWith('>')) continue;
+  notes.push(
+    `CONTENT.md makes an absolute claim about site content that the contract table does not cover: "${line.slice(0, 84)}"`
+  );
+}
+console.log(`=== absolute-claim lines scanned in CONTENT.md: ${claimLines} ===`);
+
 /* ---- Report ----------------------------------------------------------- */
 if (notes.length) {
   console.log(`\n=== notes (${notes.length}) ===`);
