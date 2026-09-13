@@ -628,6 +628,35 @@ a:hover { text-decoration-color: var(--ink); }
   vertical-align: -0.05em;
 }
 
+/* --- Steps -------------------------------------------------------------
+   The numbered treatment, without the work entry's right-hand record column.
+   Same <ol class="numbered">, same --numeral, same aria-hidden numeral. */
+
+.steps__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  column-gap: var(--gutter);
+  row-gap: var(--space-3);
+}
+
+@media (min-width: 1200px) {
+  .steps__row { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .steps__row .entry__numeral { grid-column: 1 / 3; }
+  .steps__main { grid-column: 3 / 10; }
+}
+
+.steps__title {
+  font-size: var(--t-h3);
+  margin-block-end: var(--space-2);
+}
+
+.steps__body {
+  color: var(--ink-secondary);
+  max-width: var(--measure);
+}
+
+.steps > li { padding-block: var(--space-6); }
+
 /* --- EditorialIndex ---------------------------------------------------- */
 
 .e-index__row {

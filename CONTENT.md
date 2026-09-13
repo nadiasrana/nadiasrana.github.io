@@ -303,6 +303,70 @@ The Northstar figures are a separate matter and still wait for Q1.
 
 ---
 
+## Toolkit levels — TWO, not three ✅ DECIDED 13 Sep 2026
+
+**Chosen deliberately by Nadia on 13 Sep 2026. This supersedes the
+three-level scheme described below and every rule in this document that
+depends on `Exposure`. It is a decision, not drift — do not revert it.**
+
+| Level | Means |
+|---|---|
+| **Daily** | Routine use |
+| **Proficient** | Unsupervised use |
+
+`Comfortable` and `Exposure` are both gone. Nothing was removed from the
+Toolkit; every item that was listed is still listed.
+
+### ⚠️ The consequence, stated plainly
+
+**Twenty-one items now read `Proficient`: 12 that were `Comfortable`, and
+nine that were `Exposure`.** `Exposure` existed precisely so that "not a
+claim" had somewhere to live. With it gone, those nine now assert
+unsupervised use:
+
+| Item | Evidence in this document |
+|---|---|
+| SPSS | Validated SPSS datasets in one paid role (Summer Conference) |
+| SAP | ⚠️ Her public LinkedIn post naming it for one internship summer, no detail on depth |
+| KPI reporting | ⚠️ Thin — nearest evidence is Power BI stakeholder reporting |
+| Source verification | ⚠️ Term not in this document; nearest is the Fraqt citation work |
+| Written feedback | ⚠️ Term not in this document; nearest is Delta Sigma Pi |
+| **Python** | ⛔ **None** |
+| **PostgreSQL** | ⛔ **None** — résumé only |
+| **R** | ⛔ **None** — résumé only |
+| **Document analysis and review** | ⛔ **None** — résumé only |
+
+**The last four have no supporting work anywhere in this record.** They now
+claim unsupervised use on the strength of a résumé line. That is the risk,
+and it is recorded here so nobody has to rediscover it: if she is asked about
+Python, PostgreSQL, R or document review in an interview, the site has
+already said she can work in them unsupervised.
+
+### ⛔ Rules this overrides — all superseded 13 Sep 2026
+
+1. **"Python is now permitted, at `Exposure` only ... Never above that."**
+   Directly contradicted. Python is now `Proficient`.
+2. **"Do not promote either language without new evidence."** No new evidence
+   was supplied. It was promoted by a level change rather than by evidence.
+3. **"SAP is set to `Exposure` as a floor, not a finding."** The floor no
+   longer exists.
+4. **"`Exposure` is not a claim."** There is no longer a level that means
+   that.
+
+A future session reading those four rules will find them contradicted by the
+site. **The site is correct. These rules are superseded.** The way to undo
+this is a new decision from Nadia, not a revert to match the old rules.
+
+### The cheapest way to reduce the risk
+
+If she wants the shorter scale but not the four unevidenced claims, the fix is
+not a third level — it is to **drop Python, PostgreSQL, R and document
+analysis and review from the Toolkit** and keep the two levels for everything
+that has evidence. That keeps the scheme she chose and removes the exposure.
+Not applied; her call.
+
+---
+
 ## Stack — levels, not bars
 
 Grouped by category, each item labelled **Daily / Comfortable / Exposure**.
@@ -699,6 +763,28 @@ page and being finished.
 [VERIFY] The workbook and Word report are not published and the page does not
 offer files. Retailer names and derived per-retailer figures **are** published,
 authorised 12 Sep 2026.
+
+---
+
+## "How I approach a problem" ✅ SUPPLIED BY HER, 13 Sep 2026
+
+Her words, on the About page, in the numbered treatment. Five steps:
+
+1. **Define the problem.** What are we actually trying to determine?
+2. **Establish criteria.** What would make an answer correct or useful?
+3. **Investigate.** Find the relevant data, assumptions, and constraints.
+4. **Validate.** Check the result against the source, logic, or another method.
+5. **Communicate.** Explain the conclusion clearly, including uncertainty when
+   it matters.
+
+Supplied by her and published verbatim. Do not reword it — steps 2 and 4 are
+the same instinct the diamond study and the Archroma routing are evidence of,
+and the plainness is hers.
+
+⚠️ Note the overlap with *How I work*, which is four principles drawn from
+specific decisions she made. The two sections are not duplicates — one is
+method, the other is the reasoning behind particular calls — but if the About
+page starts to feel repetitive, that is the pair to look at.
 
 ---
 
