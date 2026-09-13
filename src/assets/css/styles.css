@@ -423,6 +423,18 @@ a:hover { text-decoration-color: var(--ink); }
   max-width: var(--measure-display);
 }
 
+/* A page heading sits one section-step below the masthead rule, the same
+   distance as any other section start. Nothing provided this before: the
+   kicker element happened to occupy the space, so removing kickers left the
+   display heading flush against the rule on /about/, the study and 404. */
+.e-head--display {
+  padding-block-start: var(--space-8);
+}
+
+@media (min-width: 768px) {
+  .e-head--display { padding-block-start: var(--space-9); }
+}
+
 .e-head--display .e-head__title {
   font-size: var(--t-display);
   line-height: 0.95;
@@ -701,7 +713,14 @@ a:hover { text-decoration-color: var(--ink); }
 
 /* --- Hero -------------------------------------------------------------- */
 
-.hero { padding-block-start: var(--space-7); }
+/* Same section-step as .e-head--display, so the first block starts the same
+   distance below the rule on every route. Was --space-7, which was neither
+   wrong nor the same as anything else. */
+.hero { padding-block-start: var(--space-8); }
+
+@media (min-width: 768px) {
+  .hero { padding-block-start: var(--space-9); }
+}
 
 .hero__name {
   font-size: var(--t-display);

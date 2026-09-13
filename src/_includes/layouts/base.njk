@@ -8,7 +8,11 @@
 {%- set canonical = site.url + page.url %}
 
 {%- set byline = site.author.role + " · " + site.author.standing %}
-<title>{% if title %}{{ title }} — {{ site.title }} — {{ byline }}{% else %}{{ site.title }} — {{ byline }}{% endif %}</title>
+{#- The full positioning line sits on the cover. Subpages carry the page
+    name and her name only: at 74-98 characters the long form truncated in
+    search results and made browser tabs indistinguishable. The line still
+    reaches every route through the meta description and the JSON-LD. -#}
+<title>{% if title %}{{ title }} — {{ site.title }}{% else %}{{ site.title }} — {{ byline }}{% endif %}</title>
 <meta name="description" content="{{ pageDesc }}">
 <link rel="canonical" href="{{ canonical }}">
 
