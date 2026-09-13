@@ -70,13 +70,28 @@ const PLATES = [
     crop: null,
     grade: gradePortrait,
   },
+  // The About row: three images, all cropped 4:5 and graded identically so
+  // the row reads as one set rather than three photographs that happen to be
+  // adjacent. They stack vertically below 768px.
   {
-    name: 'lake-wall',
+    name: 'row-tahoe',
     from: 'pictures/IMG_4273.JPG',
-    // Cropping the left edge alone is not enough: the second person's arm
-    // covers roughly the left 16%, but their knee reaches about 33% at the
-    // bottom of the frame. This band clears both.
-    crop: { left: 308, top: 614, width: 1228, height: 819 }, // 3:2
+    // The left edge must clear the second person's KNEE, which reaches about
+    // x=512 at the bottom of the frame — not just their arm at x=243. An
+    // earlier landscape crop cleared the arm only because it was shallow.
+    crop: { left: 512, top: 470, width: 1024, height: 1280 },
+  },
+  {
+    name: 'row-cats',
+    from: 'pictures/cats.jpg',
+    crop: { left: 457, top: 900, width: 3370, height: 4212 },
+  },
+  {
+    name: 'row-pacifica',
+    from: 'pictures/IMG_4353.JPG',
+    // Ruled out earlier as a large image — the sunset ramp fought the ivory.
+    // At row scale, graded, it holds.
+    crop: { left: 154, top: 400, width: 1228, height: 1535 },
   },
 ];
 

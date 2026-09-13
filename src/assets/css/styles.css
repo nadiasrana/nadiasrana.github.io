@@ -129,6 +129,7 @@
 
   /* Structure */
   --radius: 8px;        /* exactly one consumer: the panel */
+  --radius-sm: 3px;     /* exactly one consumer: the résumé button */
   --panel-max: 1440px;
   --gutter: 16px;
   --panel-pad: var(--space-5);
@@ -367,7 +368,8 @@ a:hover { text-decoration-color: var(--ink); }
 .nav__list {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-5);
+  align-items: center;
+  gap: var(--space-3) var(--space-5);
   font-size: var(--t-meta);
   font-weight: 500;
   letter-spacing: 0.08em;
@@ -375,12 +377,44 @@ a:hover { text-decoration-color: var(--ink); }
   color: var(--ink-muted);
 }
 
-.nav__list a { text-decoration-color: transparent; }
-.nav__list a:hover,
-.nav__list a[aria-current='page'] { color: var(--ink); text-decoration-color: var(--ink); }
+/* No underlines anywhere in the navigation. These are not links in running
+   prose — they are a labelled set, and position carries the affordance.
+   Hover and current state are signalled by colour and weight instead. */
+.nav__list a {
+  text-decoration: none;
+  transition: color 160ms ease;
+}
 
-/* The list wraps at every width. See nav.njk for why there is no
-   disclosure control. */
+.nav__list a:hover {
+  color: var(--ink);
+}
+
+.nav__list a[aria-current='page'] {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* The one action in the navigation, and the only filled control on the site.
+   Everything else is text. */
+.nav__resume {
+  display: inline-block;
+  white-space: nowrap;
+  padding: var(--space-2) var(--space-3);
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: var(--radius-sm);
+  transition: background 160ms ease;
+}
+
+.nav__resume:hover {
+  background: var(--dark);
+  color: var(--paper);
+}
+
+/* No bespoke focus rule. The global :focus-visible ring has a positive
+   offset, so on a filled control it sits on the page ground rather than on
+   the fill: --ink on --paper, 15.56:1. Inside the footer the .canvas--dark
+   flip makes the same ring --paper on --dark, 13.20:1. */
 
 /* --- EditorialHeading -------------------------------------------------- */
 
@@ -415,7 +449,7 @@ a:hover { text-decoration-color: var(--ink); }
 /* --- RecordMetadata ---------------------------------------------------- */
 
 .record {
-  font-size: var(--t-small);
+  font-size: var(--t-body);
   line-height: 1.5;
 }
 
@@ -448,6 +482,8 @@ a:hover { text-decoration-color: var(--ink); }
 .record__value {
   color: var(--ink);
   text-align: left;
+  /* Body. The label is metadata; the value is content. */
+  font-size: var(--t-body);
 }
 
 @media (min-width: 768px) {
@@ -468,7 +504,9 @@ a:hover { text-decoration-color: var(--ink); }
   padding-block-start: var(--space-3);
   margin-block-start: var(--space-3);
   border-block-start: 1px solid var(--line);
-  font-size: var(--t-small);
+  /* Body. A caption is prose a visitor reads, so it takes the body size like
+     every other block of prose on the site. */
+  font-size: var(--t-body);
   line-height: 1.5;
   color: var(--ink-secondary);
   max-width: 52ch;
@@ -1001,7 +1039,28 @@ a:hover { text-decoration-color: var(--ink); }
    site. Capping the figure at its native width means it is never upscaled at
    any breakpoint, which matters most between 768 and 1199 where the bio is a
    single column and an uncapped figure would stretch past 1000px. */
-.figure--portrait { max-width: 400px; }
+/* The headshot is a 400px square export. Capped at 280px it is rendered
+   below its own resolution, which is sharp; at 400 it sat at native size and
+   read soft. Smaller and crisp beats larger and blurry. */
+.figure--portrait { max-width: 280px; }
+
+/* --- Bio row -----------------------------------------------------------
+   Three 4:5 images as one set. Equal columns so the crops line up exactly;
+   stacked below 768px. */
+
+.bio__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-5);
+  margin-block-start: var(--space-8);
+}
+
+@media (min-width: 768px) {
+  .bio__row { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-6); }
+}
+
+.bio__row .figure { max-width: none; }
+.bio__row img { width: 100%; }
 
 /* Two stacked figures in the media column. The gap is one section step so
    they read as a pair rather than as one image and a stray second one. */
@@ -1054,6 +1113,28 @@ a:hover { text-decoration-color: var(--ink); }
 .sitefoot__list { font-size: var(--t-body); }
 .sitefoot__list li + li { margin-block-start: var(--space-2); }
 
+/* --paper and --ink are FLIPPED inside .canvas--dark, so using them here
+   gave a dark button with dark text — 1:1, invisible. --paper-deep and
+   --dark are not flipped: 11.86:1. */
+.sitefoot__resume {
+  display: inline-block;
+  margin-block-start: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background: var(--paper-deep);
+  color: var(--dark);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  font-size: var(--t-meta);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: background 160ms ease;
+}
+
+.sitefoot__resume:hover { background: var(--line); color: var(--dark); }
+
+
 .sitefoot__rule {
   margin-block-start: var(--space-8);
   padding-block-start: var(--space-4);
@@ -1086,7 +1167,17 @@ a:hover { text-decoration-color: var(--ink); }
      a universal `* { transition: none !important }` reset: DESIGN_SYSTEM.md
      bans !important, and there is exactly one transition to turn off. */
   html { scroll-behavior: auto; }
-  a { transition: none; }
+
+  /* Every selector that declares a transition is named here. A bare
+     `a { transition: none }` is not enough: `.nav__list a` and the two
+     button rules out-specify it, which is how seven elements kept
+     transitioning after the reduced-motion block was added. */
+  a,
+  .nav__list a,
+  .nav__resume,
+  .sitefoot__resume {
+    transition: none;
+  }
 }
 
 /* ========================================================================

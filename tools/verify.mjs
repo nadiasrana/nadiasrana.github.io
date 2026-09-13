@@ -128,7 +128,7 @@ for (const file of pages) {
   const html = await readFile(file, 'utf8');
   for (const m of html.matchAll(/(?:href|src)="(\/[^"#?]*)(#[^"]*)?"/g)) {
     const target = m[1];
-    if (/\.(css|js|woff2|jpe?g|webp|avif|xml|txt|html)$/.test(target)) {
+    if (/\.(css|js|woff2|jpe?g|webp|avif|xml|txt|html|pdf)$/.test(target)) {
       ok(assets.has(target), `${route}: asset 404: ${target}`);
     } else {
       ok(routes.has(target), `${route}: internal link 404: ${target}`);
@@ -235,7 +235,9 @@ if (unused.length) notes.push(`CSS classes with no consumer: ${unused.join(', ')
 // Spacing values, the three breakpoints, the panel max width, and 400 —
 // the headshot's native width, which caps .figure--portrait so a 400px
 // source is never upscaled.
-const SCALE = new Set([0, 1, 2, 3, 4, 8, 12, 16, 20, 24, 32, 48, 64, 96, 128, 160, 400, 768, 1199, 1200, 1440]);
+// Spacing, the three breakpoints, the panel max width, and 280 — the cap on
+// .figure--portrait, which holds the 400px headshot below native size.
+const SCALE = new Set([0, 1, 2, 3, 4, 8, 12, 16, 20, 24, 32, 48, 64, 96, 128, 160, 280, 768, 1199, 1200, 1440]);
 const strayPx = [
   ...new Set([...decls.matchAll(/(\d+)px/g)].map((m) => Number(m[1]))),
 ].filter((n) => !SCALE.has(n));
@@ -319,6 +321,11 @@ for (const m of allHtml.matchAll(/class="marker[^"]*">([\s\S]*?)<\/p>/g)) {
     ok(!m[1].includes(bad), `a marker quotes a blocked item: ${bad}`);
   }
 }
+
+/* ---- One body size ---------------------------------------------------- */
+const { checkBodySize } = await import('./check-body-size.mjs');
+const proseChecked = checkBodySize(decls, ok, notes);
+console.log(`=== body-size rule: ${proseChecked} prose selectors checked ===`);
 
 /* ---- The CONTENT.md site contract ------------------------------------- */
 // CONTENT.md is the authority, and it drifted out of step with the site four

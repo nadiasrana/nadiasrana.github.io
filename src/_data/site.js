@@ -21,18 +21,17 @@ export default {
   // operators, 15,860 extractable characters, zero image XObjects. It is
   // selectable, searchable and ATS-parseable, not a scan.
   //
-  // `cleared` is false. A revised PDF landed 13 Sep 2026 and fixed three of
-  // the six blocked items — both analytical errors (the superseded R² pair,
-  // and the $1,700 spread welded to Rapaport) and the Fraqt title. Four
-  // remain: GPA 4.00, the Northstar revenue and client figures, her phone
-  // number, and PostgreSQL/R. Publishing the link publishes those.
+  // CLEARED 13 Sep 2026. The revised PDF fixed all three analytical errors —
+  // the superseded R² pair, the $1,700 spread welded to Rapaport, and the
+  // Fraqt title — and those were the only blockers.
   //
-  // Flip `cleared` to true when they are gone and the download wires itself
-  // up: the passthrough and both links key off this one flag.
+  // GPA, the Northstar figures, PostgreSQL, R and the phone number were
+  // reviewed and deliberately RETAINED. They are accepted, not outstanding.
+  // See CONTENT.md, "Résumé PDF".
   resume: {
     file: 'nadia-sultan-rana-resume.pdf',
     href: '/assets/doc/nadia-sultan-rana-resume.pdf',
-    cleared: false,
+    cleared: true,
   },
 
   nav: [

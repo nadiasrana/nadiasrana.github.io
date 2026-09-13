@@ -17,19 +17,10 @@ description: Nadia Sultan Rana — background, education, principles and toolkit
          "portrait-headshot.jpg",
          "Studio headshot of Nadia Sultan Rana in a dark blazer against a warm neutral backdrop.",
          "Nadia Sultan Rana.",
-         "400px",
+         "280px",
          "eager",
          false,
          "figure--portrait" %}
-
-      {% mediaFigure
-         "lake-wall.jpg",
-         "Nadia Sultan Rana seated on a low stone wall above a reservoir, dry hills behind her.",
-         "Lake Tahoe, California.",
-         "Photograph",
-         "(min-width: 1200px) 392px, (min-width: 768px) calc(100vw - 128px), calc(100vw - 48px)",
-         "lazy",
-         false %}
     </div>
 
     <div class="bio__intro">
@@ -42,6 +33,29 @@ description: Nadia Sultan Rana — background, education, principles and toolkit
         is slowly, and after I’ve actually looked at it.</p>
     </div>
   </div>
+
+  {# Three images, one 4:5 crop and one grade, so the row reads as a set.
+     Stacks vertically below 768px. #}
+  <ul class="bio__row">
+    <li>{% mediaFigure
+      "row-tahoe.jpg",
+      "Nadia Sultan Rana seated on a low stone wall above Lake Tahoe, dry hills behind her.",
+      "Lake Tahoe, California.",
+      "(min-width: 768px) 33vw, calc(100vw - 48px)",
+      "lazy", false %}</li>
+    <li>{% mediaFigure
+      "row-cats.jpg",
+      "Two tabby cats curled together in a woven basket lined with white cloth.",
+      "The two tabby cats.",
+      "(min-width: 768px) 33vw, calc(100vw - 48px)",
+      "lazy", false %}</li>
+    <li>{% mediaFigure
+      "row-pacifica.jpg",
+      "Nadia Sultan Rana sitting on a sea wall at Pacifica Beach at sunset.",
+      "Pacifica Beach, California.",
+      "(min-width: 768px) 33vw, calc(100vw - 48px)",
+      "lazy", false %}</li>
+  </ul>
 </section>
 
 <section class="section" aria-labelledby="record-h">
