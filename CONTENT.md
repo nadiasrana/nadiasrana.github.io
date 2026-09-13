@@ -191,20 +191,24 @@ again and prints on all five entries.
 | # | Entry | Location | Source |
 |---|---|---|---|
 | 01 | Archroma | **Charlotte, NC** | her work-log export |
-| 02 | Fraqt | ⚠️ **none on file** | — |
+| 02 | Fraqt | **Remote** | confirmed 13 Sep 2026 |
 | 03 | Summer Conference | Stockton, CA | resume |
 | 04 | Eberhardt | Stockton, CA | resume |
 | 05 | Northstar | **Remote, U.S.** | confirmed 13 Sep 2026 |
 
-⚠️ **Fraqt is the exception, and the row was reinstated on the understanding
-that all five had one.** Four do. Nothing has been supplied for Fraqt, and a
-plausible "Remote" would be invention — the project is pre-launch and
-unregistered, which makes a location a real question rather than a formality.
-The entry prints **"Not on record"**, which is what `RecordMetadata` does with
-a null value: the row holds its place and the gap is visible.
+✅ **Fraqt closed 13 Sep 2026: Remote.** All five entries now carry a
+location and none prints "Not on record".
 
-One of five showing "Not on record" does not read as an oversight the way two
-of five filled did. **Supply Fraqt's location and it closes.**
+Worth recording *why* this is not invention, because the earlier draft of this
+section argued the opposite. "Remote" states the **working arrangement**, and
+a working arrangement is a fact about the role. For a pre-launch project with
+no premises it is the only locational fact there is — the alternative is not a
+more accurate answer, it is no answer. That is different from writing
+"Charlotte, NC" on a guess, which would assert a place that may not exist.
+
+`RecordMetadata`'s null handling — printing "Not on record" rather than
+dropping the row — is still the right behaviour and is still asserted in
+`tools/verify.mjs`. It simply has no consumer at the moment.
 
 Stockton, California came out of the prose of entries 03 and 04 when the row
 went back in, so it is stated once rather than twice.
@@ -395,7 +399,16 @@ rows are not in conflict.
 |---|---|---|---|---|---|
 | Clarity | grade averages, color held at **D** | 7 | IF–SI2 as 1–7 | −528.70 /grade | 0.9089 |
 | Color | grade averages, clarity held at **VVS1** | 8 | D–K as 1–8 | −631.44 /grade | 0.8393 |
+| **Clarity alone** | **individual stones**, price per carat | 918 | same as combined | **−421.20 /grade** | **0.335** |
+| **Color alone** | **individual stones**, price per carat | 918 | same as combined | **−312.70 /grade** | **0.332** |
 | Combined | **individual stones** | 918 | multivariate | no single slope | 0.633 |
+
+✅ **The two raw single-variable rows are now PUBLISHED, 13 Sep 2026.** They
+are on the page as a third row group, "Fitted on individual stones, one grade
+at a time", sitting between the averaged fits and the combined model. They are
+the controlled comparison — same question, same data, one grade at a time,
+with aggregation as the only thing that changes — and Limitation 1 now points
+at them. This closes the open decision about publishing them.
 
 **Source:** both single-variable regressions re-run against the source
 workbook, returning −631.42 / 0.8393 and −528.86 / 0.9089. Matches to four
@@ -416,10 +429,26 @@ figures are correct.**
 
 On raw rows the two grades are **near-identical — 0.335 against 0.332.** So
 *"clarity is the stronger driver" holds only on grade-averaged data.* On
-individual stones it does not hold at all; the two are a dead heat.
+individual stones it does not hold at all; the two are a dead heat. The gap is
+**0.070 on averages and 0.003 on stones.**
 
-This is the same trap as Limitation 1, one level deeper: aggregation does not
-merely inflate R², it **reorders the two variables.**
+⚠️ **Correction to the note written earlier on 13 Sep 2026.** That note said
+aggregation "reorders the two variables". That is too strong for the figures
+the site publishes, and the distinction matters on a page about exactly this:
+
+- **R², price per carat (published).** The *ranking* survives — clarity 0.335
+  is still nominally above color 0.332 — but the margin does not. Call it a
+  dead heat, not a reversal.
+- **R², absolute price (not published).** Here it genuinely does reverse:
+  clarity 0.3242 against color 0.3340.
+- **Slopes (published).** These *do* reverse. On averages color's step is the
+  steeper one (−$631.44 against −$528.70); on individual stones it is
+  clarity's (−$421.20 against −$312.70).
+
+So the accurate statement is: **aggregation inflates R², collapses the gap
+between the two grades, and reverses their slopes.** "Reorders the variables"
+is only true of a basis the site does not show, and should not be used as
+shorthand for what it does show.
 
 ✅ **Prose audited 13 Sep 2026 — one overstatement found and corrected.** The
 page deck read *"Clarity moves the price of a pear-shaped diamond more than
@@ -436,11 +465,29 @@ none overstates** — the body already said "grade averages fall more cleanly",
 "color has the steeper step", and "those are two different measurements, and
 neither is the third one."
 
-⚠️ **The raw single-variable figures are not published.** Adding 0.335 and
-0.332 to the findings table as a third row group would make the reordering
-inspectable rather than asserted, and would strengthen the Limitations
-section. Not done — it was not authorised, and the two-group table frames the
-published claim correctly as it stands. Worth a decision.
+✅ **Second prose audit, 13 Sep 2026 — publishing the raw rows invalidated
+two more sentences, both corrected.**
+
+Adding data to a table is not a safe edit: it changes what the prose around it
+is allowed to say. Two sentences that had been accurate became false:
+
+1. *"Color has the steeper step."* True of the averaged fit, and **reversed**
+   on individual stones. Now stated per basis, with both pairs of slopes.
+2. *"That last one is the 63.3%, and it is the lowest of the three."* With
+   0.335 and 0.332 in the table, 0.633 is no longer the lowest of anything.
+   Removed.
+
+The **deck changed a second time**. It had read *"clarity's grade averages
+fall more cleanly than color's, but color's steps are worth more"* — accurate
+when the table held one basis, overstating once it held two, because the slope
+half reverses. It now reads:
+
+> Which grade moves the price more depends on the basis you ask it on — on 918
+> individual stones, clarity and color are a dead heat. Together the two still
+> leave more than a third of the price unexplained.
+
+Every clause is readable off the table, and the page's headline claim is now
+the page's actual finding rather than one basis presented as the answer.
 
 ### ⛔ The résumé's R² figures match no basis
 
@@ -500,7 +547,9 @@ coursework write-up.
 source. The page no longer carries a marker for it.
 
 ⚠️ **Still needed: what she would do differently.** Not in the source, not
-inferable. Marker stays.
+inferable. Marker stays. **This is now the only marker on the page**, and with
+the raw single-variable rows published it is also the only thing between this
+page and being finished.
 
 [VERIFY] The workbook and Word report are not published and the page does not
 offer files. Retailer names and derived per-retailer figures **are** published,
@@ -659,17 +708,14 @@ Confirm the wording before launch and remove the DRAFT marker.
 
 ### Open, in priority order
 
-**Updated 13 Sep 2026.** Four more closed this pass: Q-FRAQT, Q-SQL, LinkedIn
-and location wording. The R² figures are cross-checked and correct.
+**Updated 13 Sep 2026.** Two more closed this pass: Fraqt's location, and the
+decision on publishing the raw single-variable R².
 
 1. **A cleaned résumé PDF** — the link the audience came for. Everything else
    is wired; `site.resume.cleared` is the only switch. See *Résumé PDF*.
-2. **Fraqt's location** — the one entry printing "Not on record" now that the
-   `Location` row is back on all five.
-3. **What she would do differently** on the diamond study. Not in the source
-   and not inferable.
-4. **Her approval on the About paragraph**, to drop the DRAFT marker.
-5. **A decision on publishing the raw single-variable R²** (0.335 / 0.332).
-   It would make the aggregation reordering inspectable rather than asserted.
-6. **A higher-resolution headshot**, if one exists. The current file is 400px.
-7. **A second project** — still the only gate on the custom domain.
+2. **What she would do differently** on the diamond study. Not in the source
+   and not inferable. The last marker on the site's strongest page.
+3. **Her approval on the About paragraph**, to drop the DRAFT marker.
+4. **A higher-resolution headshot**, if one exists. The current file is 400px,
+   which caps the About portrait at a deliberately small size.
+5. **A second project** — still the only gate on the custom domain.

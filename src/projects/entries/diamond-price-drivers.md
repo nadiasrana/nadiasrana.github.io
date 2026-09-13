@@ -11,9 +11,9 @@ description: >-
   four retailers agree. Two of them priced the same band at $1,550 and $3,249
   per carat.
 deck: >-
-  Clarity's grade averages fall more cleanly than color's, but color's steps
-  are worth more. Across 918 stones listed by four retailers, the two grades
-  together still leave more than a third of the price unexplained.
+  Which grade moves the price more depends on the basis you ask it on — on
+  918 individual stones, clarity and color are a dead heat. Together the two
+  still leave more than a third of the price unexplained.
 # RecordMetadata, Schema B. Fixed rows: Period, Tools, Data, Status.
 record:
   - { label: Period, value: Spring 2026 }
@@ -90,19 +90,31 @@ Built in Excel. Reported in Word.
     <tr><th scope="row">Color, clarity held at VVS1</th><td class="findings__num">8</td><td class="findings__num">0.839</td><td class="findings__num">&minus;$631.44</td></tr>
   </tbody>
   <tbody>
-    <tr class="findings__group"><th colspan="4" scope="colgroup">Fitted on individual stones</th></tr>
+    <tr class="findings__group"><th colspan="4" scope="colgroup">Fitted on individual stones, one grade at a time</th></tr>
+    <tr><th scope="row">Clarity alone</th><td class="findings__num">918</td><td class="findings__num">0.335</td><td class="findings__num">&minus;$421.20</td></tr>
+    <tr><th scope="row">Color alone</th><td class="findings__num">918</td><td class="findings__num">0.332</td><td class="findings__num">&minus;$312.70</td></tr>
+  </tbody>
+  <tbody>
+    <tr class="findings__group"><th colspan="4" scope="colgroup">Fitted on individual stones, both grades</th></tr>
     <tr><th scope="row">Clarity and color combined</th><td class="findings__num">918</td><td class="findings__num">0.633</td><td class="findings__num findings__none">no single slope</td></tr>
   </tbody>
 </table>
 
-Clarity's grade averages fall more cleanly than color's, 0.909 against 0.839 on
-the same kind of fit. Color has the steeper step: $631.44 per carat for each
-grade down the color scale, against $528.70 for clarity.
+On grade averages, clarity gives the tighter fit: 0.909 against 0.839. Ask the
+same question of the 918 individual stones and the gap closes to nothing —
+0.335 against 0.332. The two middle rows are the controlled comparison: same
+question, same data, one grade at a time, and the only thing that changed is
+whether the stones were averaged first.
 
-Those are two different measurements, and neither is the third one. How tightly
-eight averages sit on a line is not what one grade step is worth, and neither is
-how much of an individual stone's price the two grades explain. That last one is
-the 63.3%, and it is the lowest of the three for a reason.
+The slopes reverse as well. On averages, color has the steeper step: $631.44
+per carat for each grade down the color scale, against $528.70 for clarity. On
+individual stones it is the other way round, $421.20 for clarity against
+$312.70 for color.
+
+So "which grade matters more" has no answer that survives both bases. What does
+survive is the last row. Together the two grades explain 63.3% of the price of
+an individual stone, which leaves more than a third of it unaccounted for by
+the two numbers a listing puts in front of a buyer.
 
 The four retailers do not agree. James Allen averaged $1,550 per carat across
 the band; With Clarity averaged $3,249. That is a spread of roughly $1,700 per
@@ -114,17 +126,22 @@ Benchmarked separately against the Rapaport price guide, retail traded between
 
 ## Limitations
 
-The two single-variable fits are not comparable with the combined one, and
-putting all three in a table invites exactly that comparison. The
-single-variable regressions were run on pivot-table grade averages with the
-other grade held fixed: seven points for clarity with color held at D, eight for
-color with clarity held at VVS1. The combined model was run on all 918
-individual stones.
+The first group in the table fits grade averages with the other grade held
+fixed: seven points for clarity with color held at D, eight for color with
+clarity held at VVS1. The second group fits the same one-grade-at-a-time
+question to all 918 individual stones. Nothing changes between them but the
+aggregation, which is why both are there.
 
-Averaging inside each grade removes the variation between stones that share that
-grade. What is left is a smooth line, and a smooth line fits well. Aggregation
-inflates R<sup>2</sup>, so 0.909 against eight points is not a better result
-than 0.633 against 918 stones. It is a different measurement.
+Averaging inside each grade removes the variation between stones that share
+it. What is left is a smooth line, and a smooth line fits well. Clarity goes
+from 0.909 to 0.335. Color goes from 0.839 to 0.332. The gap between the two
+grades — 0.070 on averages, wide enough that it reads as a finding — is 0.003
+on stones, which is not a finding at all.
+
+That is the whole of the caution. An R<sup>2</sup> of 0.909 against seven
+points is not a better result than 0.633 against 918 stones; it is a different
+measurement. And on the measurement that describes an actual diamond, clarity
+and color are indistinguishable.
 
 <blockquote class="pullquote">
   <p>The two numbers answer two questions: how cleanly grade averages decline,

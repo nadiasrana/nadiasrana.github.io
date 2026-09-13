@@ -70,10 +70,10 @@ export default [
     // implies a company, a team and a shipped product, none of which exist.
     // Do not re-adopt it. See CONTENT.md.
     role: 'Data and systems design',
-    // The one entry with no location on file. Nothing was supplied for it,
-    // and a plausible "Remote" would be invention. RecordMetadata prints
-    // "Not on record" rather than dropping the row.
-    place: null,
+    // "Remote" states the working arrangement, which is what is true of a
+    // pre-launch project with no premises — it is a fact about the role, not
+    // a guess at an address. Confirmed 13 Sep 2026.
+    place: 'Remote',
     // June – August 2026, confirmed independently of the résumé.
     dates: 'June – August 2026',
     // CONTENT.md: design decisions only. No framework names, no index types,
