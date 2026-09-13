@@ -262,16 +262,35 @@ for (const bad of [/\bmachine learning\b/i, /\bETL\b/]) {
 /* ---- Component shape: five entries, identical structure --------------- */
 const entries = [...home.matchAll(/<article class="entry__grid"[\s\S]*?<\/article>/g)];
 ok(entries.length === 5, `home: expected 5 work entries, found ${entries.length}`);
+
+// The invariant is uniformity, not a particular row count. Asserting a magic
+// number means every schema change is a false failure; asserting that all
+// five entries carry the SAME labels in the SAME order catches the thing that
+// actually matters — an entry quietly dropping a row it has no value for.
+const labelSets = entries.map(
+  (e) => [...e[0].matchAll(/class="record__label">([^<]*)</g)].map((m) => m[1].trim()).join(' | ')
+);
+const [first, ...rest] = labelSets;
+for (const [i, set] of rest.entries()) {
+  ok(set === first, `work entry ${i + 2} has different record rows: "${set}" vs "${first}"`);
+}
+ok(first.split(' | ').length >= 3, `work record schema looks too thin: "${first}"`);
+
 for (const [i, e] of entries.entries()) {
   const h = e[0];
-  const rows = (h.match(/class="record__row"/g) || []).length;
   const ev = (h.match(/class="evidence__value"/g) || []).length;
-  ok(rows === 2, `work entry ${i + 1}: ${rows} record rows, expected 2`);
   ok(ev === 1, `work entry ${i + 1}: ${ev} evidence figures, expected exactly 1`);
   ok(/class="tools"/.test(h), `work entry ${i + 1}: no tools list`);
   ok(/class="entry__numeral"/.test(h), `work entry ${i + 1}: no numeral`);
   ok(/aria-hidden="true"/.test(h), `work entry ${i + 1}: numeral not hidden from AT`);
 }
+
+// A null value must print "Not on record", never collapse the row away.
+const absent = (home.match(/record__value--absent/g) || []).length;
+ok(
+  absent === (home.match(/>Not on record</g) || []).length,
+  'a record row is styled absent without saying so, or vice versa'
+);
 
 /* ---- The résumé gate -------------------------------------------------- */
 // While site.resume.cleared is false the PDF must not reach _site and must

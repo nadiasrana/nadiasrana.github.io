@@ -652,13 +652,6 @@ a:hover { text-decoration-color: var(--ink); }
   max-width: var(--measure);
 }
 
-.marker--inline {
-  display: inline-block;
-  margin-block-start: 0;
-  padding: var(--space-1) var(--space-2);
-  font-size: var(--t-meta);
-}
-
 .missing-slot {
   background: var(--paper-deep);
   color: var(--ink);

@@ -12,6 +12,10 @@ export default {
     name: 'Nadia Sultan Rana',
     email: 'nadiasrana@gmail.com',
     role: 'Data analyst',
+    // Confirmed 13 Sep 2026 against her profile export, independently of the
+    // résumé PDF — which remains unpublished for unrelated reasons.
+    linkedin: 'https://www.linkedin.com/in/nadiasrana',
+    location: 'Raleigh, NC. Open to remote contract work.',
   },
   // The résumé PDF. Confirmed text-based: 9 embedded fonts, 102 text
   // operators, 15,860 extractable characters, zero image XObjects. It is

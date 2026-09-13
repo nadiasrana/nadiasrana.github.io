@@ -140,9 +140,29 @@ exclusive.
 **PowerPoint is Stack-only.** It is a general competency rather than something
 that characterises the Archroma work, so it does not go in the entry tags.
 
-⚠️ **Q-FRAQT.** Fraqt job title and dates are not on file. The entry prints
-"Pre-launch." and nothing else. Fraqt now **does** appear on the site, in
-Work rather than Projects — this resolves the old open question.
+✅ **Q-FRAQT CLOSED 13 Sep 2026. Do not re-open.**
+
+| Field | Value |
+|---|---|
+| Title | **Data and systems design** |
+| Dates | **June – August 2026**, confirmed independently of the résumé |
+| Location | ⚠️ **still none on file** — see *Work order* below |
+
+⛔ **"Founding Data Lead" was reviewed and REJECTED. Do not re-adopt it.**
+
+It is the title on her résumé, so it will keep resurfacing. The reason it is
+off the site: Fraqt is **pre-launch, unregistered, has no users, and its
+implementation was substantially AI-assisted.** "Founding Data Lead" implies a
+company, a team and a shipped product, and none of the three exists. It is
+precisely the kind of title that cannot be defended cold in an interview,
+which is the standard set in *Positioning* above.
+
+"Data and systems design" describes what she actually did and survives the
+question "tell me about that role."
+
+The entry now says on the page that the project is pre-launch, unregistered
+and has no users. That disclosure is deliberate — it is what makes the 1,194
+figure safe to show.
 
 **Northstar figures stay off.** $45K, 20 engagements and 12 clients wait for
 Q1. The entry names the role and says on the page that the figures are held.
@@ -164,13 +184,30 @@ Do not add them without Q1.
 "pre-launch" implies current, but Q-FRAQT means there are no dates to sort on.
 If the dates land and it predates mid-2025, the order changes.
 
-✅ **Locations — resolved 13 Sep 2026 by dropping the field.** Location is no
-longer a row in the work-entry schema. Stockton, California stays in the
-prose of entries 03 and 04, where it is a fact about the role rather than a
-missing field. Two of five filled read as an oversight; printing "Not on
-record" three times reads worse. If all five ever land, add the row back to
-`RecordMetadata` Schema A in `DESIGN_SYSTEM.md` and it appears on all five at
-once.
+✅ **Locations — the row is BACK, 13 Sep 2026.** Superseding the earlier
+decision to drop the field. `Location` is a row in `RecordMetadata` Schema A
+again and prints on all five entries.
+
+| # | Entry | Location | Source |
+|---|---|---|---|
+| 01 | Archroma | **Charlotte, NC** | her work-log export |
+| 02 | Fraqt | ⚠️ **none on file** | — |
+| 03 | Summer Conference | Stockton, CA | resume |
+| 04 | Eberhardt | Stockton, CA | resume |
+| 05 | Northstar | **Remote, U.S.** | confirmed 13 Sep 2026 |
+
+⚠️ **Fraqt is the exception, and the row was reinstated on the understanding
+that all five had one.** Four do. Nothing has been supplied for Fraqt, and a
+plausible "Remote" would be invention — the project is pre-launch and
+unregistered, which makes a location a real question rather than a formality.
+The entry prints **"Not on record"**, which is what `RecordMetadata` does with
+a null value: the row holds its place and the gap is visible.
+
+One of five showing "Not on record" does not read as an oversight the way two
+of five filled did. **Supply Fraqt's location and it closes.**
+
+Stockton, California came out of the prose of entries 03 and 04 when the row
+went back in, so it is stated once rather than twice.
 
 ✅ **Figures — one per entry.** Archroma has five figures on record; showing
 three there and one elsewhere is the ragged shape that made the old page read
@@ -241,14 +278,15 @@ below, authorised 12 Sep 2026. The point of the level labels is that
 `Exposure` is not a claim. Do not promote either language without new
 evidence.
 
-✅ **Q-SQL is half closed.** The Summer Conference role names **SQL**
-outright, so SQL is real and is listed. `Comfortable` is a floor set from
-validating SQL datasets in a paid role plus "query logic that other people
-could reuse"; **SPSS `Exposure`** is a floor set from that one role.
+✅ **Q-SQL CLOSED 13 Sep 2026. Confirmed by Nadia: SQL is `Comfortable`.**
 
-⚠️ **Still open:** whether the Pacific operations "query logic" was also SQL,
-or DAX and Power Query inside Power BI. That decides whether `Comfortable` is
-right or an understatement. Marked on the page.
+That was already the level on the page, set as a floor from validating SQL
+datasets in a paid role. It is now the level on her own confirmation rather
+than on inference, and **the marker is off the Toolkit section.** The question
+of whether the Pacific "query logic" was SQL or DAX and Power Query no longer
+gates anything — the level is settled either way.
+
+**SPSS `Exposure`** remains a floor set from that one role.
 
 ---
 
@@ -362,6 +400,60 @@ rows are not in conflict.
 **Source:** both single-variable regressions re-run against the source
 workbook, returning −631.42 / 0.8393 and −528.86 / 0.9089. Matches to four
 decimals.
+
+### ✅ Full cross-check, 13 Sep 2026 — every basis reproduced
+
+All three bases were reproduced from the source workbook. **The published
+figures are correct.**
+
+| Basis | Clarity | Color | Combined |
+|---|---|---|---|
+| Pivot averages — the report's method | **0.9089** (n=7) | **0.8393** (n=8) | — |
+| Raw 918 rows, price per carat | 0.3348 | 0.3318 | **0.6329** |
+| Raw 918 rows, absolute price | 0.3242 | 0.3340 | 0.6249 |
+
+⚠️ **The finding is narrower than it looks, and this is the important note.**
+
+On raw rows the two grades are **near-identical — 0.335 against 0.332.** So
+*"clarity is the stronger driver" holds only on grade-averaged data.* On
+individual stones it does not hold at all; the two are a dead heat.
+
+This is the same trap as Limitation 1, one level deeper: aggregation does not
+merely inflate R², it **reorders the two variables.**
+
+✅ **Prose audited 13 Sep 2026 — one overstatement found and corrected.** The
+page deck read *"Clarity moves the price of a pear-shaped diamond more than
+color does."* That was wrong on every basis: color's step is the steeper one
+(−$631.44 against −$528.70), the raw rows are a dead heat, and the only sense
+in which clarity leads is tightness of fit on the aggregated data the page
+itself says inflates R². The deck asserted, as the headline claim, the exact
+thing the Limitations section exists to warn against.
+
+It now reads: *"Clarity's grade averages fall more cleanly than color's, but
+color's steps are worth more."* Both halves are readable straight off the
+findings table. **Every other comparative sentence on the site was checked and
+none overstates** — the body already said "grade averages fall more cleanly",
+"color has the steeper step", and "those are two different measurements, and
+neither is the third one."
+
+⚠️ **The raw single-variable figures are not published.** Adding 0.335 and
+0.332 to the findings table as a third row group would make the reordering
+inspectable rather than asserted, and would strengthen the Limitations
+section. Not done — it was not authorised, and the two-group table frames the
+published claim correctly as it stands. Worth a decision.
+
+### ⛔ The résumé's R² figures match no basis
+
+Recorded 13 Sep 2026. The résumé states **R² = 0.40 for clarity versus 0.29
+for color.** Checked against all three reproduced bases above: **0.40 and 0.29
+correspond to nothing.** Not the pivot averages (0.909 / 0.839), not raw price
+per carat (0.335 / 0.332), not raw absolute price (0.324 / 0.334).
+
+They are not a different-but-defensible basis. They are wrong. This is the
+decisive item on the résumé block list below — the site's strongest page
+exists to explain why a naive comparison of these fits misleads, and a résumé
+one click away carrying figures that reconcile to no computation at all would
+undo it.
 
 The page shows R² at three decimals (0.909, 0.839, 0.633) for a consistent
 column, and slopes at the supplied cent precision. The table carries `n` on
@@ -491,7 +583,7 @@ of them to exactly the reader the block list exists to protect her from:
 |---|---|
 | **GPA: 4.00**, twice | ⛔ "Tier B, no transcript seen. Off the site until confirmed" |
 | **$45K revenue, 20 paid engagements, 12 clients**, plus 45% repeat, 80+ issues, 100+ materials | ⛔ "Northstar figures … until Q1 and Q8 resolve" |
-| **R² = 0.40 vs 0.29 for color** | ⛔ "**Corrected 12 Sep 2026.** Anything quoting R² 0.40/0.29 is **stale**." The site publishes 0.909 / 0.839 / 0.633 |
+| **R² = 0.40 vs 0.29 for color** | ⛔ **Cross-checked 13 Sep 2026 against all three reproduced bases: these match none of them.** Not stale — wrong. See *Full cross-check* above |
 | **"a $1,700/ct retailer gap against the Rapaport guide"** | ⛔ "Rapaport, **separate finding** … **Do not weld this to the $1,700 figure**" — the PDF welds them |
 | **Phone (919) 888-9512** | ⚠️ "decide separately whether it goes on a public page. **Default: no**" |
 | **PostgreSQL, R**, A/B testing | Not in the verified stack. Python is `Exposure` only |
@@ -508,20 +600,30 @@ reachable at a URL, and the Contact blocks show a `[BLOCKED: …]` marker
 instead of a link. **Supply a cleaned PDF and set `cleared: true`** — the
 passthrough and the link both key off that one flag and need no other change.
 
-### The résumé also answers three open questions
+### ✅ Closed 13 Sep 2026 — confirmed independently, not from the PDF
 
-Flagged rather than applied, because this document records that a PDF export
-has already been considered and not treated as verification:
+These were flagged as things the résumé happened to answer. They have since
+been confirmed from other sources and are on the site. **The PDF is not the
+authority for any of them**, which matters: it stays unpublished, and these
+stand on their own.
 
-- **Q-FRAQT** — "Founding Data Lead | Pre-launch Project", June 2026 – Aug. 2026
-- **LinkedIn** — `linkedin.com/in/nadiasrana`
-- **Location** — "Raleigh, NC | Open to remote contract work"
+| Item | Value | Source |
+|---|---|---|
+| Fraqt dates | June – August 2026 | confirmed independently |
+| LinkedIn | `linkedin.com/in/nadiasrana` | her profile export |
+| Her location | Raleigh, NC. Open to remote contract work. | confirmed |
+| Archroma location | Charlotte, NC | her work-log export |
+| Northstar location | Remote, U.S. | confirmed |
 
-It also supplies locations previously not on file: Archroma **Charlotte, NC**;
-Northstar **Remote, U.S.** With those, all five work entries would have a
-location and the `Location` row could go back into `RecordMetadata` Schema A.
+⛔ **The one thing NOT taken from the résumé is the Fraqt title.** It says
+"Founding Data Lead"; the site says "Data and systems design". See *Q-FRAQT*
+above for why, and do not re-adopt it.
 
-**None of this is on the site.** Confirm and these close in one pass.
+⚠️ **Fraqt's location was not supplied** and is the one gap the reinstated
+`Location` row exposes. The entry prints "Not on record".
+
+**`site.resume.cleared` stays `false`.** The six-item block list is unchanged
+and the R² conflict is decisive.
 
 ---
 
@@ -557,19 +659,17 @@ Confirm the wording before launch and remove the DRAFT marker.
 
 ### Open, in priority order
 
-**Updated 13 Sep 2026.** Six of the previous list are closed: $6M, the
-headshot, where she is from, the About paragraph (drafted), the résumé's
-format question, and the journal removal.
+**Updated 13 Sep 2026.** Four more closed this pass: Q-FRAQT, Q-SQL, LinkedIn
+and location wording. The R² figures are cross-checked and correct.
 
-1. **A cleaned résumé PDF** — the link the audience came for, and the only
-   item with a wired switch waiting for it. See *Résumé PDF* above.
-2. **Q-FRAQT** — Fraqt title and dates. *The résumé answers this; confirm.*
-3. **Q-SQL** — the SQL level, and whether the Pacific "query logic" was SQL or
-   DAX and Power Query inside Power BI.
-4. **LinkedIn URL.** *The résumé answers this; confirm.*
-5. **Location wording** for the header and colophon. *The résumé says
-   "Raleigh, NC | Open to remote contract work"; confirm.*
-6. **What she would do differently** on the diamond study.
-7. **Her approval on the About paragraph**, to drop the DRAFT marker.
-8. **A higher-resolution headshot**, if one exists. The current file is 400px.
-9. **A second project** — still the gate on the custom domain.
+1. **A cleaned résumé PDF** — the link the audience came for. Everything else
+   is wired; `site.resume.cleared` is the only switch. See *Résumé PDF*.
+2. **Fraqt's location** — the one entry printing "Not on record" now that the
+   `Location` row is back on all five.
+3. **What she would do differently** on the diamond study. Not in the source
+   and not inferable.
+4. **Her approval on the About paragraph**, to drop the DRAFT marker.
+5. **A decision on publishing the raw single-variable R²** (0.335 / 0.332).
+   It would make the aggregation reordering inspectable rather than asserted.
+6. **A higher-resolution headshot**, if one exists. The current file is 400px.
+7. **A second project** — still the only gate on the custom domain.

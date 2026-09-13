@@ -57,7 +57,7 @@ description: >-
   {{ EditorialHeading(
     "Five roles · 2023 – 2026",
     "Work",
-    "Each entry states the role, the dates, the tools, and one figure it can stand behind.",
+    "Each entry states the role, the place, the dates, the tools, and one figure it can stand behind.",
     "h2", "work-h") }}
 
   <ol class="numbered">
@@ -79,6 +79,7 @@ description: >-
         <div class="entry__side">
           {{ RecordMetadata([
             { label: "Role",  value: job.role },
+            { label: "Place", value: job.place },
             { label: "Dates", value: job.dates }
           ], job.org + " record") }}
 
@@ -151,8 +152,10 @@ description: >-
 
   <ul class="contact__list section__body">
     <li><a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></li>
+    <li><a href="{{ site.author.linkedin }}" rel="me">linkedin.com/in/nadiasrana</a></li>
+    <li>{{ site.author.location }}</li>
   </ul>
 
   {{ Marker("[BLOCKED: the résumé PDF is in the repo and confirmed text-based, but the link is not wired and the file is not published. It carries six items CONTENT.md blocks or has corrected — including a superseded pair of R² figures that the project page exists to correct. They are listed in CONTENT.md under Résumé PDF; they are deliberately not repeated here, because a marker that quotes a blocked figure publishes it. Supply a cleaned PDF, then set site.resume.cleared = true.]") }}
-  {{ Marker("[NEEDS CONTENT: LinkedIn URL — no verified URL on file, only a PDF export.]") }}
+
 </section>

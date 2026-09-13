@@ -11,9 +11,9 @@ description: >-
   four retailers agree. Two of them priced the same band at $1,550 and $3,249
   per carat.
 deck: >-
-  Clarity moves the price of a pear-shaped diamond more than color does.
-  Across 918 stones listed by four retailers, the two grades together still
-  leave more than a third of the price unexplained.
+  Clarity's grade averages fall more cleanly than color's, but color's steps
+  are worth more. Across 918 stones listed by four retailers, the two grades
+  together still leave more than a third of the price unexplained.
 # RecordMetadata, Schema B. Fixed rows: Period, Tools, Data, Status.
 record:
   - { label: Period, value: Spring 2026 }

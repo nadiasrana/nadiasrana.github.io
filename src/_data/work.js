@@ -13,6 +13,8 @@
  *
  *   org       the employer, as she would say it
  *   role      job title
+ *   place     location. Back in the schema 13 Sep 2026 — see the note on
+ *             Fraqt, which is the one entry that still has none
  *   dates     as CONTENT.md instructs them printed
  *   tools     practices first, then named tools
  *   evidence  EXACTLY ONE headline figure: { value, label }
@@ -30,6 +32,8 @@ export default [
     // put the routed records under Fraqt and was wrong.
     org: 'Archroma',
     role: 'Data analytics intern, Commercial Excellence',
+    // Charlotte, NC confirmed 13 Sep 2026 from her work-log export.
+    place: 'Charlotte, NC',
     dates: 'Summer 2026',
     // SAP, Power BI and Excel are the ONLY tools attributable to Archroma.
     // Source: her own public LinkedIn post about the internship. The work-log
@@ -58,11 +62,20 @@ export default [
 
   {
     org: 'Fraqt',
-    // Q-FRAQT, CONTENT.md open question 2. No title on file. The slot stays
-    // in the schema and carries a visible marker rather than a plausible
-    // guess or a quietly dropped row.
-    role: null,
-    dates: 'Pre-launch',
+    // Q-FRAQT closed 13 Sep 2026. The title is "Data and systems design".
+    //
+    // The résumé's "Founding Data Lead" was reviewed and REJECTED: the
+    // project is pre-launch, unregistered and has no users, and the
+    // implementation was substantially AI-assisted. A founding-lead title
+    // implies a company, a team and a shipped product, none of which exist.
+    // Do not re-adopt it. See CONTENT.md.
+    role: 'Data and systems design',
+    // The one entry with no location on file. Nothing was supplied for it,
+    // and a plausible "Remote" would be invention. RecordMetadata prints
+    // "Not on record" rather than dropping the row.
+    place: null,
+    // June – August 2026, confirmed independently of the résumé.
+    dates: 'June – August 2026',
     // CONTENT.md: design decisions only. No framework names, no index types,
     // no dimensions, no test counts.
     tools: ['Schema design', 'Corpus structuring'],
@@ -71,18 +84,20 @@ export default [
     evidence: { value: '1,194', label: 'federal source passages structured' },
     body: [
       'Structured 1,194 passages of public federal source material into the retrieval corpus: deciding what counts as one passage, what has to travel with it for a citation to hold, and where a document should be split.',
+      'The project is pre-launch: unregistered, and with no users.',
     ],
-    marker: '[NEEDS CONTENT: Fraqt job title and dates — Q-FRAQT. The entry prints "Pre-launch." until they land.]',
+    marker: null,
   },
 
   {
     org: 'Summer Conference, University of the Pacific',
     role: 'Operations analytics assistant',
+    place: 'Stockton, CA',
     dates: 'May – August 2025',
     tools: ['Data validation', 'SQL', 'Excel', 'SPSS', 'Power BI'],
     evidence: { value: '3,000+', label: 'participants in the program reported on' },
     body: [
-      'A program serving more than 3,000 participants in Stockton, California, reported on from datasets held in three different tools. I validated the SQL, Excel and SPSS data behind the reporting, then published Power BI dashboards that could be re-run for each recurring report instead of rebuilt for it.',
+      'A program serving more than 3,000 participants, reported on from datasets held in three different tools. I validated the SQL, Excel and SPSS data behind the reporting, then published Power BI dashboards that could be re-run for each recurring report instead of rebuilt for it.',
     ],
     // This role is the source that confirms SQL. See CONTENT.md, Q-SQL.
     marker: null,
@@ -91,13 +106,14 @@ export default [
   {
     org: 'Eberhardt Student Investment Fund',
     role: 'Student investment analyst',
+    place: 'Stockton, CA',
     dates: 'January – May 2025',
     tools: ['Financial analysis', 'Valuation', 'Research documentation'],
     // $6M confirmed publicly stated, 13 Sep 2026. The VERIFY gate is closed
     // and the marker is gone; the figure stands on its own.
     evidence: { value: '$6M', label: 'student-managed portfolio, approaching' },
     body: [
-      'Equity research on S&P 500 companies at the University of the Pacific in Stockton, California, for a student-managed portfolio: financial statements, earnings materials, the assumptions a valuation rests on, and what the downside looked like if those assumptions were wrong.',
+      'Equity research on S&P 500 companies for a student-managed portfolio at the University of the Pacific: financial statements, earnings materials, the assumptions a valuation rests on, and what the downside looked like if those assumptions were wrong.',
       'Each write-up carried its sources, its thesis, the catalysts, the valuation logic and the risk factors, because it had to survive a faculty-led investment committee arguing with it.',
     ],
     marker: null,
@@ -106,6 +122,7 @@ export default [
   {
     org: 'Northstar Insight Group',
     role: 'Co-founder',
+    place: 'Remote, U.S.',
     dates: 'January 2023 – December 2024',
     tools: ['Scoping', 'Analysis', 'Reporting'],
     // CONTENT.md: the role can be named; $45K, 20 engagements and 12 clients
