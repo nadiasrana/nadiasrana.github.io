@@ -14,13 +14,14 @@ description: Nadia Sultan Rana — background, education, principles and toolkit
   <div class="bio">
     <div class="bio__media">
       {% mediaFigure
-         "portrait-hillside.jpg",
-         "Nadia Sultan Rana standing on a grass hillside in a black top and cream trousers, facing the camera.",
-         "Standing on a hillside above Stockton, California.",
-         "Portrait · 2025",
-         "(min-width: 1200px) 392px, (min-width: 768px) calc(100vw - 128px), calc(100vw - 48px)",
-         "lazy",
-         false %}
+         "portrait-headshot.jpg",
+         "Studio headshot of Nadia Sultan Rana in a dark blazer against a warm neutral backdrop.",
+         "Nadia Sultan Rana.",
+         "Portrait",
+         "400px",
+         "eager",
+         false,
+         "figure--portrait" %}
 
       {% mediaFigure
          "lake-wall.jpg",
@@ -33,7 +34,15 @@ description: Nadia Sultan Rana — background, education, principles and toolkit
     </div>
 
     <div class="bio__intro">
-      {{ Marker("[NEEDS CONTENT: the first-person paragraph, in her words. This is the one thing on the site that cannot be assembled from the record, and inventing biography is worse than inventing a metric because a reader assumes this part is unmediated. Three or four sentences: how she got from biology to analytics, and what she is actually like to work with.]") }}
+      <p class="bio__lede">Hey, I’m Nadia. I love matcha and cats — I have two
+        tabby cats — and I’m always up for sightseeing. I’m originally from
+        North Carolina but went to college in California and loved it there.
+        Learning new things is a passion, along with trying new foods and
+        watching sunsets. Right now I’m obsessing over everything to do with
+        AI and data, but I still make decisions the same way: after deep
+        analysis.</p>
+
+      {{ Marker("[DRAFT: her words, supplied 13 Sep 2026, pending her approval on wording. Do not edit it into something more formal — the plainness is the point, and it is the only unmediated voice on the site. Confirm before launch.]") }}
     </div>
   </div>
 </section>
@@ -46,9 +55,10 @@ description: Nadia Sultan Rana — background, education, principles and toolkit
       { label: "Now",       value: "M.S. Data Analytics Engineering, Northeastern University. January 2026 – May 2027." },
       { label: "Honors",    value: "Dean’s Honor List. President’s Merit Scholarship." },
       { label: "Service",   value: "VP of Scholarships and Awards, Delta Sigma Pi: scoring applications against fixed criteria and writing the reasoning behind each decision." },
+      { label: "From",      value: "North Carolina." },
       { label: "Languages", value: "English, native. Urdu, Arabic and Spanish, limited working." }
     ], "Background") }}
-    {{ Marker("[NEEDS CONTENT: where she is from, and the location wording she wants public. Nothing on file for the first; the second is open question 6 in CONTENT.md.]") }}
+    {{ Marker("[NEEDS CONTENT: the location wording she wants public in the header and the colophon. Open question 6 in CONTENT.md. Her résumé says “Raleigh, NC | Open to remote contract work”, which would answer it — confirm before using it.]") }}
   </div>
 </section>
 
@@ -173,5 +183,5 @@ description: Nadia Sultan Rana — background, education, principles and toolkit
     <li><a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></li>
   </ul>
   {{ Marker("[NEEDS CONTENT: LinkedIn URL — no verified URL on file, only a PDF export.]") }}
-  {{ Marker("[NEEDS CONTENT: résumé PDF — held until the Q1–Q5 conflicts resolve.]") }}
+  {{ Marker("[BLOCKED: the résumé PDF is in the repo and confirmed text-based, but the link is not wired and the file is not published. It carries six items CONTENT.md blocks or has corrected — including a superseded pair of R² figures that the project page exists to correct. They are listed in CONTENT.md under Résumé PDF; they are deliberately not repeated here, because a marker that quotes a blocked figure publishes it. Supply a cleaned PDF, then set site.resume.cleared = true.]") }}
 </section>

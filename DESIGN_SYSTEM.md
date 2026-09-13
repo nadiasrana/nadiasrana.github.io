@@ -575,7 +575,7 @@ that skips auto-orientation renders it on its side.
 
 ### The grade
 
-One grade, applied identically to every image. Rendered and inspected on the
+One grade, with one documented exception. Rendered and inspected on the
 three hardest cases — sandstone, green hillside, blue lake — before being
 written here.
 
@@ -595,9 +595,27 @@ sharp(source)
 unrotated frame and lands in the wrong place.
 
 Effect: saturated greens fall back to sage, blue sky goes to a warm neutral,
-the sandstone resolves to something close to `--paper` itself. Her ivory
-trousers in `IMG_3857` land near `#F4F1E8` after the grade, which is why that
-frame carries the portrait.
+the sandstone resolves to something close to `--paper` itself.
+
+**Exception: the studio headshot gets a gentler version.**
+
+```js
+.modulate({ saturation: 0.88, brightness: 1.02 })
+.linear(0.96, 6)
+.recomb([[1.015, 0, 0], [0, 1.0, 0], [0, 0, 0.975]])
+```
+
+This is a deliberate exception, not an inconsistency. The full grade exists to
+reconcile four *outdoor* colour temperatures with an ivory palette. A studio
+portrait on a warm neutral backdrop is already in that palette — its ground
+measures close to `--paper-deep` unmodified. Rendered side by side, the full
+grade desaturates skin to the point of looking unwell and lifts the blazer's
+blacks into a muddy grey. The gentler version keeps the family resemblance
+without damaging the two things the photograph is actually of.
+
+The rule this follows: **the grade serves the palette, and the palette serves
+the photograph.** Applying a correction to an image that does not need it is
+not consistency, it is damage.
 
 ### Pipeline
 
@@ -633,8 +651,19 @@ rendered and visually checked.
 | Placement | Source | Crop `{left, top, width, height}` | Result | Ratio |
 |---|---|---|---|---|
 | **Hero** | `IMG_3013.JPG` | `{0, 950, 1536, 1024}` | Sandstone walls fill the frame, figure centred, green foliage and sky removed | 3:2 |
-| **About — portrait** | `IMG_3857.JPG` | `{180, 2047, 2320, 2900}` | Full figure held, horizon and sky removed, ivory trousers against sage | 4:5 |
+| **About — portrait** | `nadia-headshot.jpg` | none — every pixel is needed | Studio headshot, dark blazer, warm neutral backdrop | 1:1 |
 | **About — secondary** | `IMG_4273.JPG` | `{308, 614, 1228, 819}` | Second person fully removed; lake and golden hills behind | 3:2 |
+
+**The portrait is a 400 × 400 export** — a LinkedIn profile crop, and the
+smallest source on the site. `.figure--portrait` caps the figure at its native
+400px so it is never upscaled at any breakpoint. That matters most between
+768 and 1199px, where the bio is a single column and an uncapped figure would
+stretch past 1000px from a 400px file.
+
+The cap is asserted, not assumed: verification measures every rendered image
+against its own `naturalWidth` at 375 and 1440 and fails on any upscale.
+
+A higher-resolution original would allow a larger portrait. Worth asking for.
 
 **On `IMG_4273`:** cropping the left edge alone is not sufficient. The second
 person's arm occupies roughly the left 16% of the frame, but their knee
@@ -648,12 +677,15 @@ Per the brief: leave the slot out rather than force it.
 
 | Source | Assigned placement | Verdict |
 |---|---|---|
+| `IMG_3857.JPG` | About — portrait (former) | **Comes off.** It was the stand-in for the missing headshot. The headshot now exists, and keeping both a studio portrait and a full-figure portrait of the same person is a gallery, not a composition. It remains the highest-resolution source in the set if a large image is ever needed |
+| `background.jpg` | none | **Never use.** A stock-looking coastline with no relationship to her or the work, and a saturated cyan that fights the ivory. Stays in `pictures/`, unused |
 | `IMG_3898.JPG` | About — secondary | **Leave out.** Compositionally busy — tangled bare branches across the upper two-thirds — and no crop resolves that without losing the subject. The grade handles the blue cast well, but at 1330px wide it cannot carry a `wide` placement, and the clothing is loungewear where the other frames are not |
 | `IMG_4353.JPG` | Optional | **Leave out.** The sunset sky is a saturated orange-to-blue ramp that is the single furthest thing from the palette in the set. The grade reduces it but cannot reconcile it. Cropping the sky out removes the reason the photograph exists |
 
 Result: **three images on the site**, one per placement, each at a placement
-its resolution can carry. Three graded photographs that agree with each other
-is the register. Five that do not is a camera roll.
+its resolution can carry — a studio portrait, a hero, and one environmental
+frame. Three graded photographs that agree with each other is the register.
+Seven that do not is a camera roll.
 
 ### Alt text
 

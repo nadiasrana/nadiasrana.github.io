@@ -1025,6 +1025,21 @@ a:hover { text-decoration-color: var(--ink); }
 
 .bio__intro p { max-width: var(--measure); color: var(--ink-secondary); }
 
+/* Her own words, and the only unmediated voice on the site. Set a step up
+   from body copy so it reads as speech rather than as another description. */
+.bio__lede {
+  font-size: var(--t-deck);
+  line-height: 1.45;
+  color: var(--ink);
+  max-width: var(--measure-deck);
+}
+
+/* The studio headshot is a 400px square export — the smallest source on the
+   site. Capping the figure at its native width means it is never upscaled at
+   any breakpoint, which matters most between 768 and 1199 where the bio is a
+   single column and an uncapped figure would stretch past 1000px. */
+.figure--portrait { max-width: 400px; }
+
 /* Two stacked figures in the media column. The gap is one section step so
    they read as a pair rather than as one image and a stray second one. */
 .bio__media > .figure + .figure { margin-block-start: var(--space-6); }

@@ -2,12 +2,19 @@ import Image from '@11ty/eleventy-img';
 import anchor from 'markdown-it-anchor';
 import footnote from 'markdown-it-footnote';
 import path from 'node:path';
+import site from './src/_data/site.js';
 
 export default function (eleventyConfig) {
   // Assets are copied, not processed. The stylesheet is hand-written and
   // stays that way; there is no CSS build.
   eleventyConfig.addPassthroughCopy({ 'src/assets/css': 'assets/css' });
   eleventyConfig.addPassthroughCopy({ 'src/assets/fonts': 'assets/fonts' });
+  // The résumé ships only once site.resume.cleared is true. Until then the
+  // file lives in the repo but never reaches _site, so the figures CONTENT.md
+  // blocks are not reachable at a URL. See src/_data/site.js.
+  if (site.resume.cleared) {
+    eleventyConfig.addPassthroughCopy({ 'src/assets/doc': 'assets/doc' });
+  }
   eleventyConfig.addWatchTarget('src/assets/css/');
   // src/assets/img holds the graded source plates. They are resized and
   // re-encoded by the `image` shortcode below rather than copied, so they
@@ -41,7 +48,7 @@ export default function (eleventyConfig) {
   // shipped a hero figure with no image inside it for exactly that reason.
   eleventyConfig.addAsyncShortcode(
     'mediaFigure',
-    async function (src, alt, caption, meta, sizes = '100vw', loading = 'lazy', wide = true) {
+    async function (src, alt, caption, meta, sizes = '100vw', loading = 'lazy', wide = true, extraClass = '') {
       for (const [name, value] of Object.entries({ src, alt, caption, meta })) {
         if (!value || !String(value).trim()) {
           throw new Error(`MediaFigure: missing required slot "${name}" for ${src}`);
@@ -70,7 +77,7 @@ export default function (eleventyConfig) {
       });
 
       return [
-        `<figure class="figure${wide ? ' figure--wide' : ''}">`,
+        `<figure class="figure${wide ? ' figure--wide' : ''}${extraClass ? ' ' + extraClass : ''}">`,
         `<div class="figure__media">${img}</div>`,
         '<figcaption class="figure__caption">',
         `<span class="figure__text">${caption}</span>`,

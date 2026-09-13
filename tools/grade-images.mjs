@@ -30,6 +30,26 @@ const grade = (pipeline) =>
       [0, 0, 0.93],
     ]);
 
+// The studio headshot gets a gentler version of the same move, and this is a
+// deliberate exception rather than an inconsistency.
+//
+// The grade above exists to reconcile four outdoor colour temperatures with
+// an ivory palette. A studio portrait on a warm neutral backdrop is already
+// in that palette. Rendered side by side, the full grade desaturates skin to
+// the point of looking unwell and lifts the blazer's blacks into a muddy
+// grey. This keeps the family resemblance -- saturation eased, a slight warm
+// shift, blacks lifted a little -- without damaging the two things the
+// photograph is actually of.
+const gradePortrait = (pipeline) =>
+  pipeline
+    .modulate({ saturation: 0.88, brightness: 1.02 })
+    .linear(0.96, 6)
+    .recomb([
+      [1.015, 0, 0],
+      [0, 1.0, 0],
+      [0, 0, 0.975],
+    ]);
+
 // Crop rectangles are on the ORIENTATION-CORRECTED frame, so .rotate() has to
 // run before .extract(). IMG_3857 is stored landscape with EXIF orientation 8
 // and renders on its side without it.
@@ -40,9 +60,13 @@ const PLATES = [
     crop: { left: 0, top: 950, width: 1536, height: 1024 }, // 3:2
   },
   {
-    name: 'portrait-hillside',
-    from: 'pictures/IMG_3857.JPG',
-    crop: { left: 180, top: 2047, width: 2320, height: 2900 }, // 4:5
+    name: 'portrait-headshot',
+    from: 'pictures/nadia-headshot.jpg',
+    // No crop: the source is 400x400 and every pixel of it is needed.
+    // It is a 400px square export, which is the smallest usable file on the
+    // site -- see the note below.
+    crop: null,
+    grade: gradePortrait,
   },
   {
     name: 'lake-wall',
@@ -54,16 +78,30 @@ const PLATES = [
   },
 ];
 
-// IMG_3898 and IMG_4353 are deliberately absent. Neither survives its crop:
-// 3898 is a tangle of bare branches at 1330px wide, and 4353's sunset ramp is
-// the furthest thing in the set from the palette. A slot left empty beats an
-// image forced into it. See DESIGN_SYSTEM.md.
+// Deliberately absent, all four:
+//
+//   IMG_3898  a tangle of bare branches at 1330px wide; no crop rescues it.
+//   IMG_4353  the sunset ramp is the furthest thing in the set from the
+//             palette, and cropping the sky out removes the photograph.
+//   IMG_3857  was the stand-in for the missing headshot. The headshot now
+//             exists, and keeping both a studio portrait and a full-figure
+//             portrait of the same person is a gallery, not a composition.
+//   background.jpg  a stock-looking coastline with no relationship to her or
+//             to the work, and a saturated cyan that fights the ivory. It
+//             stays in pictures/, unused.
+//
+// A slot left empty beats an image forced into it. See DESIGN_SYSTEM.md.
 
 mkdirSync(OUT, { recursive: true });
 
 for (const plate of PLATES) {
   const to = `${OUT}/${plate.name}.jpg`;
-  const info = await grade(sharp(plate.from).rotate().extract(plate.crop))
+  // .rotate() must precede .extract(): IMG_3857 is stored landscape with an
+  // EXIF rotation flag, and a crop applied to the unrotated frame lands in
+  // the wrong place.
+  let pipeline = sharp(plate.from).rotate();
+  if (plate.crop) pipeline = pipeline.extract(plate.crop);
+  const info = await (plate.grade || grade)(pipeline)
     .jpeg({ quality: 84, mozjpeg: true })
     .toFile(to);
   const ratio = (info.width / info.height).toFixed(3);

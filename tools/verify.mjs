@@ -226,7 +226,10 @@ if (unused.length) notes.push(`CSS classes with no consumer: ${unused.join(', ')
 
 // Spacing scale is closed.
 // Spacing values, plus the three breakpoints and the panel max width.
-const SCALE = new Set([0, 1, 2, 3, 4, 8, 12, 16, 20, 24, 32, 48, 64, 96, 128, 160, 768, 1199, 1200, 1440]);
+// Spacing values, the three breakpoints, the panel max width, and 400 —
+// the headshot's native width, which caps .figure--portrait so a 400px
+// source is never upscaled.
+const SCALE = new Set([0, 1, 2, 3, 4, 8, 12, 16, 20, 24, 32, 48, 64, 96, 128, 160, 400, 768, 1199, 1200, 1440]);
 const strayPx = [
   ...new Set([...decls.matchAll(/(\d+)px/g)].map((m) => Number(m[1]))),
 ].filter((n) => !SCALE.has(n));
@@ -268,6 +271,28 @@ for (const [i, e] of entries.entries()) {
   ok(/class="tools"/.test(h), `work entry ${i + 1}: no tools list`);
   ok(/class="entry__numeral"/.test(h), `work entry ${i + 1}: no numeral`);
   ok(/aria-hidden="true"/.test(h), `work entry ${i + 1}: numeral not hidden from AT`);
+}
+
+/* ---- The résumé gate -------------------------------------------------- */
+// While site.resume.cleared is false the PDF must not reach _site and must
+// not be linked. It carries figures CONTENT.md blocks; the gate is the only
+// thing keeping them off a public URL.
+const { default: siteData } = await import('../src/_data/site.js');
+const resumeShipped = files.some((f) => f.endsWith('.pdf'));
+const resumeLinked = /href="[^"]*\.pdf"/.test(allHtml);
+if (siteData.resume.cleared) {
+  ok(resumeShipped, 'resume.cleared is true but no PDF was written to _site');
+  ok(resumeLinked, 'resume.cleared is true but nothing links to the PDF');
+} else {
+  ok(!resumeShipped, 'resume.cleared is false but a PDF reached _site');
+  ok(!resumeLinked, 'resume.cleared is false but a page links to the PDF');
+}
+
+// A marker must never quote a figure it exists to keep off the site.
+for (const m of allHtml.matchAll(/class="marker[^"]*">([\s\S]*?)<\/p>/g)) {
+  for (const bad of ['$45K', '4.00', 'GPA', '(919)']) {
+    ok(!m[1].includes(bad), `a marker quotes a blocked item: ${bad}`);
+  }
 }
 
 /* ---- Report ----------------------------------------------------------- */

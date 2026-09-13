@@ -21,6 +21,10 @@ Price Drivers study. That is enough for a credible soft launch on the
 a portfolio with one item reads as a coursework page rather than a body of
 work.
 
+✅ **The $6M gate is cleared (13 Sep 2026).** The remaining gate on the custom
+domain is a second project. The remaining gate on the *résumé link* is a
+cleaned PDF — see below.
+
 ---
 
 ## Sample content — REMOVED ✅
@@ -199,15 +203,14 @@ January – May 2025.
   factors for a faculty-led investment committee
 - Tags: Financial analysis · Valuation · Research documentation
 
-⛔ **[VERIFY] the $6M before launch.** Confirm the fund states its portfolio
-size publicly. Student-managed fund AUM usually is, but this figure names a
-real institution and it is the only unverified public number on the site. A
-marker sits on the entry. **If it is not public, drop the figure and keep the
-rest of the entry** — it stands up without it.
+✅ **$6M CONFIRMED PUBLIC — closed 13 Sep 2026. Do not re-open.** The fund
+states its portfolio size publicly. The VERIFY marker is removed from the
+entry and the figure stands on its own.
 
-This supersedes the old blanket block on "$6M" in the ⛔ list, which grouped it
-with the Northstar figures. Those still wait for Q1; this one waits only on a
-public-source check.
+**This clears the launch gate.** It was the only unverified public number on
+the site. The remaining launch condition is a second project, not this.
+
+The Northstar figures are a separate matter and still wait for Q1.
 
 ---
 
@@ -289,9 +292,28 @@ consistent treatment by `tools/grade-images.mjs`:
 `IMG_3898.JPG` and `IMG_4353.JPG` are deliberately unused: neither survives
 its crop. See `DESIGN_SYSTEM.md` section 6.
 
-⚠️ **Still open: a studio headshot.** `IMG_3857` is a full-figure
-environmental portrait, not a headshot. It is honest and it works, but if a
-proper headshot exists it should replace it. **No stock photograph.**
+✅ **Q-PHOTO CLOSED 13 Sep 2026.** The studio headshot arrived —
+`pictures/nadia-headshot.jpg`, dark blazer, warm neutral backdrop. It is the
+About portrait, and `IMG_3857` comes off: keeping both a studio portrait and
+a full-figure portrait of the same person is a gallery, not a composition.
+
+⚠️ **One caveat on the file.** It is a **400 × 400** export — a LinkedIn
+profile crop, and the smallest source on the site. The figure is capped at its
+native 400px so it is never upscaled, which means the About portrait is
+deliberately small. That reads fine against large serif type, but **a
+higher-resolution original would allow a larger portrait.** Worth asking for.
+
+It is also the one image that does **not** get the standard grade. The grade
+exists to reconcile four outdoor colour temperatures with the ivory palette; a
+studio portrait on a warm neutral backdrop is already in it. Rendered side by
+side, the full grade desaturates skin to the point of looking unwell and lifts
+the blazer's blacks into a muddy grey. A gentler version keeps the family
+resemblance without damaging the two things the photograph is of. See
+`tools/grade-images.mjs`.
+
+⛔ **`pictures/background.jpg` is not to be used.** A stock-looking coastline
+with no relationship to her or the work, and a saturated cyan that fights the
+palette. It stays in `pictures/`, unused. **No stock photography.**
 
 ---
 
@@ -406,6 +428,8 @@ authorised 12 Sep 2026.
 - Northstar Insight Group, co-founder, Jan 2023 – Dec 2024 ⚠️ Tier B, see below
 - Eberhardt Student Investment Fund, student investment analyst, Spring 2025
   ⚠️ Tier B
+- ✅ **From North Carolina** (confirmed 13 Sep 2026). On the About record.
+  This is a different question from where she lives now, which is still open
 - VP of Scholarships and Awards, Delta Sigma Pi
 - ⚠️ **Carlson Lab research was CUT from the site 13 Sep 2026.** It appeared
   on `/about/` but is not on this verified list, and `CLAUDE.md` rule 4
@@ -430,8 +454,10 @@ authorised 12 Sep 2026.
   dimensions, no test counts. Design decisions only.
 - **Northstar figures** ($45K, 20 engagements, 12 clients) until Q1 and Q8
   resolve. The role can be named; the numbers wait.
-- ~~Eberhardt $6M~~ **Superseded 12 Sep 2026:** conditionally cleared, gated
-  only on confirming the fund states it publicly. See Work entry 04.
+- ~~Eberhardt $6M~~ ✅ **CLEARED 13 Sep 2026.** Confirmed publicly stated. On
+  the site, unmarked.
+- ⛔ **The résumé PDF as it currently stands.** See *Résumé* below. It carries
+  five things on this list.
 
 ---
 
@@ -447,6 +473,79 @@ alternative and is faster to build.
 
 ---
 
+## Résumé PDF ⛔ — text-based, but blocked on its own contents
+
+**Added 13 Sep 2026.** The file is in the repo at
+`src/assets/doc/nadia-sultan-rana-resume.pdf`.
+
+✅ **Confirmed text-based, not a scan.** Nine embedded fonts, 102 text
+operators, 15,860 extractable characters, zero image XObjects. Selectable,
+searchable and ATS-parseable. Produced by LaTeX.
+
+⛔ **The download link is NOT wired, and this is a conflict to resolve, not a
+refusal.** Reading the extracted text against this document, the PDF carries
+**five things CONTENT.md blocks or has corrected**. Linking it publishes all
+of them to exactly the reader the block list exists to protect her from:
+
+| In the PDF | CONTENT.md says |
+|---|---|
+| **GPA: 4.00**, twice | ⛔ "Tier B, no transcript seen. Off the site until confirmed" |
+| **$45K revenue, 20 paid engagements, 12 clients**, plus 45% repeat, 80+ issues, 100+ materials | ⛔ "Northstar figures … until Q1 and Q8 resolve" |
+| **R² = 0.40 vs 0.29 for color** | ⛔ "**Corrected 12 Sep 2026.** Anything quoting R² 0.40/0.29 is **stale**." The site publishes 0.909 / 0.839 / 0.633 |
+| **"a $1,700/ct retailer gap against the Rapaport guide"** | ⛔ "Rapaport, **separate finding** … **Do not weld this to the $1,700 figure**" — the PDF welds them |
+| **Phone (919) 888-9512** | ⚠️ "decide separately whether it goes on a public page. **Default: no**" |
+| **PostgreSQL, R**, A/B testing | Not in the verified stack. Python is `Exposure` only |
+
+The R² item is the serious one. The site's single strongest page publishes the
+corrected figures next to a full explanation of *why* the naive comparison is
+wrong. A résumé link one click away carrying the superseded numbers makes the
+site contradict itself on its best evidence — and the contradiction is
+precisely the error the page is about.
+
+**How it is wired.** `site.resume.cleared` in `src/_data/site.js` is `false`.
+While false, the PDF is not passed through to `_site` at all, so it is not
+reachable at a URL, and the Contact blocks show a `[BLOCKED: …]` marker
+instead of a link. **Supply a cleaned PDF and set `cleared: true`** — the
+passthrough and the link both key off that one flag and need no other change.
+
+### The résumé also answers three open questions
+
+Flagged rather than applied, because this document records that a PDF export
+has already been considered and not treated as verification:
+
+- **Q-FRAQT** — "Founding Data Lead | Pre-launch Project", June 2026 – Aug. 2026
+- **LinkedIn** — `linkedin.com/in/nadiasrana`
+- **Location** — "Raleigh, NC | Open to remote contract work"
+
+It also supplies locations previously not on file: Archroma **Charlotte, NC**;
+Northstar **Remote, U.S.** With those, all five work entries would have a
+location and the `Location` row could go back into `RecordMetadata` Schema A.
+
+**None of this is on the site.** Confirm and these close in one pass.
+
+---
+
+## About paragraph — DRAFT ⚠️
+
+**Supplied 13 Sep 2026, in her words. On the site, marked DRAFT, pending her
+approval on wording.**
+
+> Hey, I'm Nadia. I love matcha and cats — I have two tabby cats — and I'm
+> always up for sightseeing. I'm originally from North Carolina but went to
+> college in California and loved it there. Learning new things is a passion,
+> along with trying new foods and watching sunsets. Right now I'm obsessing
+> over everything to do with AI and data, but I still make decisions the same
+> way: after deep analysis.
+
+⛔ **Do not edit this into something more formal.** The plainness is the point,
+and it is the only unmediated voice on the site — every other sentence is
+assembled from the record. The last clause is also the only place the site
+says what she is like to work with in her own words.
+
+Confirm the wording before launch and remove the DRAFT marker.
+
+---
+
 ## Open content questions
 
 - ~~Does the site lead with analytics roles or contractor work?~~ **Resolved:**
@@ -458,10 +557,19 @@ alternative and is faster to build.
 
 ### Open, in priority order
 
-1. **Résumé PDF** — the link the audience came for. Held on Q1–Q5.
-2. **Q-FRAQT** — Fraqt title and dates.
-3. **$6M** — confirm the Eberhardt figure is publicly stated. Gates launch.
-4. **Q-SQL** — the SQL level, and what the Pacific query logic was.
-5. **Q-PHOTO** — the headshot file.
-6. **LinkedIn URL** and **location wording**.
-7. **What she would do differently** on the diamond study.
+**Updated 13 Sep 2026.** Six of the previous list are closed: $6M, the
+headshot, where she is from, the About paragraph (drafted), the résumé's
+format question, and the journal removal.
+
+1. **A cleaned résumé PDF** — the link the audience came for, and the only
+   item with a wired switch waiting for it. See *Résumé PDF* above.
+2. **Q-FRAQT** — Fraqt title and dates. *The résumé answers this; confirm.*
+3. **Q-SQL** — the SQL level, and whether the Pacific "query logic" was SQL or
+   DAX and Power Query inside Power BI.
+4. **LinkedIn URL.** *The résumé answers this; confirm.*
+5. **Location wording** for the header and colophon. *The résumé says
+   "Raleigh, NC | Open to remote contract work"; confirm.*
+6. **What she would do differently** on the diamond study.
+7. **Her approval on the About paragraph**, to drop the DRAFT marker.
+8. **A higher-resolution headshot**, if one exists. The current file is 400px.
+9. **A second project** — still the gate on the custom domain.

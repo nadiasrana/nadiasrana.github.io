@@ -93,14 +93,14 @@ export default [
     role: 'Student investment analyst',
     dates: 'January – May 2025',
     tools: ['Financial analysis', 'Valuation', 'Research documentation'],
-    // The $6M is stated ONCE, here, so the VERIFY gate has one thing to drop.
+    // $6M confirmed publicly stated, 13 Sep 2026. The VERIFY gate is closed
+    // and the marker is gone; the figure stands on its own.
     evidence: { value: '$6M', label: 'student-managed portfolio, approaching' },
     body: [
       'Equity research on S&P 500 companies at the University of the Pacific in Stockton, California, for a student-managed portfolio: financial statements, earnings materials, the assumptions a valuation rests on, and what the downside looked like if those assumptions were wrong.',
       'Each write-up carried its sources, its thesis, the catalysts, the valuation logic and the risk factors, because it had to survive a faculty-led investment committee arguing with it.',
     ],
-    marker:
-      '[VERIFY before launch: the $6M figure. Confirm the fund states its portfolio size publicly. Student-managed fund AUM usually is, but this is her only unverified public number and it names a real institution. If it is not public, the entry drops the figure and keeps the rest.]',
+    marker: null,
   },
 
   {
