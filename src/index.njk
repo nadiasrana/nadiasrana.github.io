@@ -1,238 +1,158 @@
 ---
 layout: layouts/base.njk
-description: Data modeling, reconciliation, data quality and structured evaluation — and a journal about the systems that carry them.
+description: >-
+  Nadia Sultan Rana builds the models and the checks that decide whether a
+  number can be trusted. Data modeling, reconciliation, data quality and
+  structured evaluation.
 ---
-{% from "partials/figure.njk" import figure %}
+{% from "macros/components.njk" import EditorialHeading, RecordMetadata, EditorialIndex, Marker, QuietEmptyState %}
 
 {# ===================================================================
-   Cover. The name is the one dark object in the room. Motion 1 of 3
-   wipes it up from below, once, on load. See DESIGN.md.
+   Hero. Her name, what she does, and one photograph.
    =================================================================== #}
-<div class="shell">
-  <section class="hero" aria-labelledby="name-h">
-    <p class="eyebrow">{{ site.author.role }}</p>
-    <h1 class="hero__name" id="name-h">{{ site.title }}</h1>
-    <p class="lead">Notes on data, evidence, and the strange act of
-      deciding whether a number can be trusted.</p>
-    <div class="hero__links">
-      <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
-      <span class="needs-content">[NEEDS CONTENT: résumé PDF. Held until the
-        Q1–Q5 conflicts resolve. Highest-priority gap on the site.]</span>
-    </div>
-  </section>
-</div>
+<section class="hero" aria-labelledby="name-h">
+  <p class="hero__kicker">{{ site.author.role }} · M.S. candidate, Northeastern</p>
+  <h1 class="hero__name" id="name-h">{{ site.title }}</h1>
+  <p class="hero__lead">I build the models and the checks that decide whether
+    a number can be trusted.</p>
+  <p class="hero__links">
+    <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
+    <a href="/#work">See the work</a>
+  </p>
 
-{# Ticker. One marquee on the whole site, and it stops dead under
-   prefers-reduced-motion rather than merely slowing down. #}
-<div class="ticker" aria-hidden="true">
-  <div class="ticker__track">
-    <span>Reconciliation</span><span>·</span><span>Data dictionaries</span><span>·</span>
-    <span>Structured evaluation</span><span>·</span><span>Entity resolution</span><span>·</span>
-    <span>Validation rules</span><span>·</span><span>Field notes</span><span>·</span>
-    <span>Reconciliation</span><span>·</span><span>Data dictionaries</span><span>·</span>
-    <span>Structured evaluation</span><span>·</span><span>Entity resolution</span><span>·</span>
-    <span>Validation rules</span><span>·</span><span>Field notes</span><span>·</span>
+  <div class="hero__figure">
+    {% mediaFigure
+       "hero-canyon.jpg",
+       "Nadia Sultan Rana standing between two sandstone walls in a narrow canyon, back to the camera, one hand resting on the rock either side.",
+       "Sandstone, worked into shape by water over a longer run than anybody was watching for.",
+       "Photograph · 2024",
+       "(min-width: 1536px) 1184px, (min-width: 1200px) calc(100vw - 256px), (min-width: 768px) calc(100vw - 128px), calc(100vw - 48px)",
+       "eager" %}
   </div>
-</div>
-
-{# ===================================================================
-   What I do. The one sand-filled section. Label colour steps up to
-   --secondary inside it: --muted is 4.03:1 on sand and fails.
-   =================================================================== #}
-<div class="panel">
-  <div class="shell">
-    <section class="section" id="approach" aria-labelledby="approach-h">
-      <h2 class="section__head" id="approach-h">What I do</h2>
-      <p class="lead">Most of my work is making two systems agree on what a
-        record means.</p>
-      <p>Data models and dictionaries that hold up when someone else uses
-        them, reconciliation between systems that were never built to match,
-        validation rules that catch the records worth a second look, and
-        evaluation work scored against written criteria rather than
-        impressions. Currently a master&rsquo;s candidate in data analytics
-        engineering at Northeastern, looking for full-time analytics roles.</p>
-
-      <ul class="rail">
-        <li><span class="rail__figure">1,080</span><span class="rail__label">records routed to human review</span></li>
-        <li><span class="rail__figure">1,194</span><span class="rail__label">federal passages structured</span></li>
-        <li><span class="rail__figure">203</span><span class="rail__label">fields in a data dictionary</span></li>
-        <li><span class="rail__figure">3,000+</span><span class="rail__label">participants in a program reported on</span></li>
-      </ul>
-    </section>
-  </div>
-</div>
+</section>
 
 {# =================================================================== #}
-<div class="shell">
+<section class="section" id="approach" aria-labelledby="approach-h">
+  {{ EditorialHeading(
+    "What I do",
+    "Most of my work is making two systems agree on what a record means.",
+    "Data models and dictionaries that hold up when somebody else uses them, reconciliation between systems that were never built to match, validation rules that catch the records worth a second look, and evaluation scored against written criteria rather than impressions.",
+    "h2", "approach-h") }}
 
-  {%- set posts = collections.writing %}
-  {%- set featured = (posts | where("featured", true) | limit(1))[0] or posts[0] %}
+  <div class="prose section__body">
+    <p>Currently a master&rsquo;s candidate in data analytics engineering at
+      Northeastern, looking for full-time analytics roles.</p>
+  </div>
+</section>
 
-  {%- if featured %}
-  <section class="section" id="featured" aria-labelledby="featured-h">
-    <h2 class="eyebrow" id="featured-h">The feature</h2>
-    <div class="feature">
-      <a class="feature__media" href="{{ featured.url }}" tabindex="-1" aria-hidden="true">
-        {{ figure(featured.data.coverImage, featured.data.coverAlt or featured.data.title,
-                  featured.data.coverCaption, featured.data.coverCredit, none, "4/3") }}
-      </a>
-      <div class="feature__body">
-        <p class="labelrow">
-          <span class="labelrow__cat">{{ featured.data.category }}</span>
-          <span class="labelrow__sep" aria-hidden="true"></span>
-          <time datetime="{{ featured.data.date | iso }}">{{ featured.data.date | readable }}</time>
-          <span class="labelrow__sep" aria-hidden="true"></span>
-          <span>{{ featured.templateContent | readingTime }} min read</span>
-        </p>
-        <h3 class="feature__title"><a href="{{ featured.url }}">{{ featured.data.title }}</a></h3>
-        <p>{{ featured.data.description }}</p>
-      </div>
-    </div>
-  </section>
-  {%- endif %}
+{# ===================================================================
+   Work. Five entries, one fixed shape.
 
-  {# Editorial index, numbered. Not cards. #}
-  <section class="section" id="contents" aria-labelledby="contents-h">
-    <h2 class="section__head" id="contents-h">Contents</h2>
-    <ol class="index index--lg">
-      {%- for item in posts | limit(6) %}
-      <li class="index__row">
-        <span class="index__num">{{ loop.index | pad }}</span>
-        <span class="index__main">
-          <a class="index__link" href="{{ item.url }}">{{ item.data.title }}</a>
-          <span class="index__desc">{{ item.data.description }}</span>
-        </span>
-        <span class="index__meta">
-          <span class="index__cat">{{ item.data.category }}</span>
-          <time datetime="{{ item.data.date | iso }}">{{ item.data.date | readable }}</time>
-        </span>
-      </li>
-      {%- else %}
-      <li class="empty">No writing published yet.</li>
-      {%- endfor %}
-    </ol>
-    <p class="more"><a href="/writing/">All writing</a></p>
-  </section>
-</div>
+   Every entry fills every slot: role, dates, tools, and exactly one
+   headline figure. The schema lives in src/_data/work.js so it cannot
+   drift entry to entry, which is what made the previous version read
+   as unfinished. See DESIGN_SYSTEM.md, RecordMetadata / Schema A.
+   =================================================================== #}
+<section class="section" id="work" aria-labelledby="work-h">
+  {{ EditorialHeading(
+    "Five roles · 2023 – 2026",
+    "Work",
+    "Each entry states the role, the dates, the tools, and one figure it can stand behind.",
+    "h2", "work-h") }}
 
-{# Visual break: a generative SVG artifact, drawn in code. No stock imagery. #}
-<div class="shell">
-  <section class="section" aria-labelledby="plate-h">
-    <h2 class="visually-hidden" id="plate-h">Plate</h2>
-    <figure class="plate" data-reveal>
-      <svg viewBox="0 0 1200 320" role="img" aria-label="Abstract chart: a scatter of records, most resolved automatically, a band routed to human review." preserveAspectRatio="xMidYMid meet">
-        <g class="plate__grid">
-          {%- for i in range(0, 13) %}
-          <line x1="{{ i * 100 }}" y1="0" x2="{{ i * 100 }}" y2="320"></line>
-          {%- endfor %}
-          {%- for i in range(0, 5) %}
-          <line x1="0" y1="{{ i * 80 }}" x2="1200" y2="{{ i * 80 }}"></line>
-          {%- endfor %}
-        </g>
-        {# Two populations, deliberately separated, so the picture argues
-           something instead of being texture: a dense mass the rule resolved,
-           and a thin accent band it refused to decide. #}
-        <g class="plate__dots">
-          {%- for i in range(0, 260) %}
-          {%- set x = (i * 173) % 1186 + 7 %}
-          {%- set y = 140 + ((i * i * 17) % 170) %}
-          <circle cx="{{ x }}" cy="{{ y }}" r="2"></circle>
-          {%- endfor %}
-        </g>
-        <g class="plate__dots plate__dots--review">
-          {%- for i in range(0, 34) %}
-          {%- set x = (i * 349) % 1150 + 25 %}
-          {%- set y = 22 + ((i * 53) % 78) %}
-          <circle cx="{{ x }}" cy="{{ y }}" r="4" class="is-review"></circle>
-          {%- endfor %}
-        </g>
-        <line class="plate__cut" x1="0" y1="126" x2="1200" y2="126"></line>
-      </svg>
-      <figcaption>
-        <span class="fig__caption">Below the rule: matches the criteria resolved. Above it: the records that went to a person.</span>
-        <span class="fig__meta">Drawn in SVG · deterministic · no data source</span>
-      </figcaption>
-    </figure>
-  </section>
-</div>
+  <ol class="numbered">
+    {%- for job in work %}
+    <li>
+      <article class="entry__grid" aria-labelledby="job-{{ loop.index }}">
+        <p class="entry__numeral" aria-hidden="true">{{ loop.index | pad }}</p>
 
-<div class="shell">
-  {# Selected project. #}
-  {%- set proj = collections.projects %}
-  {# Explicitly featured, not most recent. Sorting by date put an unstarted
-     TKTK shell on the front page ahead of the one finished study. #}
-  {%- set p = (proj | where("featured", true) | limit(1))[0] or proj[0] %}
-  {%- if p %}
-  <section class="section" id="selected" aria-labelledby="selected-h">
-    <h2 class="section__head" id="selected-h">Selected project</h2>
-    <article class="entry">
-      <h3 class="entry__title"><a href="{{ p.url }}">{{ p.data.title }}</a></h3>
-      <p class="entry__meta">{{ p.data.period }}{% if p.data.tools %}. {{ p.data.tools | join(", ") }}.{% endif %}</p>
-      <div class="entry__body"><p>{{ p.data.description }}</p></div>
-      {%- if p.data.figures %}
-      <ul class="entry__figures">
-        {%- for f in p.data.figures | limit(3) %}
-        <li><span class="rail__figure">{{ f.value }}</span><span class="rail__label">{{ f.label }}</span></li>
-        {%- endfor %}
-      </ul>
-      {%- endif %}
-    </article>
-    <p class="more"><a href="/projects/">All projects</a></p>
-  </section>
-  {%- endif %}
-
-  {# Now. #}
-  <section class="section" id="now" aria-labelledby="now-h">
-    <h2 class="section__head" id="now-h">Now</h2>
-    <dl class="catalog">
-      <div class="catalog__row">
-        <dt>Studying</dt>
-        <dd>M.S. Data Analytics Engineering, Northeastern. 2026&ndash;2027.</dd>
-      </div>
-      <div class="catalog__row">
-        <dt>Building</dt>
-        <dd><span class="needs-content">[NEEDS CONTENT: what she is actually
-          building right now. This module is only worth having if it is kept
-          current; a stale Now section is worse than none.]</span></dd>
-      </div>
-      <div class="catalog__row">
-        <dt>Reading</dt>
-        <dd><span class="needs-content">[NEEDS CONTENT: current reading. See
-          /library/ for the full list.]</span></dd>
-      </div>
-      <div class="catalog__row">
-        <dt>Looking for</dt>
-        <dd>Full-time analytics roles.</dd>
-      </div>
-    </dl>
-  </section>
-
-  {# Field images. #}
-  <section class="section" id="field-images" aria-labelledby="fi-h">
-    <h2 class="section__head" id="fi-h">Field images</h2>
-    <div class="scraps">
-      {%- for i in range(0, 4) %}
-      <figure class="scrap scrap--{{ i + 1 }}" data-reveal>
-        <div class="fig__placeholder" style="aspect-ratio: 1/1">
-          <span class="needs-content">[NEEDS CONTENT: field image {{ i + 1 }}]</span>
+        <div class="entry__main">
+          <h3 class="entry__org" id="job-{{ loop.index }}">{{ job.org }}</h3>
+          <div class="entry__body">
+            {%- for para in job.body %}
+            <p>{{ para | safe }}</p>
+            {%- endfor %}
+          </div>
+          {{ Marker(job.marker) }}
         </div>
-        <figcaption>
-          <span class="fig__caption">TKTK</span>
-          <span class="fig__meta">TKTK · TKTK</span>
-        </figcaption>
-      </figure>
-      {%- endfor %}
-    </div>
-    <p class="more"><a href="/about/">About her</a></p>
-  </section>
 
-  {# Reading list callout, set in the page rather than floated over it. #}
-  <section class="section" aria-labelledby="sub-h">
-    <div class="callout callout--wide">
-      <h2 class="eyebrow" id="sub-h">The feed</h2>
-      <p>New field notes are published here and to a plain Atom feed. No
-        email list, no popup, nothing to unsubscribe from.</p>
-      <p class="more"><a href="/feed.xml">Subscribe via Atom</a></p>
-    </div>
-  </section>
-</div>
+        <div class="entry__side">
+          {{ RecordMetadata([
+            { label: "Role",  value: job.role },
+            { label: "Dates", value: job.dates }
+          ], job.org + " record") }}
+
+          <p class="evidence">
+            <span class="evidence__value">{{ job.evidence.value }}</span>
+            <span class="evidence__label">{{ job.evidence.label }}</span>
+          </p>
+
+          <ul class="tools">
+            {%- for tool in job.tools %}<li>{{ tool }}</li>{% endfor %}
+          </ul>
+        </div>
+      </article>
+    </li>
+    {%- endfor %}
+  </ol>
+</section>
+
+{# ===================================================================
+   The project. One entry, and it is not padded out to look like more.
+   =================================================================== #}
+<section class="section" id="project" aria-labelledby="project-h">
+  {{ EditorialHeading(
+    "Case study",
+    "Project",
+    "One finished study, with the method and the limitations published next to the finding.",
+    "h2", "project-h") }}
+
+  {%- set items = [] %}
+  {%- for p in collections.projects %}
+  {%- set items = (items.push({
+    index: loop.index | pad,
+    title: p.data.title,
+    href: p.url,
+    summary: p.data.description,
+    meta: p.data.period
+  }), items) %}
+  {%- endfor %}
+
+  {%- if items.length %}
+  {{ EditorialIndex(items, "Projects") }}
+  {%- else %}
+  {{ QuietEmptyState() }}
+  {%- endif %}
+</section>
+
+{# =================================================================== #}
+<section class="section" id="now" aria-labelledby="now-h">
+  {{ EditorialHeading(
+    "September 2026",
+    "Now",
+    "Kept short, because a stale “now” is worse than none.",
+    "h2", "now-h") }}
+
+  <div class="section__body">
+    {{ RecordMetadata([
+      { label: "Studying",    value: "M.S. Data Analytics Engineering, Northeastern. 2026–2027." },
+      { label: "Looking for", value: "Full-time analytics roles." }
+    ], "Current status") }}
+  </div>
+</section>
+
+{# =================================================================== #}
+<section class="section" id="contact" aria-labelledby="contact-h">
+  {{ EditorialHeading(
+    "Get in touch",
+    "Contact",
+    "Email is the reliable route.",
+    "h2", "contact-h") }}
+
+  <ul class="contact__list section__body">
+    <li><a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></li>
+  </ul>
+
+  {{ Marker("[NEEDS CONTENT: résumé PDF. Held until the Q1–Q5 conflicts resolve. Highest-priority gap on the site.]") }}
+  {{ Marker("[NEEDS CONTENT: LinkedIn URL — no verified URL on file, only a PDF export.]") }}
+</section>
