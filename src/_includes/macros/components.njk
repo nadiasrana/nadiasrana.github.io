@@ -72,7 +72,11 @@
   <div class="record__row">
     <dt class="record__label">{{ _slot(row.label, "label") }}</dt>
     <dd class="record__value{% if not row.value %} record__value--absent{% endif %}">
-      {%- if row.value %}{{ row.value }}{% else %}Not on record{% endif -%}
+      {#- Values are escaped by default: a record value is content, not markup.
+          `html: true` is the opt-in for the one row that carries a link. -#}
+      {%- if not row.value %}Not on record
+      {%- elif row.html %}{{ row.value | safe }}
+      {%- else %}{{ row.value }}{% endif -%}
     </dd>
   </div>
   {%- endfor %}

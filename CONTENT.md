@@ -628,6 +628,56 @@ Limitations 1 and 3 each carry a weighted closing line on the page. Declining
 to proceed as planned because the data would not support it, and refusing to
 let a flattering R² stand unqualified, are the same instinct.
 
+### Repository ✅ CONFIRMED 13 Sep 2026
+
+**`github.com/nadiasrana/diamond-price-drivers`** — public, live, linked from
+the study page as a `Repository` row in the record table.
+
+Verified before linking: the repository exists, is public, returns 200, and
+has real contents — a README carrying the question, the method table and the
+findings; `analysis/summary-tables.xlsx`; and `data/README.md`.
+
+`data/README.md` is the note on why the raw listing records are not published,
+and it is better reasoning than anything currently on the site: visible is not
+the same as licensed to redistribute, all four retailers' terms restrict
+automated collection and redistribution of listing data, and aggregate
+statistics derived from it are not a redistribution. It also gives a full
+independent-reproduction spec — filters, per-retailer counts, field list,
+grade coding, and the Rapaport edition (16 January 2026, Vol. 49 No. 3).
+
+⚠️ **PROVENANCE GAP — the repository discloses something the site does not.**
+
+The repository README opens with:
+
+> **This began as a university coursework assignment (Spring 2026).** The
+> dataset and brief were shared across the class, so the underlying numbers
+> are not unique to me. The analysis here is my own, and has been revised
+> since the original submission.
+
+The site says **none of this**. Checked: the words *coursework*, *assignment*,
+*class*, *shared*, *university* and *course* appear zero times on
+`/projects/diamond-price-drivers/`.
+
+This is now one click away from the page, which makes the omission
+discoverable. Nothing on the site is false — it never claims the dataset is
+uniquely hers — but the omission reads differently once a reader can see that
+**she disclosed it herself and the site did not.** Note also that this
+document's own line "what separates this from a coursework write-up" is
+positioning against the very origin the repository states.
+
+**Recommendation, not applied:** carry her own disclosure on the page, in her
+words, near the top of *The data*. One sentence, already written by her, and
+volunteering it is stronger than having it found. Suggested placement and
+wording to confirm:
+
+> This began as a university coursework assignment in Spring 2026. The dataset
+> and brief were shared across the class, so the underlying numbers are not
+> unique to me; the analysis is my own and has been revised since the original
+> submission.
+
+⛔ Not added without approval — it changes how the study reads, and it is her
+sentence to authorise.
+
 ### Exclusion count — deliberately absent
 
 The pre-filter record count is not recoverable from the source. The page states
@@ -750,6 +800,7 @@ them is wrong.
 | `Data analytics engineer` | The title, decided 13 Sep 2026 — see *Title* |
 | `M.S. candidate, Northeastern` | The standing, paired with the title in the eyebrow and every page title |
 | `github.com/nadiasrana` | Confirmed 13 Sep 2026 |
+| `github.com/nadiasrana/diamond-price-drivers` | The study repository, verified live before linking |
 | `linkedin.com/in/nadiasrana` | Confirmed from her profile export |
 | `Archroma` | Work entry 01 |
 | `Fraqt` | Work entry 02 |

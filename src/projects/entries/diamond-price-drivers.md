@@ -19,6 +19,7 @@ record:
   - { label: Tools,  value: "Excel · Regression · Data validation · Web scraping" }
   - { label: Data,   value: "918 stones, four retailers, collected 29 March 2026" }
   - { label: Status, value: Complete }
+  - { label: Repository, html: true, value: '<a href="https://github.com/nadiasrana/diamond-price-drivers">github.com/nadiasrana/diamond-price-drivers</a>' }
 ---
 
 ## The question
