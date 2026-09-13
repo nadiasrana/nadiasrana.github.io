@@ -83,6 +83,48 @@ lands — the launch position below, unchanged.
 
 ---
 
+## Title — "data analytics engineer" ✅ DECIDED 13 Sep 2026
+
+**Chosen deliberately by Ayan on 13 Sep 2026. This overrides the earlier
+positioning note below. It is a decision, not drift — do not revert it.**
+
+The site uses **"data analytics engineer"** as her title. It appears in the
+hero eyebrow, in every page `<title>`, in the JSON-LD `jobTitle`, and in the
+meta description on every route. All of them derive from
+`site.author.role` + `site.author.standing` in `src/_data/site.js`, so there
+is one string to change and nothing to drift.
+
+Before this, the home `<title>` said "Data analyst" while the hero eyebrow
+said "Data analytics · M.S. candidate, Northeastern" — two independent
+literals saying different things on the same page. That is what one source of
+truth fixes.
+
+### ⚠️ The tension this creates, recorded so it is not rediscovered
+
+"Engineer" is a stronger claim than the evidence on the rest of the site
+supports, and two existing decisions deliberately pull the other way:
+
+1. **Her Archroma work log names no pipeline engineering.** *Positioning*
+   below says so explicitly, and that is why the entry describes entity
+   resolution, a matching rule, a data dictionary, a defect log and a release
+   audit — not pipeline work.
+2. **Fraqt's title remains "Data and systems design"**, not the résumé's
+   "Founding Data Lead", because the project is pre-launch and unregistered
+   and the implementation was substantially AI-assisted. See *Q-FRAQT*.
+
+**Both of those decisions stand.** They are not superseded by this one.
+
+The distinction to hold: **the hero title is a positioning choice; the entry
+titles are evidence-bound.** A positioning line describes how she presents
+herself. An entry title is a claim about a specific job that has to survive
+an interview about that job.
+
+⛔ **If a future session finds these in conflict, the entry titles win.** Do
+not rewrite Archroma or Fraqt to match the hero, and do not add pipeline or
+engineering claims to any work entry on the strength of the site title.
+
+---
+
 ## Positioning — set 12 Sep 2026
 
 She is positioned as **data modeling, reconciliation, data quality and
@@ -705,6 +747,9 @@ them is wrong.
 | `Delta Sigma Pi` | Verified service, and the origin of the rubric instinct |
 | `North Carolina` | Where she is from |
 | `Raleigh, NC` | Where she is based |
+| `Data analytics engineer` | The title, decided 13 Sep 2026 — see *Title* |
+| `M.S. candidate, Northeastern` | The standing, paired with the title in the eyebrow and every page title |
+| `github.com/nadiasrana` | Confirmed 13 Sep 2026 |
 | `linkedin.com/in/nadiasrana` | Confirmed from her profile export |
 | `Archroma` | Work entry 01 |
 | `Fraqt` | Work entry 02 |
@@ -816,6 +861,7 @@ stand on their own.
 | Fraqt dates | June – August 2026 | confirmed independently |
 | LinkedIn | `linkedin.com/in/nadiasrana` | her profile export |
 | Her location | Raleigh, NC. Open to remote contract work. | confirmed |
+| GitHub | `github.com/nadiasrana` | ✅ confirmed 13 Sep 2026, on the site |
 | Archroma location | Charlotte, NC | her work-log export |
 | Northstar location | Remote, U.S. | confirmed |
 

@@ -129,7 +129,10 @@ export default [
     tools: ['Scoping', 'Analysis', 'Reporting'],
     // CONTENT.md: the role can be named; $45K, 20 engagements and 12 clients
     // wait on Q1. The slot is filled honestly rather than left ragged.
-    evidence: { value: 'Held', label: 'engagement and revenue figures, until confirmed' },
+    // No number, so no figure treatment. A null value renders the empty-slot
+    // line instead of a serif display figure — "Held" set at 49px read as a
+    // sentence fragment where every other entry reads as a number.
+    evidence: { value: null, label: 'Engagement and revenue figures are not confirmed.' },
     body: [
       'Co-founded a student consulting group and ran the analyst side: scoping engagements, working out what a client’s question could actually be answered with, and writing up the findings.',
       'The engagement and revenue figures stay off this page until they are confirmed.',

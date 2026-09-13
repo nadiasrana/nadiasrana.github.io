@@ -11,10 +11,16 @@ export default {
   author: {
     name: 'Nadia Sultan Rana',
     email: 'nadiasrana@gmail.com',
-    role: 'Data analyst',
+    // Chosen deliberately by Ayan, 13 Sep 2026. One source of truth: the
+    // hero eyebrow, every <title> and the JSON-LD jobTitle all derive from
+    // these two fields, which is what stopped the drift where the home title
+    // said "Data analyst" while the eyebrow said something else.
+    role: 'Data analytics engineer',
+    standing: 'M.S. candidate, Northeastern',
     // Confirmed 13 Sep 2026 against her profile export, independently of the
     // résumé PDF — which remains unpublished for unrelated reasons.
     linkedin: 'https://www.linkedin.com/in/nadiasrana',
+    github: 'https://github.com/nadiasrana',
     location: 'Raleigh, NC. Open to remote contract work.',
   },
   // The résumé PDF. Confirmed text-based: 9 embedded fonts, 102 text

@@ -246,7 +246,7 @@ if (strayPx.length) notes.push(`px values outside the scale (check each): ${stra
 /* ---- Content truthfulness -------------------------------------------- */
 const home = await readFile('_site/index.html', 'utf8');
 
-for (const want of ['1,080', '1,194', '3,000+', '$6M', 'Held']) {
+for (const want of ['1,080', '1,194', '3,000+', '$6M', 'Engagement and revenue figures are not confirmed']) {
   ok(home.includes(want), `home: expected evidence figure missing: ${want}`);
 }
 for (const bad of ['$45K', '20 engagements', '12 clients', 'GPA', '4.00']) {
@@ -286,8 +286,13 @@ ok(first.split(' | ').length >= 3, `work record schema looks too thin: "${first}
 
 for (const [i, e] of entries.entries()) {
   const h = e[0];
-  const ev = (h.match(/class="evidence__value"/g) || []).length;
-  ok(ev === 1, `work entry ${i + 1}: ${ev} evidence figures, expected exactly 1`);
+  // Every entry carries exactly one evidence slot. Its treatment differs —
+  // a display figure where a number is on record, the muted absent line where
+  // none is — but the slot itself is never dropped, which is the invariant.
+  const slots = (h.match(/class="evidence[ "]/g) || []).length;
+  const figures = (h.match(/class="evidence__value"/g) || []).length;
+  ok(slots === 1, `work entry ${i + 1}: ${slots} evidence slots, expected exactly 1`);
+  ok(figures <= 1, `work entry ${i + 1}: ${figures} evidence figures, expected at most 1`);
   ok(/class="tools"/.test(h), `work entry ${i + 1}: no tools list`);
   ok(/class="entry__numeral"/.test(h), `work entry ${i + 1}: no numeral`);
   ok(/aria-hidden="true"/.test(h), `work entry ${i + 1}: numeral not hidden from AT`);

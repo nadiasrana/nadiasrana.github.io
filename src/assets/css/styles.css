@@ -569,6 +569,17 @@ a:hover { text-decoration-color: var(--ink); }
   color: var(--ink);
 }
 
+/* An entry with no number on record. Same slot, same rule above it, but the
+   body size and the italic of the other absent values rather than a display
+   figure — see .record__value--absent. */
+.evidence--absent {
+  font-size: var(--t-body);
+  line-height: 1.5;
+  color: var(--ink-muted);
+  font-style: italic;
+  max-width: 34ch;
+}
+
 .evidence__label {
   display: block;
   margin-block-start: var(--space-2);

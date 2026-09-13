@@ -7,7 +7,8 @@
 {%- set pageDesc = description or site.tagline %}
 {%- set canonical = site.url + page.url %}
 
-<title>{% if title %}{{ title }} — {{ site.title }}{% else %}{{ site.title }} — {{ site.author.role }}{% endif %}</title>
+{%- set byline = site.author.role + " · " + site.author.standing %}
+<title>{% if title %}{{ title }} — {{ site.title }} — {{ byline }}{% else %}{{ site.title }} — {{ byline }}{% endif %}</title>
 <meta name="description" content="{{ pageDesc }}">
 <link rel="canonical" href="{{ canonical }}">
 
@@ -17,7 +18,7 @@
 
 <meta property="og:type" content="{% if layout == 'layouts/project.njk' %}article{% else %}website{% endif %}">
 <meta property="og:site_name" content="{{ site.title }}">
-<meta property="og:title" content="{{ title or site.title }}">
+<meta property="og:title" content="{% if title %}{{ title }} — {{ site.title }}{% else %}{{ site.title }} — {{ byline }}{% endif %}">
 <meta property="og:description" content="{{ pageDesc }}">
 <meta property="og:url" content="{{ canonical }}">
 <meta name="twitter:card" content="summary">
@@ -34,6 +35,7 @@
 {"@context":"https://schema.org","@type":"Person",
 "name":{{ site.author.name | dump | safe }},
 "jobTitle":{{ site.author.role | dump | safe }},
+"alumniOf":"Northeastern University",
 "email":"mailto:{{ site.author.email }}",
 "url":"{{ site.url }}",
 "description":{{ site.tagline | dump | safe }}}

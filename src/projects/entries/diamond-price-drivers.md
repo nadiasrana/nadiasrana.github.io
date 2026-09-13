@@ -8,7 +8,7 @@ description: >-
   918 natural pear-shaped diamonds from four retailers, filtered to one narrow
   band, to test which published grade actually moves the price and whether the
   four retailers agree. Two of them priced the same band at $1,550 and $3,249
-  per carat.
+  per carat. A case study by Nadia Sultan Rana, data analytics engineer.
 deck: >-
   Which grade moves the price more depends on the basis you ask it on — on
   918 individual stones, clarity and color are a dead heat. Together the two

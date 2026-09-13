@@ -1,9 +1,9 @@
 ---
 layout: layouts/base.njk
 description: >-
-  Nadia Sultan Rana builds the models and the checks that decide whether a
-  number can be trusted. Data modeling, reconciliation, data quality and
-  structured evaluation.
+  Nadia Sultan Rana, data analytics engineer and M.S. candidate at
+  Northeastern. Data modeling, reconciliation, data quality and structured
+  evaluation, with the reasoning published next to the finding.
 ---
 {% from "macros/components.njk" import EditorialHeading, RecordMetadata, EditorialIndex, Marker, QuietEmptyState %}
 
@@ -11,7 +11,7 @@ description: >-
    Hero. Her name, what she does, and one photograph.
    =================================================================== #}
 <section class="hero" aria-labelledby="name-h">
-  <p class="hero__kicker">Data analytics · M.S. candidate, Northeastern</p>
+  <p class="hero__kicker">{{ site.author.role }} · {{ site.author.standing }}</p>
   <h1 class="hero__name" id="name-h">{{ site.title }}</h1>
   <p class="hero__lead">I build the models and the checks that decide whether
     a number can be trusted.</p>
@@ -71,10 +71,14 @@ description: >-
             { label: "Dates", value: job.dates }
           ], job.org + " record") }}
 
+          {%- if job.evidence.value %}
           <p class="evidence">
             <span class="evidence__value">{{ job.evidence.value }}</span>
             <span class="evidence__label">{{ job.evidence.label }}</span>
           </p>
+          {%- else %}
+          <p class="evidence evidence--absent">{{ job.evidence.label }}</p>
+          {%- endif %}
 
           <ul class="tools">
             {%- for tool in job.tools %}<li>{{ tool }}</li>{% endfor %}
