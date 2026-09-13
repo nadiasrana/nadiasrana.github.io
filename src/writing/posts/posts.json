@@ -1,5 +1,0 @@
-{
-  "layout": "layouts/article.njk",
-  "issue": "01",
-  "eleventyComputed": { "permalink": "/writing/{{ page.fileSlug }}/" }
-}
