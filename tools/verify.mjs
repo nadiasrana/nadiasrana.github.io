@@ -269,7 +269,13 @@ for (const bad of [/\bmachine learning\b/i, /\bETL\b/]) {
 
 /* ---- Component shape: five entries, identical structure --------------- */
 const entries = [...home.matchAll(/<article class="entry__grid"[\s\S]*?<\/article>/g)];
-ok(entries.length === 5, `home: expected 5 work entries, found ${entries.length}`);
+// Count against the data rather than a hardcoded number: the invariant is
+// that every entry in work.js reaches the page, not that there are five.
+const { default: workData } = await import('../src/_data/work.js');
+ok(
+  entries.length === workData.length,
+  `home: ${workData.length} entries in work.js but ${entries.length} rendered`
+);
 
 // The invariant is uniformity, not a particular row count. Asserting a magic
 // number means every schema change is a false failure; asserting that all

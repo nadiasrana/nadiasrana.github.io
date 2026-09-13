@@ -709,38 +709,24 @@ statistics derived from it are not a redistribution. It also gives a full
 independent-reproduction spec — filters, per-retailer counts, field list,
 grade coding, and the Rapaport edition (16 January 2026, Vol. 49 No. 3).
 
-⚠️ **PROVENANCE GAP — the repository discloses something the site does not.**
-
-The repository README opens with:
-
-> **This began as a university coursework assignment (Spring 2026).** The
-> dataset and brief were shared across the class, so the underlying numbers
-> are not unique to me. The analysis here is my own, and has been revised
-> since the original submission.
-
-The site says **none of this**. Checked: the words *coursework*, *assignment*,
-*class*, *shared*, *university* and *course* appear zero times on
-`/projects/diamond-price-drivers/`.
-
-This is now one click away from the page, which makes the omission
-discoverable. Nothing on the site is false — it never claims the dataset is
-uniquely hers — but the omission reads differently once a reader can see that
-**she disclosed it herself and the site did not.** Note also that this
-document's own line "what separates this from a coursework write-up" is
-positioning against the very origin the repository states.
-
-**Recommendation, not applied:** carry her own disclosure on the page, in her
-words, near the top of *The data*. One sentence, already written by her, and
-volunteering it is stronger than having it found. Suggested placement and
-wording to confirm:
+✅ **PROVENANCE — CLOSED 13 Sep 2026.** The study page now carries her own
+disclosure, as the first paragraph of *The data*:
 
 > This began as a university coursework assignment in Spring 2026. The dataset
 > and brief were shared across the class, so the underlying numbers are not
-> unique to me; the analysis is my own and has been revised since the original
-> submission.
+> unique to me. The analysis is my own, and has been revised since the
+> original submission.
 
-⛔ Not added without approval — it changes how the study reads, and it is her
-sentence to authorise.
+It is her sentence, from the repository README, and it is stated up front
+rather than buried. The reasoning, recorded so it is not undone: it costs
+nothing when volunteered and a great deal when discovered, and with the
+repository linked from the record table it was one click from being
+discovered.
+
+⚠️ Note that this document's line *"what separates this from a coursework
+write-up"* was positioning against the study's actual origin. The limitations
+section still does that work — but it does it from a page that now says where
+the study came from.
 
 ### Exclusion count — deliberately absent
 
@@ -922,6 +908,8 @@ them is wrong.
 | `M.S. candidate, Northeastern` | The standing, paired with the title in the eyebrow and every page title |
 | `github.com/nadiasrana` | Confirmed 13 Sep 2026 |
 | `github.com/nadiasrana/diamond-price-drivers` | The study repository, verified live before linking |
+| `Delta Sigma Pi` | Work entry 05, and the evidence for three Toolkit items |
+| `coursework assignment` | The study's provenance disclosure |
 | `linkedin.com/in/nadiasrana` | Confirmed from her profile export |
 | `Archroma` | Work entry 01 |
 | `Fraqt` | Work entry 02 |
@@ -970,7 +958,80 @@ them is wrong.
 
 ---
 
-## Résumé PDF ⛔ — text-based, but blocked on its own contents
+## Résumé — revision of 13 Sep 2026 ✅ VERIFIED AND PUBLISHED
+
+The PDF at `src/assets/doc/nadia-sultan-rana-resume.pdf` was replaced on
+13 Sep 2026. `site.resume.cleared` stays `true`; the link is live in the nav
+and the footer.
+
+**Verified before replacing, all five gates passed:** text-based, not a scan
+(9 embedded fonts, 104 text operators, 15,941 extractable characters, zero
+image XObjects) · one page · contains `nadiasrana.github.io` and
+`github.com/nadiasrana` · R² reads **0.335 versus 0.332** · the $1,700 is
+described as "a $1,700/ct spread between retailers", with Rapaport nowhere
+near it.
+
+### What changed
+
+| Change | Effect on the site |
+|---|---|
+| Website and GitHub added to the contact header | None. Both already on the site |
+| **Delta Sigma Pi promoted to an Experience entry** | **Added to Work.** See below |
+| Archroma's second bullet adds the dimensional model behind a division-level whitespace analysis | ⚠️ Not on the site. See below |
+| Eberhardt and Northstar condensed to one bullet each | None. The site's entries are written from this record, not from the résumé |
+| Teaching Assistant removed | None. It was never on the site |
+| Font 10.5pt → 10pt | None |
+
+### ⚠️ The whitespace analysis is NOT on the site, and should not be added casually
+
+The résumé now says she "designed the dimensional model behind a
+division-level whitespace analysis" at Archroma. This is **new Archroma work
+that appears nowhere in this document**, and it sits directly against the
+block list, which names *"which mills the division does not sell to and what
+that is worth"* — that is what a whitespace analysis is.
+
+The résumé's phrasing survives the block as written, because the rule is
+*"method metrics are fine; business metrics are not"* and a dimensional model
+is method: no mills, no values, no counts. But it is one sentence away from
+breaching it.
+
+⛔ **Not added to the Archroma entry.** If it is ever added, it describes the
+model and nothing about what the analysis found.
+
+### Delta Sigma Pi — now Work entry 05
+
+| | |
+|---|---|
+| Role | Vice President of Scholarships and Awards |
+| Place | Stockton, CA |
+| Dates | April 2024 – May 2025 |
+| Tools | Structured evaluation · Rubric adherence · Written feedback |
+| Figure | None. The slot renders the absent treatment |
+
+⚠️ **Ordered at 05, not 06.** The instruction said "entry 06", read as *a
+sixth entry* rather than *last position*. It ends May 2025, so by the
+recency rule that orders every other entry it belongs after Eberhardt and
+before Northstar — which is also exactly where her résumé puts it. Placing it
+last would have contradicted both the site's ordering rule and the résumé.
+
+The narrative is drawn from this document's verified bullet — *"scoring
+applications against fixed criteria and writing the reasoning behind each
+decision"* — extended with the cross-reviewer consistency and the leadership
+presentation, both of which are in her own published résumé.
+
+This entry is also the evidence CONTENT.md cites for three Toolkit items:
+Structured evaluation, Rubric adherence and Written feedback — which the
+Toolkit asserted while the work behind them was unpublished until today.
+
+### Previously blocked, now accepted
+
+GPA, the Northstar figures, PostgreSQL, R and the phone number were reviewed
+and deliberately retained. They are accepted, not outstanding. A/B testing
+remains on the résumé and off the site.
+
+---
+
+## Résumé PDF — the original block list, for the record
 
 **Added 13 Sep 2026.** The file is in the repo at
 `src/assets/doc/nadia-sultan-rana-resume.pdf`.

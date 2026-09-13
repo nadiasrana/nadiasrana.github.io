@@ -122,6 +122,27 @@ export default [
   },
 
   {
+    // Added 13 Sep 2026, when Delta Sigma Pi was promoted to an Experience
+    // entry on her résumé. It is the clearest evidence of rubric-based
+    // evaluation in her history, and it is what CONTENT.md cites for the
+    // Structured evaluation, Rubric adherence and Written feedback entries
+    // in the Toolkit.
+    org: 'Delta Sigma Pi',
+    role: 'Vice President of Scholarships and Awards',
+    place: 'Stockton, CA',
+    dates: 'April 2024 – May 2025',
+    tools: ['Structured evaluation', 'Rubric adherence', 'Written feedback'],
+    // No figure. The output of this role is written reasoning, not a count,
+    // and inventing one would be the opposite of what the role was about.
+    evidence: { value: null, label: 'No figure on record for this role.' },
+    body: [
+      'Scholarship and award applications, scored against defined criteria rather than impressions. I standardised the workflow and its documentation so that results held consistent across reviewers, which is the part that decides whether a score means anything.',
+      'Every decision carried its reasoning. Rankings went to executive leadership with the rationale behind each outcome attached, because a ranking nobody can justify is not a ranking.',
+    ],
+    marker: null,
+  },
+
+  {
     org: 'Northstar Insight Group',
     role: 'Co-founder',
     place: 'Remote, U.S.',

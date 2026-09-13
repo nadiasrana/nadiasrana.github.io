@@ -30,6 +30,12 @@ specification the same way?
 
 ## The data
 
+This began as a university coursework assignment in Spring 2026. The dataset
+and brief were shared across the class, so the underlying numbers are not
+unique to me. The analysis is my own, and has been revised since the original
+submission.
+
+
 <table class="findings">
   <caption>Stones collected, by retailer</caption>
   <thead>
