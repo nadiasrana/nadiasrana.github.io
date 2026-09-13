@@ -275,6 +275,33 @@ The labels exist so the honest answer can be given instead of a skill bar.
 - Reporting: Power BI `Daily`, Word `Daily`, PowerPoint `Comfortable`
 - Programming: **Python `Exposure`**, **TypeScript `Exposure`**
 
+✅ **Toolkit extended 13 Sep 2026 to match the résumé.** Levels default to
+`Exposure` where this document holds no supporting work.
+
+| Added | Level | Evidence |
+|---|---|---|
+| Entity resolution | `Comfortable` | Q-ATTRIB: entity resolution across three unlinked systems at Archroma. Already a tool tag on entry 01 |
+| Defect logging | `Comfortable` | The 31-item defect log, Archroma, verified |
+| Exception handling | `Comfortable` | ⚠️ The *term* is not in this document, but the practice is: the ~1,080 ambiguous records routed to human review rather than resolved silently. That is exception handling, and it is the strongest single item on the site |
+| Structured evaluation | `Comfortable` | Named in *Positioning* as one of the four things she is positioned as |
+| Rubric adherence | `Comfortable` | Delta Sigma Pi: scoring applications against fixed criteria and writing the reasoning. Verified service |
+| Research and synthesis | `Comfortable` | Eberhardt equity research; "Research documentation" is already a tool tag on entry 04 |
+| PostgreSQL | `Exposure` | ⚠️ Résumé only. No supporting work here |
+| R | `Exposure` | ⚠️ Résumé only. No supporting work here |
+| KPI reporting | `Exposure` | ⚠️ **Thin.** Asserted as Archroma work, but the Archroma record holds entity resolution, the dictionary, the defect log and the release audit — no KPI reporting. The nearest evidence is the reusable Power BI stakeholder reporting at Summer Conference |
+| Document analysis and review | `Exposure` | ⚠️ Résumé only |
+| Source verification | `Exposure` | ⚠️ The term is not here. The nearest evidence is Fraqt: deciding what has to travel with a passage for a citation to hold |
+| Written feedback | `Exposure` | ⚠️ The term is not here. The nearest evidence is Delta Sigma Pi: writing the reasoning behind each decision |
+
+⛔ **A/B testing is on the résumé and is NOT on the site.** No supporting work
+exists anywhere in this document, and none was found. Left off deliberately.
+Do not add it without evidence.
+
+⛔ **TypeScript removed from the site, 13 Sep 2026.** It was listed here at
+`Exposure` and appeared in the Toolkit, but it is **not on her résumé**. She
+left it off her own curated document, so the site now agrees with her.
+Removing a claim is always the safe direction. Python stays at `Exposure`.
+
 ⚠️ **SAP is set to `Exposure` as a floor, not a finding.** The evidence is her
 public post naming it for one internship summer, with no detail on depth.
 `Exposure` is the level that is true on any reading of that. If she used it
@@ -701,6 +728,10 @@ them is wrong.
 | `0.332` | Color on individual stones |
 | `0.633` | The combined model |
 | `$1,760.15` | The rebuilt confidence interval's point estimate |
+| `Entity resolution` | Toolkit, Data quality |
+| `Structured evaluation` | Toolkit, and one of the four things she is positioned as |
+| `Rubric adherence` | Toolkit, evidenced by Delta Sigma Pi |
+| `Remote, contract, and full-time roles.` | The availability line in Now |
 
 ### Must be absent
 
@@ -712,12 +743,13 @@ them is wrong.
 | `20 engagements` | Northstar, held on Q1 |
 | `12 clients` | Northstar, held on Q1 |
 | `Carlson` | Not on the verified list; `CLAUDE.md` rule 4 |
-| `PostgreSQL` | Not in the verified stack |
 | `machine learning` | Disproved by her own work log |
 | `two years and nine months` | The dead compression claim |
 | `919` | Her phone number stays off a public page |
 | `Founding Data Lead` | Reviewed and rejected — see *Q-FRAQT* |
 | `0.40 versus 0.29` | The résumé's R², which matches no reproduced basis |
+| `A/B testing` | On the résumé, no supporting work anywhere. Deliberately off the site |
+| `TypeScript` | Removed 13 Sep 2026 so the site agrees with her résumé |
 
 ---
 

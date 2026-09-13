@@ -4,7 +4,7 @@ layout: layouts/base.njk
 {% from "macros/components.njk" import EditorialHeading, RecordMetadata, Marker %}
 
 <article class="article">
-  {{ EditorialHeading(kicker, title, deck, "h1", "page-h", true) }}
+  {{ EditorialHeading(title, deck, "h1", "page-h", true) }}
 
   <div class="article__record">
     {{ RecordMetadata(record, title + " record") }}
@@ -15,6 +15,6 @@ layout: layouts/base.njk
   </div>
 
   <nav class="pager" aria-label="More">
-    <a href="/">Back to the cover</a>
+    <a href="/#project">Back to the cover</a>
   </nav>
 </article>

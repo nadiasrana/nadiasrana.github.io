@@ -37,7 +37,6 @@ export default {
   nav: [
     { label: 'Home', href: '/' },
     { label: 'Work', href: '/#work' },
-    { label: 'Project', href: '/projects/' },
     { label: 'About', href: '/about/' },
   ],
 };

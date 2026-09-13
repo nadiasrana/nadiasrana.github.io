@@ -23,10 +23,11 @@ export default function (eleventyConfig) {
 
   // Heading anchors, so deep links work on the one long page that has them.
   eleventyConfig.amendLibrary('md', (md) =>
-    md.set({ typographer: true }).use(footnote).use(anchor, {
-      permalink: anchor.permalink.headerLink({ safariReaderFix: true }),
-      level: [2, 3],
-    })
+    // Heading ids, but NOT permalinks. headerLink() wraps the whole heading
+    // in an <a>, which made every section heading render underlined and
+    // clickable — "What I would do differently" read as a link that went
+    // nowhere. Ids are still emitted, so deep links keep working.
+    md.set({ typographer: true }).use(footnote).use(anchor, { level: [2, 3] })
   );
 
   // --- Images --------------------------------------------------------------

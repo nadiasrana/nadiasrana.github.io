@@ -4,7 +4,6 @@ permalink: /projects/diamond-price-drivers/
 date: 2026-05-01
 period: Spring 2026
 featured: true
-kicker: Case study · Spring 2026
 description: >-
   918 natural pear-shaped diamonds from four retailers, filtered to one narrow
   band, to test which published grade actually moves the price and whether the

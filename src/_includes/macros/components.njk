@@ -47,9 +47,8 @@
 
   kicker and deck are <p>, never headings, so they stay out of the outline.
 #}
-{% macro EditorialHeading(kicker, title, deck, level="h2", id="", display=false) %}
+{% macro EditorialHeading(title, deck, level="h2", id="", display=false) %}
 <div class="e-head{% if display %} e-head--display{% endif %}">
-  <p class="e-head__kicker">{{ _slot(kicker, "kicker") }}</p>
   {%- if level == "h1" %}
   <h1 class="e-head__title"{% if id %} id="{{ id }}"{% endif %}>{{ _slot(title, "title") }}</h1>
   {%- else %}
