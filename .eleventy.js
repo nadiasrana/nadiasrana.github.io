@@ -1,32 +1,20 @@
-import syntaxHighlight from '@11ty/eleventy-plugin-syntaxhighlight';
-import { feedPlugin } from '@11ty/eleventy-plugin-rss';
+import Image from '@11ty/eleventy-img';
 import anchor from 'markdown-it-anchor';
 import footnote from 'markdown-it-footnote';
+import path from 'node:path';
 
 export default function (eleventyConfig) {
   // Assets are copied, not processed. The stylesheet is hand-written and
   // stays that way; there is no CSS build.
-  eleventyConfig.addPassthroughCopy({ 'src/assets': 'assets' });
+  eleventyConfig.addPassthroughCopy({ 'src/assets/css': 'assets/css' });
+  eleventyConfig.addPassthroughCopy({ 'src/assets/fonts': 'assets/fonts' });
   eleventyConfig.addWatchTarget('src/assets/css/');
-  // Markdown inside assets is documentation, not a page.
+  // src/assets/img holds the graded source plates. They are resized and
+  // re-encoded by the `image` shortcode below rather than copied, so they
+  // are deliberately NOT in the passthrough set.
   eleventyConfig.ignores.add('src/assets/**/*.md');
 
-  eleventyConfig.addPlugin(syntaxHighlight);
-
-  eleventyConfig.addPlugin(feedPlugin, {
-    type: 'atom',
-    outputPath: '/feed.xml',
-    collection: { name: 'writing', limit: 20 },
-    metadata: {
-      language: 'en',
-      title: 'Field Notes — Nadia Sultan Rana',
-      subtitle: 'Notes on data, evidence, and the systems that carry them.',
-      base: 'https://nadiasrana.com/',
-      author: { name: 'Nadia Sultan Rana' },
-    },
-  });
-
-  // Heading anchors, so the table of contents and deep links both work.
+  // Heading anchors, so deep links work on the one long page that has them.
   eleventyConfig.amendLibrary('md', (md) =>
     md.set({ typographer: true }).use(footnote).use(anchor, {
       permalink: anchor.permalink.headerLink({ safariReaderFix: true }),
@@ -34,16 +22,69 @@ export default function (eleventyConfig) {
     })
   );
 
+  // --- Images --------------------------------------------------------------
+  // @11ty/eleventy-img was already a dependency and was never wired up.
+  // Using it here satisfies responsive images with no new dependency.
+  //
+  // Every source is a phone export: four of the five originals are 1330-1536px
+  // wide. `widths` must not promise sizes the source cannot supply, so the
+  // list stops at 1280 and eleventy-img declines to upscale beyond the
+  // original regardless.
+  const WIDTHS = [400, 640, 900, 1280];
+
+  // MediaFigure. Slots: src, alt, caption, meta — all four required, and a
+  // missing one fails the build rather than rendering a shorter figure.
+  //
+  // This is a shortcode rather than a Nunjucks macro because image generation
+  // is async: `{% set x %}{% image %}{% endset %}` captures synchronously and
+  // silently produces an empty string. The first build of this redesign
+  // shipped a hero figure with no image inside it for exactly that reason.
+  eleventyConfig.addAsyncShortcode(
+    'mediaFigure',
+    async function (src, alt, caption, meta, sizes = '100vw', loading = 'lazy', wide = true) {
+      for (const [name, value] of Object.entries({ src, alt, caption, meta })) {
+        if (!value || !String(value).trim()) {
+          throw new Error(`MediaFigure: missing required slot "${name}" for ${src}`);
+        }
+      }
+      if (String(alt).trim() === String(caption).trim()) {
+        // alt and caption do different jobs and are never the same string.
+        throw new Error(`MediaFigure: alt duplicates caption for ${src}`);
+      }
+
+      const file = path.join('src/assets/img', src);
+      const metadata = await Image(file, {
+        widths: WIDTHS,
+        formats: ['avif', 'webp', 'jpeg'],
+        outputDir: '_site/assets/img/',
+        urlPath: '/assets/img/',
+        filenameFormat: (id, s, width, format) =>
+          `${path.basename(s, path.extname(s))}-${width}.${format}`,
+      });
+
+      const img = Image.generateHTML(metadata, {
+        alt,
+        sizes,
+        loading,
+        decoding: 'async',
+      });
+
+      return [
+        `<figure class="figure${wide ? ' figure--wide' : ''}">`,
+        `<div class="figure__media">${img}</div>`,
+        '<figcaption class="figure__caption">',
+        `<span class="figure__text">${caption}</span>`,
+        `<span class="figure__meta">${meta}</span>`,
+        '</figcaption>',
+        '</figure>',
+      ].join('');
+    }
+  );
+
   // --- Collections ---------------------------------------------------------
   const live = (item) => !item.data.draft;
-  eleventyConfig.addCollection('writing', (c) =>
-    c.getFilteredByGlob('src/writing/posts/*.md').filter(live).reverse()
-  );
-  eleventyConfig.addCollection('notes', (c) =>
-    c.getFilteredByGlob('src/notes/entries/*.md').filter(live).reverse()
-  );
   eleventyConfig.addCollection('projects', (c) =>
-    c.getFilteredByGlob('src/projects/entries/*').filter(live).reverse()
+    c.getFilteredByGlob('src/projects/entries/*.md').filter(live).reverse()
   );
 
   // --- Filters -------------------------------------------------------------
@@ -52,60 +93,11 @@ export default function (eleventyConfig) {
     new Intl.DateTimeFormat('en-US', { ...DF, timeZone: 'UTC' }).format(d)
   );
   eleventyConfig.addFilter('iso', (d) => new Date(d).toISOString());
-  eleventyConfig.addFilter('year', (d) => new Date(d).getUTCFullYear());
-
-  // Reading time from the rendered text. No dependency needed.
-  eleventyConfig.addFilter('readingTime', (content) => {
-    const words = String(content).replace(/<[^>]*>/g, ' ').trim().split(/\s+/).length;
-    return Math.max(1, Math.round(words / 220));
-  });
-
   eleventyConfig.addFilter('limit', (arr, n) => arr.slice(0, n));
   eleventyConfig.addFilter('pad', (n) => String(n).padStart(2, '0'));
-
-  // Table of contents, built from the rendered HTML rather than the source,
-  // so it always matches the ids markdown-it-anchor actually emitted.
-  eleventyConfig.addFilter('toc', (html) => {
-    const out = [];
-    const re = /<h([23])[^>]*\bid="([^"]+)"[^>]*>([\s\S]*?)<\/h\1>/g;
-    let m;
-    while ((m = re.exec(String(html)))) {
-      const text = m[3].replace(/<[^>]*>/g, '').trim();
-      if (text) out.push({ level: Number(m[1]), id: m[2], text });
-    }
-    if (out.length < 2) return '';
-    return (
-      '<ol class="toc__list">' +
-      out
-        .map(
-          (h) =>
-            `<li class="toc__item toc__item--h${h.level}"><a href="#${h.id}">${h.text}</a></li>`
-        )
-        .join('') +
-      '</ol>'
-    );
-  });
   eleventyConfig.addFilter('where', (arr, key, val) =>
     arr.filter((i) => i.data[key] === val)
   );
-
-  // Group a collection by year, newest first. Used by the writing archive.
-  eleventyConfig.addFilter('byYear', (items) => {
-    const map = new Map();
-    for (const i of items) {
-      const y = new Date(i.data.date).getUTCFullYear();
-      if (!map.has(y)) map.set(y, []);
-      map.get(y).push(i);
-    }
-    return [...map.entries()].sort((a, b) => b[0] - a[0]);
-  });
-
-  // Every distinct tag across a collection.
-  eleventyConfig.addFilter('allTags', (items) => {
-    const s = new Set();
-    for (const i of items) for (const t of i.data.tags || []) s.add(t);
-    return [...s].sort();
-  });
 
   return {
     dir: { input: 'src', output: '_site', includes: '_includes', data: '_data' },

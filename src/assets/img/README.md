@@ -1,14 +1,29 @@
 # assets/img/
 
-Photographs for the About her section, on the home page and on `about.html`.
+Graded, cropped plates. **Generated — do not edit by hand.**
 
-Expected:
+Produced from the originals in `pictures/` by:
 
-- `portrait.jpg` — the main portrait. Shown at real size, 4:5, not a
-  thumbnail.
-- Up to three more, square (1:1), shown in a row beneath it.
+```
+node tools/grade-images.mjs
+```
 
-The layout holds for two or three; fewer is fine and the row does not need
-filling for its own sake.
+The crop rectangles and the colour grade are design decisions and live in
+that script. They are committed rather than regenerated at build time so a
+diff can show them, and so the output does not depend on a transitive
+dependency's version.
 
-**No stock photography.** See DESIGN.md.
+At build time these are resized and re-encoded to AVIF/WebP/JPEG at four
+widths by the `image` shortcode in `.eleventy.js`. They are deliberately not
+in the passthrough-copy set.
+
+| Plate | Ratio | From | Placement |
+|---|---|---|---|
+| `hero-canyon.jpg` | 3:2 | `IMG_3013.JPG` | Home hero |
+| `portrait-hillside.jpg` | 4:5 | `IMG_3857.JPG` | About portrait |
+| `lake-wall.jpg` | 3:2 | `IMG_4273.JPG` | About secondary |
+
+`IMG_3898.JPG` and `IMG_4353.JPG` are deliberately unused. Neither survives
+its crop; see DESIGN_SYSTEM.md section 6.
+
+**No stock photography, no generated imagery.**
