@@ -1,0 +1,28 @@
+{#
+  EditorialNav. Her name, and the sections. Nothing else.
+
+  No volume number, no issue number, no date line: this is a portfolio under
+  her own name, not a journal with back issues.
+
+  DESIGN_SYSTEM.md originally specified a <details>/<summary> disclosure
+  below 768px. Dropped, and the spec amended: there are four links, each a
+  single short uppercase word. They wrap to two lines at 375px and cost
+  nothing. A disclosure would add a control, a state, and a fight with the
+  UA stylesheet's closed-state hiding, to save one line of height. The
+  native-element rule is about not rebuilding native behaviour with divs —
+  it is not a reason to add a widget that is not needed.
+#}
+<header class="nav">
+  <p class="nav__wordmark">
+    {% if page.url == "/" %}{{ site.title }}{% else %}<a href="/">{{ site.title }}</a>{% endif %}
+  </p>
+
+  <nav class="nav__sections" aria-label="Sections">
+    <ul class="nav__list">
+      {%- for item in site.nav %}
+      <li><a href="{{ item.href }}"{% if item.href.startsWith("/#") == false and page.url.startsWith(item.href) %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
+      {%- endfor %}
+      <li><a href="mailto:{{ site.author.email }}">Contact</a></li>
+    </ul>
+  </nav>
+</header>

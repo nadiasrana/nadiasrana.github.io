@@ -4,8 +4,7 @@ permalink: /projects/diamond-price-drivers/
 date: 2026-05-01
 period: Spring 2026
 featured: true
-state: evergreen
-stateLabel: complete
+kicker: Case study · Spring 2026
 description: >-
   918 natural pear-shaped diamonds from four retailers, filtered to one narrow
   band, to test which published grade actually moves the price and whether the
@@ -15,12 +14,12 @@ deck: >-
   Clarity moves the price of a pear-shaped diamond more than color does.
   Across 918 stones listed by four retailers, the two grades together still
   leave more than a third of the price unexplained.
-tools: [Excel, Regression, Data validation, Web scraping]
-figures:
-  - { value: "918", label: "diamonds priced" }
-  - { value: "4", label: "retailers compared" }
-  - { value: "63.3%", label: "explained by the combined model" }
-  - { value: "$1,700", label: "per-carat spread between retailers" }
+# RecordMetadata, Schema B. Fixed rows: Period, Tools, Data, Status.
+record:
+  - { label: Period, value: Spring 2026 }
+  - { label: Tools,  value: "Excel · Regression · Data validation · Web scraping" }
+  - { label: Data,   value: "918 stones, four retailers, collected 29 March 2026" }
+  - { label: Status, value: Complete }
 ---
 
 ## The question
@@ -154,7 +153,7 @@ $1,837 per carat, with a point estimate of $1,760.15.
 
 ## What I would do differently
 
-<p class="needs-content">[NEEDS CONTENT: her answer. Not in the source and not
+<p class="marker">[NEEDS CONTENT: her answer. Not in the source and not
 inferable from the findings. The obvious guesses (widen the carat band, collect
 enough D/VVS1 to build the interval as planned, separate cut from color and
 clarity) are guesses.]</p>

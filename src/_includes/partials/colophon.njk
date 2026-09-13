@@ -1,0 +1,30 @@
+{#
+  The colophon. The only dark region on the site, so the ink tokens flip
+  inside it — see .canvas--dark in styles.css.
+#}
+<footer class="colophon canvas--dark">
+  <div class="colophon__inner">
+    <div class="colophon__block">
+      <p class="colophon__label">{{ site.author.name }}</p>
+      <p class="colophon__line">{{ site.tagline }}</p>
+    </div>
+
+    <div class="colophon__block">
+      <p class="colophon__label">Contact</p>
+      <ul class="colophon__list">
+        <li><a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></li>
+        <li><span class="marker marker--inline">[NEEDS CONTENT: LinkedIn URL]</span></li>
+        <li><span class="marker marker--inline">[NEEDS CONTENT: location wording]</span></li>
+      </ul>
+    </div>
+
+    <div class="colophon__block">
+      <p class="colophon__label">Colophon</p>
+      <p class="colophon__line">Set in Instrument Serif and Instrument Sans.
+        Built with Eleventy and hand-written CSS. No trackers, no analytics,
+        no cookies.</p>
+    </div>
+  </div>
+
+  <p class="colophon__rule">&copy; 2026 {{ site.author.name }}</p>
+</footer>

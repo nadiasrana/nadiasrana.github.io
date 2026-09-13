@@ -1,0 +1,133 @@
+{#
+  Components. See DESIGN_SYSTEM.md section 5.
+
+  Every instance of a component has the same shape: the same slots, all
+  filled. Variation lives in content, never in structure. The rule for an
+  empty slot is that you do not omit it — either it carries real content, or
+  the whole component is replaced by QuietEmptyState.
+
+  Where a required slot is missing, these macros render a loud, visible
+  `[MISSING SLOT]` string rather than collapsing quietly. A component that
+  silently shrinks when a field is absent is exactly the failure the schema
+  exists to prevent, and the build verification greps for that string.
+#}
+
+{# --- A missing required slot, made impossible to miss ------------------- #}
+{% macro _slot(value, name) -%}
+  {%- if value -%}{{ value }}{%- else -%}<mark class="missing-slot">[MISSING SLOT: {{ name }}]</mark>{%- endif -%}
+{%- endmacro %}
+
+
+{# --- Marker -------------------------------------------------------------
+  A build-time note to the authors: [NEEDS CONTENT: …] or [VERIFY …].
+  CLAUDE.md rule 3 requires these to be obviously fake so they cannot reach
+  production by accident. Distinct from QuietEmptyState, which is a published
+  state for a section that is legitimately empty.
+#}
+{% macro Marker(text) %}
+{%- if text %}<p class="marker">{{ text }}</p>{% endif -%}
+{% endmacro %}
+
+
+{# --- QuietEmptyState ----------------------------------------------------
+  What appears where a section exists structurally but has no content.
+  One line, no illustration, no icon, no call to action.
+#}
+{% macro QuietEmptyState(message="Content in preparation.") %}
+<p class="empty-state">{{ message }}</p>
+{% endmacro %}
+
+
+{# --- EditorialHeading ---------------------------------------------------
+  Slots: kicker, title, deck. All three required, every call site.
+
+  The kicker is ALWAYS real metadata — role, place, dates, or the section
+  name. Never an invented identifier: no OBS.01, no volume, no issue. That
+  labelling belongs to an interior-design practice and reads as costume here.
+
+  kicker and deck are <p>, never headings, so they stay out of the outline.
+#}
+{% macro EditorialHeading(kicker, title, deck, level="h2", id="", display=false) %}
+<div class="e-head{% if display %} e-head--display{% endif %}">
+  <p class="e-head__kicker">{{ _slot(kicker, "kicker") }}</p>
+  {%- if level == "h1" %}
+  <h1 class="e-head__title"{% if id %} id="{{ id }}"{% endif %}>{{ _slot(title, "title") }}</h1>
+  {%- else %}
+  <h2 class="e-head__title"{% if id %} id="{{ id }}"{% endif %}>{{ _slot(title, "title") }}</h2>
+  {%- endif %}
+  <p class="e-head__deck">{{ _slot(deck, "deck") }}</p>
+</div>
+{% endmacro %}
+
+
+{# --- RecordMetadata -----------------------------------------------------
+  Label/value rows divided by thin rules. `rows` is a fixed schema defined by
+  the caller's data, so every record of a given type prints every row.
+
+  A row whose value is null still prints: it carries `note` instead, so a gap
+  is visible rather than silently closing up the list.
+#}
+{% macro RecordMetadata(rows, label="Record") %}
+<dl class="record" aria-label="{{ label }}">
+  {%- for row in rows %}
+  <div class="record__row">
+    <dt class="record__label">{{ _slot(row.label, "label") }}</dt>
+    <dd class="record__value{% if not row.value %} record__value--absent{% endif %}">
+      {%- if row.value %}{{ row.value }}{% else %}Not on record{% endif -%}
+    </dd>
+  </div>
+  {%- endfor %}
+</dl>
+{% endmacro %}
+
+
+{# --- MediaFigure --------------------------------------------------------
+  NOT a macro. MediaFigure lives in .eleventy.js as the `mediaFigure` async
+  shortcode, because image generation is async and a Nunjucks {% set %} block
+  captures synchronously — it silently yields an empty string, which is how
+  the first build of this redesign shipped a hero figure with no image in it.
+
+  Slots: src, alt, caption, meta. All four required; the shortcode throws on a
+  missing one, and throws again if alt and caption are the same string.
+#}
+
+{# --- NumberedSections ---------------------------------------------------
+  Large low-contrast numerals against section headings.
+
+  A real <ol>. The numeral duplicates the list order, so it is aria-hidden
+  and is never the only place the order exists. --numeral (#817D75) measures
+  3.63:1 on --paper and is legal only because the numeral is >= 56px; it must
+  never be used below 24px.
+
+  Open with NumberedList(), one NumberedItem() per entry, then close.
+#}
+{% macro NumberedOpen(id="") %}
+<ol class="numbered"{% if id %} id="{{ id }}"{% endif %}>
+{% endmacro %}
+
+{% macro NumberedClose() %}
+</ol>
+{% endmacro %}
+
+
+{# --- EditorialIndex -----------------------------------------------------
+  Slots: index, title, meta, summary. All four required.
+
+  Not a card grid. Rows divided by hairlines, aligned to the column grid.
+  The title is the link — not the row — so the accessible name is the title
+  and nothing else.
+#}
+{% macro EditorialIndex(items, label="Index") %}
+<ol class="e-index" aria-label="{{ label }}">
+  {%- for item in items %}
+  <li class="e-index__row">
+    <span class="e-index__num" aria-hidden="true">{{ _slot(item.index, "index") }}</span>
+    <span class="e-index__main">
+      <h3 class="e-index__title"><a href="{{ item.href }}">{{ _slot(item.title, "title") }}</a></h3>
+      <p class="e-index__summary">{{ _slot(item.summary, "summary") }}</p>
+    </span>
+    <span class="e-index__meta">{{ _slot(item.meta, "meta") }}</span>
+  </li>
+  {%- endfor %}
+</ol>
+{% endmacro %}

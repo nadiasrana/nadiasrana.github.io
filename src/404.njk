@@ -1,18 +1,17 @@
 ---
-layout: layouts/base.njk
+layout: layouts/page.njk
 title: Not found
+kicker: Error 404
+deck: That page is not here. It may never have been, or it may have been a draft that was never published.
 permalink: /404.html
 eleventyExcludeFromCollections: true
 ---
-<div class="shell">
-  <section class="hero" aria-labelledby="nf-h">
-    <p class="eyebrow">Error 404</p>
-    <h1 class="hero__name" id="nf-h">Not found</h1>
-    <p class="lead">That page is not here. It may never have been, or it may
-      have been a draft that was never published.</p>
-    <div class="hero__links">
-      <a href="/">Back to the cover</a>
-      <a href="/writing/">All writing</a>
-    </div>
-  </section>
-</div>
+<section class="section" aria-labelledby="nf-h">
+  <h2 class="visually-hidden" id="nf-h">Where to go instead</h2>
+  <ul class="contact__list section__body">
+    <li><a href="/">The cover</a></li>
+    <li><a href="/#work">Work</a></li>
+    <li><a href="/projects/">The project</a></li>
+    <li><a href="/about/">About</a></li>
+  </ul>
+</section>

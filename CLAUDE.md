@@ -36,15 +36,16 @@ What still holds:
 - **No CSS framework.** No Tailwind, no Bootstrap. `styles.css` is
   hand-written and copied through unprocessed.
 - **No client-side framework.** No React, no Vue, no islands.
-- **One JavaScript file**, 80 lines, for an image reveal and copy buttons.
-  Everything works with it disabled.
+- **No JavaScript.** Not one line ships. `tools/verify.mjs` fails the build
+  if a `<script>` tag other than the JSON-LD block, an inline event-handler
+  attribute, or a `.js` file reaches `_site`.
 - **Dev dependencies only.** Nothing ships to the browser from `node_modules`.
 
 - Plain HTML, CSS, and vanilla JS at the output layer.
 - No CSS framework. No Tailwind, no Bootstrap.
 - Self-host fonts in `assets/fonts/` or use a single well-chosen web font.
   Do not load four families.
-- Everything must work if JavaScript fails.
+- Everything must work if JavaScript fails. Nothing depends on it.
 
 Reason: GitHub Pages serves this directly, and it should still build and
 deploy untouched in three years.
@@ -73,11 +74,17 @@ See `CONTENT.md` for what is verified and what is still missing.
 
 ## Design direction
 
-**See `DESIGN.md`. Read it in full before writing any CSS.**
+**See `DESIGN_SYSTEM.md`. Read it in full before writing any CSS.**
 
-It defines the reference class, a mandatory plan-then-build process, craft
-standards, an accessibility floor, and a kill list of current design clichés.
-Do not skip the plan step. Do not begin coding until the plan is approved.
+It defines the tokens with their measured contrast ratios, the type and
+spacing scales, the grid, every component with its fixed slots, the image
+treatment and per-placement crops, and an explicit ban list.
+
+`CONTENT_AUDIT.md` records what content is real, what was removed, and what is
+still missing.
+
+Run `node tools/verify.mjs` after any change. It asserts the rules in
+`DESIGN_SYSTEM.md` against the built output and fails on a violation.
 
 ## Working style
 
@@ -92,7 +99,8 @@ Do not skip the plan step. Do not begin coding until the plan is approved.
 
 The stack is plain HTML and CSS. shadcn itself is **not** used — it requires
 React, Tailwind, and a build step, and its visual defaults are on the
-`DESIGN.md` kill list. But four of its ideas are good and should be copied:
+`DESIGN_SYSTEM.md` ban list. But four of its ideas are good and should be
+copied:
 
 **1. Semantic CSS custom properties, declared once.** Every colour, radius,
 and spacing value is a named token in `:root`. Nothing hardcodes a hex value
@@ -135,9 +143,11 @@ Do not ask the user to check something you can check yourself.
 
 ## Deployment
 
-- GitHub Pages, `main` branch.
-- `CNAME` file in the root containing `nadiasrana.com`.
-- Apex domain, so DNS needs A records pointing at GitHub's Pages IPs plus a
-  `www` CNAME. Confirm the current IPs from GitHub's documentation at the
-  time of setup rather than hardcoding remembered values.
-- Enforce HTTPS in the repository's Pages settings once the domain verifies.
+- GitHub Pages, via GitHub Actions, on `main` or `master`.
+- **No `CNAME` file, deliberately.** The custom domain is held until a second
+  real project exists; the `github.io` URL is correct until then. See
+  `CONTENT.md`. When the domain is taken up: add `CNAME` containing
+  `nadiasrana.com` so it lands in `_site/`, update `site.url`, point A records
+  at GitHub's Pages IPs plus a `www` CNAME — confirm the current IPs from
+  GitHub's documentation rather than hardcoding remembered values — and
+  enforce HTTPS once the domain verifies.

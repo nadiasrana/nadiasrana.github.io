@@ -1,91 +1,60 @@
 ---
 layout: layouts/page.njk
 title: About
-eyebrow: About her
+kicker: Nadia Sultan Rana
 deck: Biology, then business, then the part where somebody has to decide whether the number is right.
 permalink: /about/
-description: Nadia Sultan Rana — background, education, principles and current work.
+description: Nadia Sultan Rana — background, education, principles and toolkit.
 ---
-{% from "partials/figure.njk" import figure %}
+{% from "macros/components.njk" import RecordMetadata, Marker %}
 
 <section class="section" aria-labelledby="bio-h">
   <h2 class="visually-hidden" id="bio-h">Biography</h2>
-  <div class="bio__grid">
+
+  <div class="bio">
     <div class="bio__media">
-      {{ figure(none, "Portrait of Nadia Sultan Rana", none, none, none, "4/5") }}
-      <div class="bio__more">
-        {%- for i in range(0, 3) %}
-        <figure class="bio__figure" data-reveal>
-          <div class="fig__placeholder" style="aspect-ratio: 1/1"></div>
-        </figure>
-        {%- endfor %}
-      </div>
-      <p class="needs-content">[NEEDS CONTENT: additional photographs. Three
-        slots above, square. The layout holds for two or three, so fewer is
-        fine; the row does not need filling for its own sake.]</p>
+      {% mediaFigure
+         "portrait-hillside.jpg",
+         "Nadia Sultan Rana standing on a grass hillside in a black top and cream trousers, facing the camera.",
+         "Standing on a hillside above Stockton, California.",
+         "Portrait · 2025",
+         "(min-width: 1200px) 392px, (min-width: 768px) calc(100vw - 128px), calc(100vw - 48px)",
+         "lazy",
+         false %}
+
+      {% mediaFigure
+         "lake-wall.jpg",
+         "Nadia Sultan Rana seated on a low stone wall above a reservoir, dry hills behind her.",
+         "Above a reservoir in the California foothills.",
+         "Photograph · 2025",
+         "(min-width: 1200px) 392px, (min-width: 768px) calc(100vw - 128px), calc(100vw - 48px)",
+         "lazy",
+         false %}
     </div>
 
     <div class="bio__intro">
-      <p class="needs-content">[NEEDS CONTENT: the first-person paragraph, in
-        her words. This is the one thing on the site that cannot be assembled
-        from the record, and inventing biography is worse than inventing a
-        metric because a reader assumes this part is unmediated. Three or
-        four sentences: how she got from biology to analytics, and what she
-        is actually like to work with.]</p>
+      {{ Marker("[NEEDS CONTENT: the first-person paragraph, in her words. This is the one thing on the site that cannot be assembled from the record, and inventing biography is worse than inventing a metric because a reader assumes this part is unmediated. Three or four sentences: how she got from biology to analytics, and what she is actually like to work with.]") }}
     </div>
   </div>
 </section>
 
 <section class="section" aria-labelledby="record-h">
   <h2 class="section__head" id="record-h">The record</h2>
-  <dl class="catalog">
-    <div class="catalog__row">
-      <dt>Studied</dt>
-      <dd>B.S. Biological Sciences and B.S. Business Administration,
-        University of the Pacific, Stockton, CA.
-        <span class="nowrap">August 2022 &ndash; December 2025.</span></dd>
-    </div>
-    <div class="catalog__row">
-      <dt>Now</dt>
-      <dd>M.S. Data Analytics Engineering, Northeastern University.
-        <span class="nowrap">January 2026 &ndash; May 2027.</span></dd>
-    </div>
-    <div class="catalog__row">
-      <dt>Languages</dt>
-      <dd>English, native. Urdu, Arabic and Spanish, limited working.</dd>
-    </div>
-    <div class="catalog__row">
-      <dt>Honors</dt>
-      <dd>Dean&rsquo;s Honor List. President&rsquo;s Merit Scholarship.</dd>
-    </div>
-    <div class="catalog__row">
-      <dt>Service</dt>
-      <dd>VP of Scholarships and Awards, Delta Sigma Pi: scoring applications
-        against fixed criteria and writing the reasoning behind each
-        decision.</dd>
-    </div>
-    <div class="catalog__row">
-      <dt>Research</dt>
-      <dd>Independent research in the Carlson Lab on multi-trial experimental
-        data, using bioinformatics tools.</dd>
-    </div>
-    <div class="catalog__row">
-      <dt>From</dt>
-      <dd><span class="needs-content">[NEEDS CONTENT: where she is from.
-        Nothing on file. Not the same question as where she lives now.]</span></dd>
-    </div>
-    <div class="catalog__row">
-      <dt>Based</dt>
-      <dd><span class="needs-content">[NEEDS CONTENT: stated as the
-        Raleigh&ndash;Durham&ndash;Chapel Hill area; confirm the exact wording
-        she wants public.]</span></dd>
-    </div>
-  </dl>
+  <div class="section__body">
+    {{ RecordMetadata([
+      { label: "Studied",   value: "B.S. Biological Sciences and B.S. Business Administration, University of the Pacific, Stockton, CA. August 2022 – December 2025." },
+      { label: "Now",       value: "M.S. Data Analytics Engineering, Northeastern University. January 2026 – May 2027." },
+      { label: "Honors",    value: "Dean’s Honor List. President’s Merit Scholarship." },
+      { label: "Service",   value: "VP of Scholarships and Awards, Delta Sigma Pi: scoring applications against fixed criteria and writing the reasoning behind each decision." },
+      { label: "Languages", value: "English, native. Urdu, Arabic and Spanish, limited working." }
+    ], "Background") }}
+    {{ Marker("[NEEDS CONTENT: where she is from, and the location wording she wants public. Nothing on file for the first; the second is open question 6 in CONTENT.md.]") }}
+  </div>
 </section>
 
 <section class="section" aria-labelledby="tl-h">
   <h2 class="section__head" id="tl-h">Selected milestones</h2>
-  <ol class="timeline">
+  <ol class="timeline section__body">
     <li class="timeline__row">
       <span class="timeline__when">2022&ndash;2025</span>
       <span class="timeline__what">Two bachelor&rsquo;s degrees at the
@@ -107,7 +76,7 @@ description: Nadia Sultan Rana — background, education, principles and current
       <span class="timeline__what">Operations analytics for the Pacific
         Summer Conference program.</span>
     </li>
-    <li class="timeline__run">
+    <li class="timeline__row">
       <span class="timeline__when">Spring 2026</span>
       <span class="timeline__what">Diamond price drivers: 918 stones, four
         retailers, and a confidence interval that had to be rebuilt.</span>
@@ -122,7 +91,7 @@ description: Nadia Sultan Rana — background, education, principles and current
 
 <section class="section" aria-labelledby="princ-h">
   <h2 class="section__head" id="princ-h">How I work</h2>
-  <ol class="principles">
+  <ol class="principles section__body">
     <li>
       <h3 class="principles__head">A match nobody can justify is worse than a gap everybody can see.</h3>
       <p>Ambiguous records go to review. Resolving them silently makes the
@@ -148,69 +117,61 @@ description: Nadia Sultan Rana — background, education, principles and current
 
 <section class="section" aria-labelledby="kit-h">
   <h2 class="section__head" id="kit-h">Toolkit</h2>
-  <div class="stack-group">
-    <h3 class="eyebrow stack-group__head">Analysis and modeling</h3>
-    <ul>
-      <li><span>Excel</span> <span class="stack__level">Daily</span></li>
-      <li><span>SQL</span> <span class="stack__level">Comfortable</span></li>
-      <li><span>SPSS</span> <span class="stack__level">Exposure</span></li>
-      <li><span>Regression</span> <span class="stack__level">Comfortable</span></li>
-      <li><span>Confidence intervals</span> <span class="stack__level">Comfortable</span></li>
-      <li><span>Web scraping</span> <span class="stack__level">Comfortable</span></li>
-    </ul>
-  </div>
-  <div class="stack-group">
-    <h3 class="eyebrow stack-group__head">Data quality</h3>
-    <ul>
-      <li><span>Data validation</span> <span class="stack__level">Daily</span></li>
-      <li><span>Data dictionaries</span> <span class="stack__level">Daily</span></li>
-      <li><span>Reconciliation</span> <span class="stack__level">Comfortable</span></li>
-    </ul>
-  </div>
-  <div class="stack-group">
-    <h3 class="eyebrow stack-group__head">Enterprise systems</h3>
-    <ul>
-      <li><span>SAP</span> <span class="stack__level">Exposure</span></li>
-    </ul>
-  </div>
-  <div class="stack-group">
-    <h3 class="eyebrow stack-group__head">Reporting</h3>
-    <ul>
-      <li><span>Power BI</span> <span class="stack__level">Daily</span></li>
-      <li><span>Word</span> <span class="stack__level">Daily</span></li>
-      <li><span>PowerPoint</span> <span class="stack__level">Comfortable</span></li>
-    </ul>
-  </div>
-  <div class="stack-group">
-    <h3 class="eyebrow stack-group__head">Programming</h3>
-    <ul>
-      <li><span>Python</span> <span class="stack__level">Exposure</span></li>
-      <li><span>TypeScript</span> <span class="stack__level">Exposure</span></li>
-    </ul>
-  </div>
-  <p class="needs-content">[NEEDS CONTENT: the SQL level, and what the Pacific
-    operations &ldquo;query logic that other people could reuse&rdquo; actually
-    was. The Summer Conference role names SQL outright, so SQL is listed.
-    Whether that logic was also SQL, or DAX and Power Query inside Power BI,
-    is still open, and it decides whether Comfortable is right.]</p>
-</section>
+  <div class="section__body">
+    <p class="toolkit__note">Levels, not bars. <strong>Daily</strong> is
+      routine use, <strong>Comfortable</strong> is unsupervised use,
+      <strong>Exposure</strong> is not a claim.</p>
 
-<section class="section" aria-labelledby="expl-h">
-  <h2 class="section__head" id="expl-h">Exploring now</h2>
-  <div class="callout">
-    <p class="needs-content">[NEEDS CONTENT: what she is actually exploring.
-      This module earns its place only if it is kept current. A stale
-      &ldquo;now&rdquo; module is worse than not having one.]</p>
+    <div class="stack-group">
+      <h3 class="stack-group__head">Analysis and modeling</h3>
+      <ul>
+        <li><span>Excel</span> <span class="stack__level">Daily</span></li>
+        <li><span>SQL</span> <span class="stack__level">Comfortable</span></li>
+        <li><span>SPSS</span> <span class="stack__level">Exposure</span></li>
+        <li><span>Regression</span> <span class="stack__level">Comfortable</span></li>
+        <li><span>Confidence intervals</span> <span class="stack__level">Comfortable</span></li>
+        <li><span>Web scraping</span> <span class="stack__level">Comfortable</span></li>
+      </ul>
+    </div>
+    <div class="stack-group">
+      <h3 class="stack-group__head">Data quality</h3>
+      <ul>
+        <li><span>Data validation</span> <span class="stack__level">Daily</span></li>
+        <li><span>Data dictionaries</span> <span class="stack__level">Daily</span></li>
+        <li><span>Reconciliation</span> <span class="stack__level">Comfortable</span></li>
+      </ul>
+    </div>
+    <div class="stack-group">
+      <h3 class="stack-group__head">Enterprise systems</h3>
+      <ul>
+        <li><span>SAP</span> <span class="stack__level">Exposure</span></li>
+      </ul>
+    </div>
+    <div class="stack-group">
+      <h3 class="stack-group__head">Reporting</h3>
+      <ul>
+        <li><span>Power BI</span> <span class="stack__level">Daily</span></li>
+        <li><span>Word</span> <span class="stack__level">Daily</span></li>
+        <li><span>PowerPoint</span> <span class="stack__level">Comfortable</span></li>
+      </ul>
+    </div>
+    <div class="stack-group">
+      <h3 class="stack-group__head">Programming</h3>
+      <ul>
+        <li><span>Python</span> <span class="stack__level">Exposure</span></li>
+        <li><span>TypeScript</span> <span class="stack__level">Exposure</span></li>
+      </ul>
+    </div>
+
+    {{ Marker("[NEEDS CONTENT: the SQL level, and what the Pacific operations “query logic that other people could reuse” actually was. The Summer Conference role names SQL outright, so SQL is listed. Whether that logic was also SQL, or DAX and Power Query inside Power BI, is still open, and it decides whether Comfortable is right.]") }}
   </div>
 </section>
 
 <section class="section" aria-labelledby="contact-h">
   <h2 class="section__head" id="contact-h">Contact</h2>
-  <ul class="contact__list">
+  <ul class="contact__list section__body">
     <li><a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></li>
-    <li><span class="needs-content">[NEEDS CONTENT: LinkedIn URL &mdash; no
-      verified URL on file, only a PDF export.]</span></li>
-    <li><span class="needs-content">[NEEDS CONTENT: résumé PDF &mdash; held
-      until the Q1&ndash;Q5 conflicts resolve.]</span></li>
   </ul>
+  {{ Marker("[NEEDS CONTENT: LinkedIn URL — no verified URL on file, only a PDF export.]") }}
+  {{ Marker("[NEEDS CONTENT: résumé PDF — held until the Q1–Q5 conflicts resolve.]") }}
 </section>

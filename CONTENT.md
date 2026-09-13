@@ -23,42 +23,54 @@ work.
 
 ---
 
-## Sample content — ALL of it is placeholder ⛔
+## Sample content — REMOVED ✅
 
-**Added 12 Sep 2026.** The site now has a journal structure: Writing, Notes,
-Library. It was built with **sample entries so the templates could be judged**,
-and **every one of them is placeholder**:
+**Closed 13 Sep 2026 by the editorial redesign.** The journal structure
+(Writing, Notes, Library) and every placeholder entry in it are deleted:
 
-| Where | Count | State |
+| What | Count | Disposition |
 |---|---|---|
-| `src/writing/posts/` | 5 | 1 type specimen + 4 TKTK shells. **None is her writing.** |
-| `src/notes/entries/` | 3 | TKTK titles, `[NEEDS CONTENT]` bodies |
-| `src/projects/entries/` | 3 | **1 real** (diamond study), 2 TKTK shells |
-| `src/_data/library.js` | 15 | TKTK titles, notes unwritten |
+| `src/writing/posts/` | 5 | Deleted, including the type specimen |
+| `src/notes/entries/` | 3 | Deleted |
+| `src/_data/library.js` | 15 | Deleted |
+| `src/projects/entries/` shells | 2 | Deleted. The diamond study remains |
+| `/writing/`, `/notes/`, `/library/`, `/feed.xml` | 4 routes | Removed from the build and from the navigation |
 
-⛔ **Delete `writing/posts/2026-08-20-specimen.md` before launch.** It is a
-type specimen and says so in its own first paragraph.
+The reason: an empty section advertises absence, and a journal with no
+entries is a louder claim of absence than no journal. **The site is now a
+portfolio under her own name** — the "Field Notes" brand, the volume and
+issue numbering, the digital-garden status vocabulary and the Atom feed are
+all retired, and `@11ty/eleventy-plugin-rss` is uninstalled.
 
-The four TKTK posts carry *briefs* in their descriptions, not copy. The briefs
-are drawn from work she actually did and stay inside the positioning above. A
-brief is not permission to write the post for her.
+The four post briefs are **not lost** — they are recorded in
+`CONTENT_AUDIT.md` under *Content to Remove*. A brief is still not permission
+to write the post for her.
+
+⛔ **The remaining placeholders are `[NEEDS CONTENT: …]` and `[VERIFY …]`
+markers only.** They render as dashed blocks and are listed in the Open
+questions below. There is no placeholder *copy* anywhere on the site.
 
 ---
 
 ## Pages
 
+**Updated 13 Sep 2026 after the editorial redesign.** Seven build outputs,
+five of them pages.
+
 | Page | Status | Notes |
 |---|---|---|
-| Home | ⚠️ | Warm-minimal system. Hero, About, Work (5 entries), Projects, Stack, Contact. Six markers — headshot, résumé, SQL level, Eberhardt $6M, LinkedIn, location |
-| Projects index | ⚠️ | Built at `/projects/`. 1 real entry, 2 shells |
-| Writing index | ⚠️ | Built at `/writing/`. All entries placeholder |
-| Notes | ⚠️ | Built at `/notes/`. All entries placeholder |
-| Library | ⚠️ | Built at `/library/`. 15 placeholder entries |
-| 404 | ✅ | Built |
-| Diamond Price Drivers project page | ⚠️ | Built at `work/diamond-price-drivers.html`. One marker left, no blockers. Q-R2 closed 12 Sep 2026 |
-| About | ✅ | Writable now from verified background |
+| Home `/` | ⚠️ | Hero, What I do, **Work (5 entries)**, Project, Now, Contact. Work lives here rather than at `/work/`: five entries and no long-form content made a separate route thin and put a click in front of the only thing worth reading |
+| About `/about/` | ⚠️ | Bio (portrait + second photograph), The record, Selected milestones, How I work, Toolkit, Contact. One marker: the first-person paragraph |
+| Project index `/projects/` | ✅ | One real entry. Not padded |
+| Diamond Price Drivers `/projects/diamond-price-drivers/` | ⚠️ | One marker left: what she would do differently |
+| 404 `/404.html` | ✅ | Built |
+| `sitemap.xml`, `robots.txt` | ✅ | Built. `robots.txt` is `Disallow: /` while `site.draft` is true |
 | Résumé PDF | ⚠️ | Available, but hold until the Q1–Q5 conflicts in `03-open-questions.md` resolve |
-| Contact | ✅ | nadiasrana@gmail.com. Phone is on the resume — decide separately whether it goes on a public page. Default: no |
+| Contact | ✅ | nadiasrana@gmail.com. Phone stays off the public page. Default: no |
+
+**Deployment note:** there is deliberately **no `CNAME`**. `site.url` is the
+`github.io` URL, and the custom domain is held until a second real project
+lands — the launch position below, unchanged.
 
 ---
 
@@ -97,9 +109,11 @@ routed records under Fraqt. The routing is Archroma's, and it is the strongest
 single thing on the page: it is the judgement call, not the volume. Fraqt has
 **one** figure and the entry shows one. Do not pad it.
 
-Archroma has five figures; the entry shows three in the figure row (3 systems,
-1,080 routed, 203 fields) and carries the defect log and release audit in
-prose.
+Archroma has five figures. **Amended 13 Sep 2026:** the entry shows **one** in
+the figure slot — the 1,080 routed records — and carries the three source
+systems, the 203-field dictionary, the 31-item defect log and the 40-point
+release audit in prose. One figure per entry is the fixed schema; see
+*Work order* below.
 
 ### Tools attributable to Archroma ✅ — SAP, Power BI, Excel
 
@@ -146,9 +160,19 @@ Do not add them without Q1.
 "pre-launch" implies current, but Q-FRAQT means there are no dates to sort on.
 If the dates land and it predates mid-2025, the order changes.
 
-⚠️ **Locations are on two entries only.** Stockton, CA is on 03 and 04 because
-the resume supplies it. Nothing is on file for Archroma, Fraqt or Northstar.
-Either get the other three or drop all five; two of five reads as an oversight.
+✅ **Locations — resolved 13 Sep 2026 by dropping the field.** Location is no
+longer a row in the work-entry schema. Stockton, California stays in the
+prose of entries 03 and 04, where it is a fact about the role rather than a
+missing field. Two of five filled read as an oversight; printing "Not on
+record" three times reads worse. If all five ever land, add the row back to
+`RecordMetadata` Schema A in `DESIGN_SYSTEM.md` and it appears on all five at
+once.
+
+✅ **Figures — one per entry.** Archroma has five figures on record; showing
+three there and one elsewhere is the ragged shape that made the old page read
+as unfinished. Each entry now shows exactly one headline figure, and for
+Archroma it is the 1,080 routed records, which this document names as the
+strongest single item. Archroma's other four figures are in its prose.
 
 ### 03 — Summer Conference, University of the Pacific ✅
 
@@ -250,12 +274,24 @@ paragraph. That is a gap worth a decision, not an oversight to fix silently.
 
 ---
 
-## Headshot
+## Photographs ⚠️ Q-PHOTO — partly closed
 
-⚠️ **Q-PHOTO.** The hero reserves a portrait slot at `assets/img/`. Nothing is
-there. This supersedes the old "photograph or none?" question: the rebuilt
-design has a place for one. A marked placeholder holds the space. **No stock
-photograph.**
+**Updated 13 Sep 2026.** Five of her own photographs are now committed in
+`pictures/` and three are on the site, cropped and colour-graded to one
+consistent treatment by `tools/grade-images.mjs`:
+
+| Plate | Source | Placement |
+|---|---|---|
+| `hero-canyon.jpg` | `IMG_3013.JPG` | Home hero, 3:2 |
+| `portrait-hillside.jpg` | `IMG_3857.JPG` | About portrait, 4:5 |
+| `lake-wall.jpg` | `IMG_4273.JPG` | About secondary, 3:2. Cropped to remove a second person |
+
+`IMG_3898.JPG` and `IMG_4353.JPG` are deliberately unused: neither survives
+its crop. See `DESIGN_SYSTEM.md` section 6.
+
+⚠️ **Still open: a studio headshot.** `IMG_3857` is a full-figure
+environmental portrait, not a headshot. It is honest and it works, but if a
+proper headshot exists it should replace it. **No stock photograph.**
 
 ---
 
@@ -371,6 +407,11 @@ authorised 12 Sep 2026.
 - Eberhardt Student Investment Fund, student investment analyst, Spring 2025
   ⚠️ Tier B
 - VP of Scholarships and Awards, Delta Sigma Pi
+- ⚠️ **Carlson Lab research was CUT from the site 13 Sep 2026.** It appeared
+  on `/about/` but is not on this verified list, and `CLAUDE.md` rule 4
+  prohibits unpublished lab data. The phrasing was general and may well be
+  fine — but it needs confirming rather than assuming. Restore it here first
+  if it is cleared
 - Languages: English native; Urdu, Arabic, Spanish limited working
 
 ---
