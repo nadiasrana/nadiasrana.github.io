@@ -34,7 +34,9 @@ export default [
     role: 'Data analytics intern, Commercial Excellence',
     // Charlotte, NC confirmed 13 Sep 2026 from her work-log export.
     place: 'Charlotte, NC',
-    dates: 'Summer 2026',
+    // May – September 2026, matching her résumé. Previously printed as
+    // "Summer 2026" per an earlier CONTENT.md instruction.
+    dates: 'May – September 2026',
     // SAP, Power BI and Excel are the ONLY tools attributable to Archroma.
     // Source: her own public LinkedIn post about the internship. The work-log
     // export names none, so nothing else joins them on a guess.

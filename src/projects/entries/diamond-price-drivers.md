@@ -170,7 +170,23 @@ $1,837 per carat, with a point estimate of $1,760.15.
 
 ## What I would do differently
 
-<p class="marker">[NEEDS CONTENT: her answer. Not in the source and not
-inferable from the findings. The obvious guesses (widen the carat band, collect
-enough D/VVS1 to build the interval as planned, separate cut from color and
-clarity) are guesses.]</p>
+Four things, in order of how much they would change the result.
+
+**Plan the sample per cell before collecting rather than after.** The 95%
+confidence interval was meant to run on D-color, VVS1 stones and there were
+not enough of them, so it fell back to H-SI2 where 44 were available. Deciding
+the target cell first and collecting until it was full would have avoided
+relaxing the constraint once the data was already in.
+
+**Balance the cut distribution deliberately.** Excellent-cut stones in this
+sample also carried better color and clarity, so the 44% cut premium cannot be
+separated from the grades that travel with it. A stratified sample across cut
+would let cut be tested on its own.
+
+**Collect across more than one day.** Everything here came from a single pull
+on 29 March 2026. A single snapshot cannot distinguish a real price difference
+from a promotion running that week at one retailer.
+
+**Record that these are listing prices, not transaction prices.** What a stone
+is advertised at and what it sells for are different numbers, and only one of
+them is in this dataset.

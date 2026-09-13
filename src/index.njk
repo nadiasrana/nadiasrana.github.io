@@ -11,21 +11,16 @@ description: >-
    Hero. Her name, what she does, and one photograph.
    =================================================================== #}
 <section class="hero" aria-labelledby="name-h">
-  <p class="hero__kicker">{{ site.author.role }} · M.S. candidate, Northeastern</p>
+  <p class="hero__kicker">Data analytics · M.S. candidate, Northeastern</p>
   <h1 class="hero__name" id="name-h">{{ site.title }}</h1>
   <p class="hero__lead">I build the models and the checks that decide whether
     a number can be trusted.</p>
-  <p class="hero__links">
-    <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
-    <a href="/#work">See the work</a>
-  </p>
 
   <div class="hero__figure">
     {% mediaFigure
-       "hero-canyon.jpg",
-       "Nadia Sultan Rana standing between two sandstone walls in a narrow canyon, back to the camera, one hand resting on the rock either side.",
-       "Sandstone, worked into shape by water over a longer run than anybody was watching for.",
-       "Photograph · 2024",
+       "hero-tamalpais.jpg",
+       "Nadia Sultan Rana standing on a grass hillside on Mount Tamalpais, facing the camera.",
+       "Mount Tamalpais, California.",
        "(min-width: 1536px) 1184px, (min-width: 1200px) calc(100vw - 256px), (min-width: 768px) calc(100vw - 128px), calc(100vw - 48px)",
        "eager" %}
   </div>
@@ -38,11 +33,6 @@ description: >-
     "Most of my work is making two systems agree on what a record means.",
     "Data models and dictionaries that hold up when somebody else uses them, reconciliation between systems that were never built to match, validation rules that catch the records worth a second look, and evaluation scored against written criteria rather than impressions.",
     "h2", "approach-h") }}
-
-  <div class="prose section__body">
-    <p>Currently a master&rsquo;s candidate in data analytics engineering at
-      Northeastern, looking for full-time analytics roles.</p>
-  </div>
 </section>
 
 {# ===================================================================
@@ -140,22 +130,4 @@ description: >-
       { label: "Looking for", value: "Full-time analytics roles." }
     ], "Current status") }}
   </div>
-</section>
-
-{# =================================================================== #}
-<section class="section" id="contact" aria-labelledby="contact-h">
-  {{ EditorialHeading(
-    "Get in touch",
-    "Contact",
-    "Email is the reliable route.",
-    "h2", "contact-h") }}
-
-  <ul class="contact__list section__body">
-    <li><a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></li>
-    <li><a href="{{ site.author.linkedin }}" rel="me">linkedin.com/in/nadiasrana</a></li>
-    <li>{{ site.author.location }}</li>
-  </ul>
-
-  {{ Marker("[BLOCKED: the résumé PDF is in the repo and confirmed text-based, but the link is not wired and the file is not published. It carries six items CONTENT.md blocks or has corrected — including a superseded pair of R² figures that the project page exists to correct. They are listed in CONTENT.md under Résumé PDF; they are deliberately not repeated here, because a marker that quotes a blocked figure publishes it. Supply a cleaned PDF, then set site.resume.cleared = true.]") }}
-
 </section>

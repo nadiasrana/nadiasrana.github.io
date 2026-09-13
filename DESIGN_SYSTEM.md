@@ -178,7 +178,15 @@ No third family. No monospace face is loaded; the diamond study's tables use
 | `--t-small` | `0.875rem` — 14px | text, 400 | 1.5 | 0 | sentence | Captions, footnotes, table cells |
 | `--t-meta` | `0.75rem` — 12px | text, 500 | 1.2 | 0.08em | UPPER | Kickers, labels, nav |
 | `--t-meta-sm` | `0.625rem` — 10px | text, 500 | 1.2 | 0.12em | UPPER | Figure meta, index numerals, colophon |
-| `--t-numeral` | `clamp(3.5rem, 7vw, 7.5rem)` — 56→120px | display | 0.9 | -0.02em | — | `NumberedSections` only |
+| `--t-numeral` | `clamp(3.5rem, 7vw, 7.5rem)` — 56→120px | display | 0.9 | -0.02em | — | `NumberedSections`, ≥1200px |
+| `--t-numeral-sm` | `clamp(2.5rem, 9vw, 3.5rem)` — 40→56px | display | 0.9 | -0.02em | — | `NumberedSections`, below 1200px |
+
+**One documented exception: `<sup>` and `<sub>`.** A superscript is a feature
+of the type it sits in rather than a step of its own, so it is declared
+`max(0.68em, var(--t-meta-sm))` — relative to its parent, floored at the
+smallest step on the scale. Left to the UA default (`font-size: smaller`) it
+computed to 15px at 1440 and 12.56px at 375, neither of which is on the
+scale; at 0.68em alone it fell to 8.16px inside a 12px table header.
 
 Body reaches its 18px ceiling at roughly 1370px viewport and its 15px floor
 below 375px. Nothing on the site uses a size outside this table.
@@ -414,7 +422,13 @@ throws and fails the build.
 | `image` | Yes | Responsive `<picture>` from `@11ty/eleventy-img`, with `width`/`height` |
 | `alt` | Yes | Real alternative text. Never the filename, never "image of" |
 | `caption` | Yes | What this is, in a sentence, `--t-small`, `--ink-secondary` |
-| `meta` | Yes | Place and date, `--t-meta-sm`, `--ink-muted`, above a `--line` rule |
+
+**Amended 13 Sep 2026: the fourth slot, `meta`, was removed.** Once the
+supplied captions carried the locations, `meta` had nothing true left to hold
+and was rendering the bare word "Photograph". A slot with no real content is
+filler, and the fixed-shape rule is satisfied by three slots filled as well as
+by four. Removing it was the honest option; inventing dates to fill it was
+not.
 
 A `<figure>` with a real `<figcaption>`. `alt` and `caption` do different
 jobs and are never the same string.
@@ -650,9 +664,9 @@ rendered and visually checked.
 
 | Placement | Source | Crop `{left, top, width, height}` | Result | Ratio |
 |---|---|---|---|---|
-| **Hero** | `IMG_3013.JPG` | `{0, 950, 1536, 1024}` | Sandstone walls fill the frame, figure centred, green foliage and sky removed | 3:2 |
+| **Hero** | `IMG_3857.JPG` | `{0, 1500, 2912, 1941}` | Hillside fills the frame, figure centred, sky reduced to a band | 3:2 |
 | **About — portrait** | `nadia-headshot.jpg` | none — every pixel is needed | Studio headshot, dark blazer, warm neutral backdrop | 1:1 |
-| **About — secondary** | `IMG_4273.JPG` | `{308, 614, 1228, 819}` | Second person fully removed; lake and golden hills behind | 3:2 |
+| **About — secondary** | `IMG_4273.JPG` | `{308, 614, 1228, 819}` | Second person fully removed; Lake Tahoe and dry hills behind | 3:2 |
 
 **The portrait is a 400 × 400 export** — a LinkedIn profile crop, and the
 smallest source on the site. `.figure--portrait` caps the figure at its native
@@ -677,7 +691,7 @@ Per the brief: leave the slot out rather than force it.
 
 | Source | Assigned placement | Verdict |
 |---|---|---|
-| `IMG_3857.JPG` | About — portrait (former) | **Comes off.** It was the stand-in for the missing headshot. The headshot now exists, and keeping both a studio portrait and a full-figure portrait of the same person is a gallery, not a composition. It remains the highest-resolution source in the set if a large image is ever needed |
+| `IMG_3013.JPG` | Hero (former) | **Comes off 13 Sep 2026**, displaced when Mount Tamalpais became the lead image. Still graded and cropped; simply has no slot |
 | `background.jpg` | none | **Never use.** A stock-looking coastline with no relationship to her or the work, and a saturated cyan that fights the ivory. Stays in `pictures/`, unused |
 | `IMG_3898.JPG` | About — secondary | **Leave out.** Compositionally busy — tangled bare branches across the upper two-thirds — and no crop resolves that without losing the subject. The grade handles the blue cast well, but at 1330px wide it cannot carry a `wide` placement, and the clothing is loungewear where the other frames are not |
 | `IMG_4353.JPG` | Optional | **Leave out.** The sunset sky is a saturated orange-to-blue ramp that is the single furthest thing from the palette in the set. The grade reduces it but cannot reconcile it. Cropping the sky out removes the reason the photograph exists |

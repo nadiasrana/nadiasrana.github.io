@@ -2,7 +2,7 @@
 permalink: /robots.txt
 eleventyExcludeFromCollections: true
 ---
-# The site is not launched. CONTENT.md holds the launch gate.
+{% if site.draft %}# Not launched. CONTENT.md holds the launch gate.{% else %}# nadiasrana.github.io{% endif %}
 User-agent: *
 {% if site.draft %}Disallow: /{% else %}Allow: /
 Sitemap: {{ site.url }}/sitemap.xml{% endif %}

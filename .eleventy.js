@@ -39,8 +39,13 @@ export default function (eleventyConfig) {
   // original regardless.
   const WIDTHS = [400, 640, 900, 1280];
 
-  // MediaFigure. Slots: src, alt, caption, meta — all four required, and a
-  // missing one fails the build rather than rendering a shorter figure.
+  // MediaFigure. Slots: src, alt, caption — all three required, and a missing
+  // one fails the build rather than rendering a shorter figure.
+  //
+  // `meta` was a fourth slot until 13 Sep 2026. Once the supplied captions
+  // carried the locations it had nothing true left to hold and was printing
+  // the bare word "Photograph". A slot with no real content is filler, so it
+  // was removed rather than filled.
   //
   // This is a shortcode rather than a Nunjucks macro because image generation
   // is async: `{% set x %}{% image %}{% endset %}` captures synchronously and
@@ -48,8 +53,8 @@ export default function (eleventyConfig) {
   // shipped a hero figure with no image inside it for exactly that reason.
   eleventyConfig.addAsyncShortcode(
     'mediaFigure',
-    async function (src, alt, caption, meta, sizes = '100vw', loading = 'lazy', wide = true, extraClass = '') {
-      for (const [name, value] of Object.entries({ src, alt, caption, meta })) {
+    async function (src, alt, caption, sizes = '100vw', loading = 'lazy', wide = true, extraClass = '') {
+      for (const [name, value] of Object.entries({ src, alt, caption })) {
         if (!value || !String(value).trim()) {
           throw new Error(`MediaFigure: missing required slot "${name}" for ${src}`);
         }
@@ -79,10 +84,7 @@ export default function (eleventyConfig) {
       return [
         `<figure class="figure${wide ? ' figure--wide' : ''}${extraClass ? ' ' + extraClass : ''}">`,
         `<div class="figure__media">${img}</div>`,
-        '<figcaption class="figure__caption">',
-        `<span class="figure__text">${caption}</span>`,
-        `<span class="figure__meta">${meta}</span>`,
-        '</figcaption>',
+        `<figcaption class="figure__caption">${caption}</figcaption>`,
         '</figure>',
       ].join('');
     }

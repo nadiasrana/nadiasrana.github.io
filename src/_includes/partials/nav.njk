@@ -1,16 +1,14 @@
 {#
-  EditorialNav. Her name, and the sections. Nothing else.
+  EditorialNav. Her name, the sections, and the résumé.
 
-  No volume number, no issue number, no date line: this is a portfolio under
-  her own name, not a journal with back issues.
+  Contact is a same-page anchor to the footer, which carries the site's one
+  contact block and holds id="contact" on every route. It is not a mailto:
+  link: a mailto opens a mail client the reader may not have configured, and
+  the address is visible in the footer either way.
 
-  DESIGN_SYSTEM.md originally specified a <details>/<summary> disclosure
-  below 768px. Dropped, and the spec amended: there are four links, each a
-  single short uppercase word. They wrap to two lines at 375px and cost
-  nothing. A disclosure would add a control, a state, and a fight with the
-  UA stylesheet's closed-state hiding, to save one line of height. The
-  native-element rule is about not rebuilding native behaviour with divs —
-  it is not a reason to add a widget that is not needed.
+  The résumé link only exists when site.resume.cleared is true. While the
+  current PDF is blocked it is omitted rather than rendered disabled — a
+  control that does nothing is worse than one that is not there.
 #}
 <header class="nav">
   <p class="nav__wordmark">
@@ -20,9 +18,12 @@
   <nav class="nav__sections" aria-label="Sections">
     <ul class="nav__list">
       {%- for item in site.nav %}
-      <li><a href="{{ item.href }}"{% if item.href.startsWith("/#") == false and page.url.startsWith(item.href) %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
+      <li><a href="{{ item.href }}"{% if item.href.startsWith("/#") == false and item.href != "/" and page.url.startsWith(item.href) %} aria-current="page"{% elif item.href == "/" and page.url == "/" %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
       {%- endfor %}
-      <li><a href="mailto:{{ site.author.email }}">Contact</a></li>
+      <li><a href="#contact">Contact</a></li>
+      {%- if site.resume.cleared %}
+      <li><a class="nav__resume" href="{{ site.resume.href }}" download>Résumé <span aria-hidden="true">&darr;</span></a></li>
+      {%- endif %}
     </ul>
   </nav>
 </header>

@@ -5,9 +5,9 @@ export default {
   // Held on the github.io URL until a second real project lands. CONTENT.md
   // holds that gate, and there is deliberately no CNAME file in this repo.
   url: 'https://nadiasrana.github.io',
-  // The site is not launched. CONTENT.md holds the launch gate; until then
-  // every page carries noindex and the draft banner.
-  draft: true,
+  // Launched 13 Sep 2026 on the github.io URL. The custom domain is still
+  // held on a second project; see CONTENT.md.
+  draft: false,
   author: {
     name: 'Nadia Sultan Rana',
     email: 'nadiasrana@gmail.com',
@@ -21,12 +21,14 @@ export default {
   // operators, 15,860 extractable characters, zero image XObjects. It is
   // selectable, searchable and ATS-parseable, not a scan.
   //
-  // `cleared` is false because the file's CONTENT.md conflicts are unresolved
-  // — it carries GPA 4.00, the Northstar figures, the superseded R² numbers
-  // and her phone number, all of which CONTENT.md blocks. Publishing the link
-  // publishes those. Flip `cleared` to true once a cleaned PDF replaces it
-  // and the download wires itself up: the passthrough, the link and the file
-  // size all key off this one flag.
+  // `cleared` is false. A revised PDF landed 13 Sep 2026 and fixed three of
+  // the six blocked items — both analytical errors (the superseded R² pair,
+  // and the $1,700 spread welded to Rapaport) and the Fraqt title. Four
+  // remain: GPA 4.00, the Northstar revenue and client figures, her phone
+  // number, and PostgreSQL/R. Publishing the link publishes those.
+  //
+  // Flip `cleared` to true when they are gone and the download wires itself
+  // up: the passthrough and both links key off this one flag.
   resume: {
     file: 'nadia-sultan-rana-resume.pdf',
     href: '/assets/doc/nadia-sultan-rana-resume.pdf',
@@ -34,6 +36,7 @@ export default {
   },
 
   nav: [
+    { label: 'Home', href: '/' },
     { label: 'Work', href: '/#work' },
     { label: 'Project', href: '/projects/' },
     { label: 'About', href: '/about/' },

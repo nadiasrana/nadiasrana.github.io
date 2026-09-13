@@ -23,6 +23,9 @@ async function walk(dir) {
   return out;
 }
 
+const { default: siteMeta } = await import('../src/_data/site.js');
+const siteDraft = siteMeta.draft;
+
 const files = await walk('_site');
 const pages = files.filter((f) => f.endsWith('.html'));
 const css = await readFile('_site/assets/css/styles.css', 'utf8');
@@ -107,8 +110,11 @@ for (const file of pages) {
   ok(dupes.length === 0, `${route}: duplicate id(s): ${dupes.join(', ')}`);
   seenIds[route] = new Set(ids);
 
-  // Draft gate.
-  ok(/name="robots" content="noindex/.test(html), `${route}: missing noindex while site.draft is true`);
+  // The draft gate, both ways: noindex must be present while site.draft is
+  // true and absent once it is false, so launching cannot half-happen.
+  const noindexed = /name="robots" content="noindex/.test(html);
+  if (siteDraft) ok(noindexed, `${route}: missing noindex while site.draft is true`);
+  else ok(!noindexed, `${route}: still carries noindex after launch`);
 
   // Skip link is present and first.
   ok(/class="skip-link"/.test(html), `${route}: no skip link`);
@@ -296,7 +302,7 @@ ok(
 // While site.resume.cleared is false the PDF must not reach _site and must
 // not be linked. It carries figures CONTENT.md blocks; the gate is the only
 // thing keeping them off a public URL.
-const { default: siteData } = await import('../src/_data/site.js');
+const siteData = siteMeta;
 const resumeShipped = files.some((f) => f.endsWith('.pdf'));
 const resumeLinked = /href="[^"]*\.pdf"/.test(allHtml);
 if (siteData.resume.cleared) {
@@ -330,8 +336,14 @@ const contentMd = await readFile('CONTENT.md', 'utf8');
 // published. `absent` is checked against everything, because a marker that
 // quotes a blocked figure publishes it.
 const strip = (h) => {
+  // <main> AND <footer>: the footer carries the site's one contact block, so
+  // it is published content, not chrome. Restricting this to <main> made the
+  // contract fail the moment contact moved into the footer — correctly, and
+  // the fix is here rather than in the table.
   const main = h.match(/<main[^>]*>([\s\S]*?)<\/main>/);
-  const body = (main ? main[1] : h).replace(/<p class="marker">[\s\S]*?<\/p>/g, '');
+  const foot = h.match(/<footer[^>]*>([\s\S]*?)<\/footer>/);
+  const body = ((main ? main[1] : '') + ' ' + (foot ? foot[1] : '') || h)
+    .replace(/<p class="marker">[\s\S]*?<\/p>/g, '');
   return decode(body.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' '));
 };
 function decode(t) {

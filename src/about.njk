@@ -1,7 +1,7 @@
 ---
 layout: layouts/page.njk
 title: About
-kicker: Nadia Sultan Rana
+kicker: Background
 deck: Biology, then business, then the part where somebody has to decide whether the number is right.
 permalink: /about/
 description: Nadia Sultan Rana — background, education, principles and toolkit.
@@ -17,7 +17,6 @@ description: Nadia Sultan Rana — background, education, principles and toolkit
          "portrait-headshot.jpg",
          "Studio headshot of Nadia Sultan Rana in a dark blazer against a warm neutral backdrop.",
          "Nadia Sultan Rana.",
-         "Portrait",
          "400px",
          "eager",
          false,
@@ -26,23 +25,21 @@ description: Nadia Sultan Rana — background, education, principles and toolkit
       {% mediaFigure
          "lake-wall.jpg",
          "Nadia Sultan Rana seated on a low stone wall above a reservoir, dry hills behind her.",
-         "Above a reservoir in the California foothills.",
-         "Photograph · 2025",
+         "Lake Tahoe, California.",
+         "Photograph",
          "(min-width: 1200px) 392px, (min-width: 768px) calc(100vw - 128px), calc(100vw - 48px)",
          "lazy",
          false %}
     </div>
 
     <div class="bio__intro">
-      <p class="bio__lede">Hey, I’m Nadia. I love matcha and cats — I have two
-        tabby cats — and I’m always up for sightseeing. I’m originally from
-        North Carolina but went to college in California and loved it there.
-        Learning new things is a passion, along with trying new foods and
-        watching sunsets. Right now I’m obsessing over everything to do with
-        AI and data, but I still make decisions the same way: after deep
-        analysis.</p>
-
-      {{ Marker("[DRAFT: her words, supplied 13 Sep 2026, pending her approval on wording. Do not edit it into something more formal — the plainness is the point, and it is the only unmediated voice on the site. Confirm before launch.]") }}
+      <p class="bio__lede">Hey, I’m Nadia. I have two tabby cats, a serious
+        matcha habit, and a running list of places I still want to see. I grew
+        up in North Carolina and went to college in California, which I loved.
+        This summer I’ve been interning at Archroma. I like learning things I
+        don’t know yet — new foods, new tools, and lately anything to do with
+        AI and data. I still make up my mind the same way I always have, which
+        is slowly, and after I’ve actually looked at it.</p>
     </div>
   </div>
 </section>
@@ -92,13 +89,13 @@ description: Nadia Sultan Rana — background, education, principles and toolkit
         retailers, and a confidence interval that had to be rebuilt.</span>
     </li>
     <li class="timeline__row">
-      <span class="timeline__when">Summer 2026</span>
+      <span class="timeline__when">June &ndash; August 2026</span>
       <span class="timeline__what">Data and systems design at Fraqt:
         structuring the federal source corpus. Pre-launch: unregistered, and
         with no users.</span>
     </li>
     <li class="timeline__row">
-      <span class="timeline__when">Summer 2026</span>
+      <span class="timeline__when">May &ndash; September 2026</span>
       <span class="timeline__what">Data analytics internship at Archroma,
         Commercial Excellence: entity resolution across three systems.</span>
     </li>
@@ -180,14 +177,4 @@ description: Nadia Sultan Rana — background, education, principles and toolkit
     </div>
 
   </div>
-</section>
-
-<section class="section" aria-labelledby="contact-h">
-  <h2 class="section__head" id="contact-h">Contact</h2>
-  <ul class="contact__list section__body">
-    <li><a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></li>
-    <li><a href="{{ site.author.linkedin }}" rel="me">linkedin.com/in/nadiasrana</a></li>
-    <li>{{ site.author.location }}</li>
-  </ul>
-  {{ Marker("[BLOCKED: the résumé PDF is in the repo and confirmed text-based, but the link is not wired and the file is not published. It carries six items CONTENT.md blocks or has corrected — including a superseded pair of R² figures that the project page exists to correct. They are listed in CONTENT.md under Résumé PDF; they are deliberately not repeated here, because a marker that quotes a blocked figure publishes it. Supply a cleaned PDF, then set site.resume.cleared = true.]") }}
 </section>

@@ -21,9 +21,14 @@ Price Drivers study. That is enough for a credible soft launch on the
 a portfolio with one item reads as a coursework page rather than a body of
 work.
 
-✅ **The $6M gate is cleared (13 Sep 2026).** The remaining gate on the custom
-domain is a second project. The remaining gate on the *résumé link* is a
-cleaned PDF — see below.
+✅ **LAUNCHED 13 Sep 2026 on `nadiasrana.github.io`.** `site.draft` is
+`false`; the banner, `noindex` and `Disallow: /` are gone and the sitemap is
+served. Every placeholder marker was closed first — there are none on the
+site.
+
+Two gates remain, both unchanged: the **custom domain** waits on a second
+project, and the **résumé link** waits on a cleaned PDF
+(`site.resume.cleared`).
 
 ---
 
@@ -174,7 +179,7 @@ Do not add them without Q1.
 
 | # | Entry | Dates |
 |---|---|---|
-| 01 | Archroma | Summer 2026 |
+| 01 | Archroma | May – Sept 2026 ✅ |
 | 02 | Fraqt | June – Aug 2026 ✅ |
 | 03 | Summer Conference, University of the Pacific | May – Aug 2025 |
 | 04 | Eberhardt Student Investment Fund | Jan – May 2025 |
@@ -585,8 +590,9 @@ authorised 12 Sep 2026.
   the Pacific. ✅ **End date confirmed 12 Sep 2026: December 2025.** The
   LinkedIn "May 2025" is wrong. Print **August 2022 – December 2025**
 - Dean's Honor List; President's Merit Scholarship
-- Data Analytics Intern, Archroma, Commercial Excellence — **print as
-  `Summer 2026`**
+- Data Analytics Intern, Archroma, Commercial Excellence — ✅ **print as
+  `May – September 2026`** (updated 13 Sep 2026 to match her résumé;
+  supersedes the earlier `Summer 2026` instruction)
 - Northstar Insight Group, co-founder, Jan 2023 – Dec 2024 ⚠️ Tier B, see below
 - Eberhardt Student Investment Fund, student investment analyst, Spring 2025
   ⚠️ Tier B
@@ -729,6 +735,22 @@ refusal.** Reading the extracted text against this document, the PDF carries
 **five things CONTENT.md blocks or has corrected**. Linking it publishes all
 of them to exactly the reader the block list exists to protect her from:
 
+**Updated 13 Sep 2026: a revised PDF landed mid-session and is now the stored
+copy.** Three of the six are fixed — including both analytical errors, which
+were the decisive ones. Four remain, so `site.resume.cleared` stays `false`.
+
+| Item | Status in the revised PDF |
+|---|---|
+| **R² 0.40 / 0.29** | ✅ **Fixed.** Now reads "clarity and color together explain 63.3% of price variation, and the apparent gap between them collapses on individual stones (R² = 0.335 versus 0.332) once grade averaging is removed" — matching the site exactly, and framed better than the site's own deck |
+| **$1,700 welded to Rapaport** | ✅ **Fixed.** Now "a $1,700/ct spread between the cheapest and most expensive retailer". Rapaport is no longer attached to it |
+| **"Founding Data Lead"** | ✅ **Fixed.** Now "Data and systems design", matching the site |
+| **GPA 4.00** ×2 | ⛔ still present |
+| **Northstar figures** — $45K, 20 engagements, 12 clients, 45%, 80+, 100+ | ⛔ still present |
+| **Phone (919) 888-9512** | ⛔ still present |
+| **PostgreSQL, R** | ⛔ still present |
+
+The original six-item table, for the record:
+
 | In the PDF | CONTENT.md says |
 |---|---|
 | **GPA: 4.00**, twice | ⛔ "Tier B, no transcript seen. Off the site until confirmed" |
@@ -777,24 +799,54 @@ and the R² conflict is decisive.
 
 ---
 
-## About paragraph — DRAFT ⚠️
+## About paragraph ✅ APPROVED
 
-**Supplied 13 Sep 2026, in her words. On the site, marked DRAFT, pending her
-approval on wording.**
+**Supplied 13 Sep 2026 in her words, revised and approved by her the same
+day. The DRAFT marker is off the site.** This is the published text:
 
-> Hey, I'm Nadia. I love matcha and cats — I have two tabby cats — and I'm
-> always up for sightseeing. I'm originally from North Carolina but went to
-> college in California and loved it there. Learning new things is a passion,
-> along with trying new foods and watching sunsets. Right now I'm obsessing
-> over everything to do with AI and data, but I still make decisions the same
-> way: after deep analysis.
+> Hey, I'm Nadia. I have two tabby cats, a serious matcha habit, and a running
+> list of places I still want to see. I grew up in North Carolina and went to
+> college in California, which I loved. This summer I've been interning at
+> Archroma. I like learning things I don't know yet — new foods, new tools,
+> and lately anything to do with AI and data. I still make up my mind the same
+> way I always have, which is slowly, and after I've actually looked at it.
 
 ⛔ **Do not edit this into something more formal.** The plainness is the point,
 and it is the only unmediated voice on the site — every other sentence is
 assembled from the record. The last clause is also the only place the site
-says what she is like to work with in her own words.
+says how she works, in her own words.
 
-Confirm the wording before launch and remove the DRAFT marker.
+---
+
+## Diamond study — "What I would do differently" ✅ CLOSED
+
+**Supplied 13 Sep 2026. The last marker on the site is gone.** Four points,
+published in her order: plan the sample per cell before collecting; balance
+the cut distribution deliberately; collect across more than one day; and
+record that these are listing prices, not transaction prices.
+
+The fourth is the one a reader will not have thought of, and it is the kind of
+limitation that is usually left unstated.
+
+---
+
+## Photographs — captions ✅
+
+**Supplied 13 Sep 2026.** Locations, confirmed:
+
+| File | Location | On the site |
+|---|---|---|
+| `IMG_3857.JPG` | Mount Tamalpais, California | **Home hero** |
+| `IMG_4273.JPG` | Lake Tahoe, California | **About, secondary** |
+| `nadia-headshot.jpg` | studio | **About, portrait** |
+| `IMG_3013.JPG` | San Diego, California | unused — was the hero until 13 Sep 2026 |
+| `IMG_3898.JPG` | Yosemite, California | unused — does not survive its crop |
+| `IMG_4353.JPG` | Pacifica Beach, California | unused — does not survive its crop |
+| `background.jpg` | — | ⛔ never use |
+
+⚠️ **`IMG_3013` (San Diego) is now unused.** It was displaced when Mount
+Tamalpais became the lead image. It is still graded, still cropped 3:2, and
+still good; it simply has no slot. Worth a decision rather than a silent loss.
 
 ---
 

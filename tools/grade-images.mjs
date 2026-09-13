@@ -55,9 +55,11 @@ const gradePortrait = (pipeline) =>
 // and renders on its side without it.
 const PLATES = [
   {
-    name: 'hero-canyon',
-    from: 'pictures/IMG_3013.JPG',
-    crop: { left: 0, top: 950, width: 1536, height: 1024 }, // 3:2
+    // Hero. Mount Tamalpais. 2912x5184 after EXIF orientation, so this is the
+    // only source with the pixels for a full-width lead image.
+    name: 'hero-tamalpais',
+    from: 'pictures/IMG_3857.JPG',
+    crop: { left: 0, top: 1500, width: 2912, height: 1941 }, // 3:2
   },
   {
     name: 'portrait-headshot',

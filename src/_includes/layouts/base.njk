@@ -11,7 +11,6 @@
 <meta name="description" content="{{ pageDesc }}">
 <link rel="canonical" href="{{ canonical }}">
 
-{# REMOVE AT LAUNCH: site.draft in src/_data/site.js gates this. #}
 {%- if site.draft %}
 <meta name="robots" content="noindex, nofollow">
 {%- endif %}
@@ -48,13 +47,6 @@
 <div class="canvas">
   <div class="panel">
 
-    {%- if site.draft %}
-    {# REMOVE AT LAUNCH, together with .draft-banner in styles.css. #}
-    <p class="draft-banner">
-      Draft. Not launched, not indexed. Dashed blocks mark content that is
-      still missing or still to be verified.
-    </p>
-    {%- endif %}
 
     {% include "partials/nav.njk" %}
 
@@ -64,7 +56,7 @@
 
   </div>
 
-  {% include "partials/colophon.njk" %}
+  {% include "partials/footer.njk" %}
 </div>
 
 </body>

@@ -1,0 +1,34 @@
+{#
+  The site footer, and the one contact block on every page. It carries
+  id="contact" so the navigation's Contact link is a same-page anchor
+  everywhere.
+
+  There is no colophon. Naming the typefaces is a publishing convention and
+  reads as affectation on a portfolio.
+#}
+<footer class="sitefoot canvas--dark" id="contact">
+  <div class="sitefoot__inner">
+    <div class="sitefoot__block">
+      <p class="sitefoot__label">Contact</p>
+      <ul class="sitefoot__list">
+        <li><a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></li>
+        <li><a href="{{ site.author.linkedin }}" rel="me">linkedin.com/in/nadiasrana</a></li>
+        {%- if site.resume.cleared %}
+        <li><a href="{{ site.resume.href }}" download>Résumé <span aria-hidden="true">&darr;</span></a></li>
+        {%- endif %}
+      </ul>
+    </div>
+
+    <div class="sitefoot__block">
+      <p class="sitefoot__label">Based</p>
+      <p class="sitefoot__line">{{ site.author.location }}</p>
+    </div>
+
+    <div class="sitefoot__block">
+      <p class="sitefoot__label">Focus</p>
+      <p class="sitefoot__line">{{ site.tagline }}</p>
+    </div>
+  </div>
+
+  <p class="sitefoot__rule">&copy; 2026 {{ site.author.name }}</p>
+</footer>
