@@ -1,0 +1,32 @@
+---
+layout: layouts/page.njk
+title: Projects
+eyebrow: Case studies
+deck: Work with the reasoning attached. Each one states the question, the method, what it found, and what it could not.
+permalink: /projects/
+---
+<section class="section" aria-labelledby="proj-h">
+  <h2 class="visually-hidden" id="proj-h">All projects</h2>
+  {%- for p in collections.projects %}
+  <article class="entry entry--{{ loop.index }}">
+    <p class="entry__count">{{ loop.index | pad }} / {{ collections.projects.length | pad }}</p>
+    <h3 class="entry__title"><a href="{{ p.url }}">{{ p.data.title }}</a></h3>
+    <p class="entry__meta">
+      {{ p.data.period }}{% if p.data.state %} · <span class="seed seed--{{ p.data.state }}">{{ p.data.stateLabel or p.data.state }}</span>{% endif %}
+    </p>
+    <div class="entry__body"><p>{{ p.data.description }}</p></div>
+    {%- if p.data.figures %}
+    <ul class="entry__figures">
+      {%- for f in p.data.figures | limit(3) %}
+      <li><span class="rail__figure">{{ f.value }}</span><span class="rail__label">{{ f.label }}</span></li>
+      {%- endfor %}
+    </ul>
+    {%- endif %}
+    {%- if p.data.tools %}
+    <ul class="tags">{% for t in p.data.tools %}<li>{{ t }}</li>{% endfor %}</ul>
+    {%- endif %}
+  </article>
+  {%- else %}
+  <p class="empty">No projects published yet.</p>
+  {%- endfor %}
+</section>

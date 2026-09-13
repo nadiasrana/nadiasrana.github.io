@@ -20,7 +20,27 @@ evidence they can inspect.
 
 ## Stack — do not change without being asked
 
-- Plain HTML, CSS, and vanilla JS. **No build step. No framework. No npm.**
+**Amended 12 Sep 2026, with approval.** The site is now built with Eleventy
+as a dev-only dependency and deployed to GitHub Pages via GitHub Actions.
+
+The reason for the original rule was durability: *"should still build and
+deploy untouched in three years."* That reason is preserved, not discarded.
+Eleventy emits plain static HTML and CSS — the same output the hand-authored
+version produced — and ships **no client framework and no runtime
+dependency**. The exception was made because the site went from 3 pages to
+21, and a shared masthead across 21 hand-edited files is the failure mode the
+original rule did not anticipate.
+
+What still holds:
+
+- **No CSS framework.** No Tailwind, no Bootstrap. `styles.css` is
+  hand-written and copied through unprocessed.
+- **No client-side framework.** No React, no Vue, no islands.
+- **One JavaScript file**, 80 lines, for an image reveal and copy buttons.
+  Everything works with it disabled.
+- **Dev dependencies only.** Nothing ships to the browser from `node_modules`.
+
+- Plain HTML, CSS, and vanilla JS at the output layer.
 - No CSS framework. No Tailwind, no Bootstrap.
 - Self-host fonts in `assets/fonts/` or use a single well-chosen web font.
   Do not load four families.

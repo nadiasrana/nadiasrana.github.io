@@ -1,0 +1,33 @@
+<footer class="colophon">
+  <div class="shell">
+    <div class="colophon__grid">
+      <div>
+        <p class="eyebrow">{{ site.brand }}</p>
+        <p class="colophon__line">{{ site.tagline }}</p>
+      </div>
+      <div>
+        <p class="eyebrow">Contact</p>
+        <ul class="colophon__list">
+          <li><a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></li>
+          <li><span class="needs-content">[NEEDS CONTENT: LinkedIn URL]</span></li>
+          <li><span class="needs-content">[NEEDS CONTENT: location wording]</span></li>
+        </ul>
+      </div>
+      <div>
+        <p class="eyebrow">Elsewhere</p>
+        <ul class="colophon__list">
+          <li><a href="/feed.xml">Atom feed</a></li>
+          <li><a href="/library/">Library</a></li>
+          <li><a href="/notes/">Notes</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="eyebrow">Colophon</p>
+        <p class="colophon__line">Set in Clash Display and Newsreader.
+          Built with Eleventy, hand-written CSS, and 51 lines of JavaScript.
+          No trackers.</p>
+      </div>
+    </div>
+    <p class="colophon__rule">&copy; {{ site.issue.year }} {{ site.author.name }}</p>
+  </div>
+</footer>

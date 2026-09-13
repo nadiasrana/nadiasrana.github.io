@@ -1,0 +1,11 @@
+---
+layout: layouts/base.njk
+---
+<div class="shell">
+  <header class="pagehead">
+    <p class="eyebrow">{{ eyebrow or site.brand }}</p>
+    <h1 class="pagehead__title">{{ title }}</h1>
+    {%- if deck %}<p class="lead">{{ deck }}</p>{% endif %}
+  </header>
+  <div class="index-page">{{ content | safe }}</div>
+</div>

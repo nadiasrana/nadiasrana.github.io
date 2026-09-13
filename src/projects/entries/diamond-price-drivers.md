@@ -1,0 +1,160 @@
+---
+title: Diamond price drivers
+permalink: /projects/diamond-price-drivers/
+date: 2026-05-01
+period: Spring 2026
+featured: true
+state: evergreen
+stateLabel: complete
+description: >-
+  918 natural pear-shaped diamonds from four retailers, filtered to one narrow
+  band, to test which published grade actually moves the price and whether the
+  four retailers agree. Two of them priced the same band at $1,550 and $3,249
+  per carat.
+deck: >-
+  Clarity moves the price of a pear-shaped diamond more than color does.
+  Across 918 stones listed by four retailers, the two grades together still
+  leave more than a third of the price unexplained.
+tools: [Excel, Regression, Data validation, Web scraping]
+figures:
+  - { value: "918", label: "diamonds priced" }
+  - { value: "4", label: "retailers compared" }
+  - { value: "63.3%", label: "explained by the combined model" }
+  - { value: "$1,700", label: "per-carat spread between retailers" }
+---
+
+## The question
+
+Two questions, not one. Which published grade moves the price of a pear-shaped
+diamond more, clarity or color? And do four retailers price the same
+specification the same way?
+
+## The data
+
+<table class="findings">
+  <caption>Stones collected, by retailer</caption>
+  <thead>
+    <tr><th scope="col">Retailer</th><th scope="col" class="findings__num">Stones</th></tr>
+  </thead>
+  <tbody>
+    <tr><th scope="row">Blue Nile</th><td class="findings__num">159</td></tr>
+    <tr><th scope="row">Brilliant Earth</th><td class="findings__num">376</td></tr>
+    <tr><th scope="row">James Allen</th><td class="findings__num">147</td></tr>
+    <tr><th scope="row">With Clarity</th><td class="findings__num">236</td></tr>
+  </tbody>
+  <tfoot>
+    <tr><th scope="row" class="findings__total">Total</th><td class="findings__num findings__total">918</td></tr>
+  </tfoot>
+</table>
+
+Every stone sits in a deliberately narrow band: 0.90 to 0.99 carat, color D to
+K, clarity IF to SI2. Carat is held close to constant on purpose, and held just
+below the 1.00 carat threshold where prices jump, so that the comparison is
+between grades rather than between sizes.
+
+Per-carat prices across the set are right-skewed. The mean is $2,571 against a
+median of $2,227, with a skewness of 1.06: a small number of expensive stones
+pulls the mean above the typical stone.
+
+The filter was applied at collection rather than afterwards. Color D to K and
+clarity IF to SI2 were set on each retailer's own listing filters, and the
+surviving listings were scraped on 29 March 2026. How many listings that
+excluded is not recoverable from the source data, so no figure for it appears
+here.
+
+## Method
+
+A single-variable linear regression of price per carat on clarity, a second on
+color, then a combined model using both. Confidence intervals on the estimates
+rather than point values alone.
+
+Separately, pivot tables comparing the four retailers across the band, and a
+benchmark of retail pricing against the Rapaport price guide.
+
+Built in Excel. Reported in Word.
+
+## What I found
+
+<table class="findings findings--wide">
+  <caption>Per-carat price against grade</caption>
+  <thead>
+    <tr>
+      <th scope="col">Model</th>
+      <th scope="col" class="findings__num">n</th>
+      <th scope="col" class="findings__num">R<sup>2</sup></th>
+      <th scope="col" class="findings__num">Per grade step</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="findings__group"><th colspan="4" scope="colgroup">Fitted on grade averages, the other grade held fixed</th></tr>
+    <tr><th scope="row">Clarity, color held at D</th><td class="findings__num">7</td><td class="findings__num">0.909</td><td class="findings__num">&minus;$528.70</td></tr>
+    <tr><th scope="row">Color, clarity held at VVS1</th><td class="findings__num">8</td><td class="findings__num">0.839</td><td class="findings__num">&minus;$631.44</td></tr>
+  </tbody>
+  <tbody>
+    <tr class="findings__group"><th colspan="4" scope="colgroup">Fitted on individual stones</th></tr>
+    <tr><th scope="row">Clarity and color combined</th><td class="findings__num">918</td><td class="findings__num">0.633</td><td class="findings__num findings__none">no single slope</td></tr>
+  </tbody>
+</table>
+
+Clarity's grade averages fall more cleanly than color's, 0.909 against 0.839 on
+the same kind of fit. Color has the steeper step: $631.44 per carat for each
+grade down the color scale, against $528.70 for clarity.
+
+Those are two different measurements, and neither is the third one. How tightly
+eight averages sit on a line is not what one grade step is worth, and neither is
+how much of an individual stone's price the two grades explain. That last one is
+the 63.3%, and it is the lowest of the three for a reason.
+
+The four retailers do not agree. James Allen averaged $1,550 per carat across
+the band; With Clarity averaged $3,249. That is a spread of roughly $1,700 per
+carat between two sellers of stones filtered to the same color, clarity and
+carat range, on a set whose median is $2,227.
+
+Benchmarked separately against the Rapaport price guide, retail traded between
+5% and 35% below the guide.
+
+## Limitations
+
+The two single-variable fits are not comparable with the combined one, and
+putting all three in a table invites exactly that comparison. The
+single-variable regressions were run on pivot-table grade averages with the
+other grade held fixed: seven points for clarity with color held at D, eight for
+color with clarity held at VVS1. The combined model was run on all 918
+individual stones.
+
+Averaging inside each grade removes the variation between stones that share that
+grade. What is left is a smooth line, and a smooth line fits well. Aggregation
+inflates R<sup>2</sup>, so 0.909 against eight points is not a better result
+than 0.633 against 918 stones. It is a different measurement.
+
+<blockquote class="pullquote">
+  <p>The two numbers answer two questions: how cleanly grade averages decline,
+  and how much of one diamond's price those grades explain. Only the second one
+  tells a buyer anything.</p>
+</blockquote>
+
+The cut premium is confounded. Excellent-cut stones averaged $3,358 per carat
+against $2,332 for Very Good, a 44% premium. But the higher-cut stones also
+carry better color and better clarity, so that 44% cannot be attributed to cut.
+The figure is reported as a difference between groups, not as the price of cut.
+
+The confidence interval is not the one I set out to build. The plan was a
+30-sample interval on D-color, VVS1 stones. The data did not contain enough of
+them to support it. Rather than build an interval on a sample too thin to carry
+one, I relaxed the constraint to H-color, SI2, where 44 diamonds were available,
+and reported on that basis instead: a 95% confidence interval of $1,684 to
+$1,837 per carat, with a point estimate of $1,760.15.
+
+<div class="callout callout--observation">
+  <p class="callout__label">The point</p>
+  <p>The relaxation is stated in the report rather than left in the workbook. An
+  interval forced onto the original constraint would have matched the plan and
+  carried no confidence worth reporting.</p>
+</div>
+
+## What I would do differently
+
+<p class="needs-content">[NEEDS CONTENT: her answer. Not in the source and not
+inferable from the findings. The obvious guesses (widen the carat band, collect
+enough D/VVS1 to build the interval as planned, separate cut from color and
+clarity) are guesses.]</p>

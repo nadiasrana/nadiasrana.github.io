@@ -23,12 +23,38 @@ work.
 
 ---
 
+## Sample content — ALL of it is placeholder ⛔
+
+**Added 12 Sep 2026.** The site now has a journal structure: Writing, Notes,
+Library. It was built with **sample entries so the templates could be judged**,
+and **every one of them is placeholder**:
+
+| Where | Count | State |
+|---|---|---|
+| `src/writing/posts/` | 5 | 1 type specimen + 4 TKTK shells. **None is her writing.** |
+| `src/notes/entries/` | 3 | TKTK titles, `[NEEDS CONTENT]` bodies |
+| `src/projects/entries/` | 3 | **1 real** (diamond study), 2 TKTK shells |
+| `src/_data/library.js` | 15 | TKTK titles, notes unwritten |
+
+⛔ **Delete `writing/posts/2026-08-20-specimen.md` before launch.** It is a
+type specimen and says so in its own first paragraph.
+
+The four TKTK posts carry *briefs* in their descriptions, not copy. The briefs
+are drawn from work she actually did and stay inside the positioning above. A
+brief is not permission to write the post for her.
+
+---
+
 ## Pages
 
 | Page | Status | Notes |
 |---|---|---|
 | Home | ⚠️ | Warm-minimal system. Hero, About, Work (5 entries), Projects, Stack, Contact. Six markers — headshot, résumé, SQL level, Eberhardt $6M, LinkedIn, location |
-| Projects index | — | Deferred until project 2. With one item, the Work section on the home page is the index; an index page listing one entry advertises the thinness |
+| Projects index | ⚠️ | Built at `/projects/`. 1 real entry, 2 shells |
+| Writing index | ⚠️ | Built at `/writing/`. All entries placeholder |
+| Notes | ⚠️ | Built at `/notes/`. All entries placeholder |
+| Library | ⚠️ | Built at `/library/`. 15 placeholder entries |
+| 404 | ✅ | Built |
 | Diamond Price Drivers project page | ⚠️ | Built at `work/diamond-price-drivers.html`. One marker left, no blockers. Q-R2 closed 12 Sep 2026 |
 | About | ✅ | Writable now from verified background |
 | Résumé PDF | ⚠️ | Available, but hold until the Q1–Q5 conflicts in `03-open-questions.md` resolve |

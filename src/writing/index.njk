@@ -1,0 +1,65 @@
+---
+layout: layouts/page.njk
+title: Writing
+eyebrow: The archive
+deck: Essays, field notes and project logs. Longer pieces are marked as essays; field notes are shorter and more provisional.
+permalink: /writing/
+---
+{%- set posts = collections.writing %}
+{%- set featured = posts | where("featured", true) %}
+
+{%- if featured.length %}
+<section class="section" aria-labelledby="pinned-h">
+  <h2 class="eyebrow" id="pinned-h">Pinned</h2>
+  <ol class="index index--lg">
+    {%- for item in featured %}
+    <li class="index__row">
+      <span class="index__num">{{ loop.index | pad }}</span>
+      <span class="index__main">
+        <a class="index__link" href="{{ item.url }}">{{ item.data.title }}</a>
+        <span class="index__desc">{{ item.data.description }}</span>
+      </span>
+      <span class="index__meta">
+        <span class="index__cat">{{ item.data.category }}</span>
+        <time datetime="{{ item.data.date | iso }}">{{ item.data.date | readable }}</time>
+      </span>
+    </li>
+    {%- endfor %}
+  </ol>
+</section>
+{%- endif %}
+
+<section class="section" aria-labelledby="filters-h">
+  <h2 class="eyebrow" id="filters-h">Subjects</h2>
+  <ul class="tags tags--filter">
+    {%- for t in posts | allTags %}
+    <li><a href="#{{ t }}">{{ t }}</a></li>
+    {%- else %}
+    <li>No subjects yet.</li>
+    {%- endfor %}
+  </ul>
+</section>
+
+{%- for group in posts | byYear %}
+<section class="section" aria-labelledby="y{{ group[0] }}">
+  <h2 class="yearhead" id="y{{ group[0] }}">{{ group[0] }}</h2>
+  <ol class="index index--lg">
+    {%- for item in group[1] %}
+    <li class="index__row" id="{{ item.data.category }}">
+      <span class="index__num">{{ loop.index | pad }}</span>
+      <span class="index__main">
+        <a class="index__link" href="{{ item.url }}">{{ item.data.title }}</a>
+        <span class="index__desc">{{ item.data.description }}</span>
+      </span>
+      <span class="index__meta">
+        <span class="index__cat">{{ item.data.category }}</span>
+        <time datetime="{{ item.data.date | iso }}">{{ item.data.date | readable }}</time>
+        <span>{{ item.templateContent | readingTime }} min</span>
+      </span>
+    </li>
+    {%- endfor %}
+  </ol>
+</section>
+{%- else %}
+<p class="empty">Nothing published yet. The templates are built; the writing is hers to do.</p>
+{%- endfor %}

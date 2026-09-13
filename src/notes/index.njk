@@ -1,0 +1,37 @@
+---
+layout: layouts/page.njk
+title: Notes
+eyebrow: Unfinished thinking
+deck: Short entries, kept deliberately rough. Seedlings are first thoughts, budding notes are being worked on, evergreen notes are ones I would stand behind.
+permalink: /notes/
+---
+<section class="section" aria-labelledby="key-h">
+  <h2 class="eyebrow" id="key-h">Key</h2>
+  <ul class="seedkey">
+    <li><span class="seed seed--seedling">seedling</span> first thought, probably wrong</li>
+    <li><span class="seed seed--budding">budding</span> being worked on</li>
+    <li><span class="seed seed--evergreen">evergreen</span> refined, and I would defend it</li>
+  </ul>
+</section>
+
+<section class="section" aria-labelledby="notes-h">
+  <h2 class="visually-hidden" id="notes-h">All notes</h2>
+  <ul class="notegrid">
+    {%- for n in collections.notes %}
+    <li class="notecard">
+      <p class="labelrow">
+        <span class="seed seed--{{ n.data.status }}">{{ n.data.status }}</span>
+        <span class="labelrow__sep" aria-hidden="true"></span>
+        <time datetime="{{ n.data.updated or n.data.date | iso }}">{{ n.data.updated or n.data.date | readable }}</time>
+      </p>
+      <h3 class="notecard__title"><a href="{{ n.url }}">{{ n.data.title }}</a></h3>
+      <p class="notecard__desc">{{ n.data.description }}</p>
+      {%- if n.data.tags %}
+      <ul class="tags">{% for t in n.data.tags %}<li>{{ t }}</li>{% endfor %}</ul>
+      {%- endif %}
+    </li>
+    {%- else %}
+    <li class="empty">No notes yet.</li>
+    {%- endfor %}
+  </ul>
+</section>

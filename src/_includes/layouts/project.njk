@@ -1,0 +1,47 @@
+---
+layout: layouts/base.njk
+---
+{% from "partials/figure.njk" import figure %}
+<article class="article">
+  <div class="shell">
+    <header class="article__head">
+      <p class="labelrow">
+        <span class="labelrow__cat">Project</span>
+        <span class="labelrow__sep" aria-hidden="true"></span>
+        <span>{{ period }}</span>
+        {%- if state %}
+        <span class="labelrow__sep" aria-hidden="true"></span>
+        <span class="seed seed--{{ state }}">{{ stateLabel or state }}</span>
+        {%- endif %}
+      </p>
+      <h1 class="article__title">{{ title }}</h1>
+      {%- if deck %}<p class="article__deck">{{ deck }}</p>{% endif %}
+      {%- if tools %}
+      <ul class="tags">{% for t in tools %}<li>{{ t }}</li>{% endfor %}</ul>
+      {%- endif %}
+    </header>
+  </div>
+
+  {%- if figures %}
+  <div class="shell">
+    <ul class="rail">
+      {%- for f in figures %}
+      <li><span class="rail__figure">{{ f.value }}</span><span class="rail__label">{{ f.label }}</span></li>
+      {%- endfor %}
+    </ul>
+  </div>
+  {%- endif %}
+
+  <div class="shell">
+    <div class="prose prose--wide">{{ content | safe }}</div>
+  </div>
+
+  <div class="shell">
+    <nav class="pager" aria-label="More projects">
+      <a class="pager__item" href="/projects/">
+        <span class="eyebrow">Back</span>
+        <span class="pager__title">All projects</span>
+      </a>
+    </nav>
+  </div>
+</article>

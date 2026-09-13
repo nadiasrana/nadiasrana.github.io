@@ -18,14 +18,35 @@
   font-display: swap;
 }
 
-/* Bespoke Serif, wght 300-800 confirmed. 400 is body. 300 is permitted only
-   at 22px and up, which in this scale means --t-lead and nothing below it:
-   the light strokes break up at body size. */
+/* Newsreader: the reading face. Chosen over Bespoke Serif for long-form
+   because it carries a real italic and a live optical-size axis (opsz 6-72),
+   so at reading size the strokes thicken and the counters open. Bespoke had
+   neither and was doing a display face's job on body text. */
 @font-face {
-  font-family: 'Bespoke Serif';
-  src: url('../fonts/BespokeSerif-Variable.woff2') format('woff2-variations');
-  font-weight: 300 800;
+  font-family: 'Newsreader';
+  src: url('../fonts/newsreader-latin-var.woff2') format('woff2-variations');
+  font-weight: 200 800;
   font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Newsreader';
+  src: url('../fonts/newsreader-latin-ext-var.woff2') format('woff2-variations');
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0,
+    U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Newsreader';
+  src: url('../fonts/newsreader-italic-latin-var.woff2') format('woff2-variations');
+  font-weight: 200 800;
+  font-style: italic;
   font-display: swap;
 }
 
@@ -41,10 +62,24 @@
   --sand:      #D3C9B9; /* section fills only, never text */
   --walnut:    #5C4430; /* non-text use only */
   --accent:    #1E4B49; /* teal, links and focus ring only, 8.4:1 on bg */
+  --oxide:     #8A3617; /* secondary accent, 6.9:1 on bg and 4.9:1 on sand */
+
+  /* One accent is dominant at a time. --accent-cat is the category accent and
+     defaults to the teal; [data-accent] on <body> swaps it per article. */
+  --accent-cat: var(--accent);
+
+  /* Reading scale, used only inside .prose. Body reading text is 19px on
+     desktop, which is inside the 18-20px the brief asks for and one notch
+     above the 16px UI text so an article feels like an article. */
+  --t-read: 1.1875rem;  /* 19 */
+  --read-measure: 66ch;
 
   /* Type */
   --face-display: 'Clash Display', 'Trebuchet MS', sans-serif;
-  --face-body: 'Bespoke Serif', Georgia, 'Times New Roman', serif;
+  --face-body: 'Newsreader', Georgia, 'Times New Roman', serif;
+  /* System mono. Zero bytes, always present, and it keeps the site at two
+     self-hosted families rather than three. */
+  --face-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
 
   /* Scale: ratio 1.25 on a 16px root. Every size on the site is one of these. */
   --t-micro:   0.8rem;    /* 12.8 */
@@ -799,3 +834,681 @@ a:focus-visible::after { transform: scaleX(1); }
   line-height: 1.4;
   color: var(--ink);
 }
+
+/* ==========================================================================
+   FIELD NOTES — the journal layer
+   Added on top of the existing system. Nothing below introduces a new colour
+   or a new size: every value comes from the tokens in :root.
+   ========================================================================== */
+
+/* Custom selection. One of the cheapest ways a page reads as designed. */
+::selection { background: var(--accent-cat); color: var(--bg); }
+
+/* Paper grain. One small inline SVG, fixed, non-interactive, and switched off
+   entirely for print. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.3;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+}
+body > * { position: relative; z-index: 1; }
+@media print { body::before { display: none; } }
+
+/* Category accents. One dominant accent at a time: the article sets it on
+   <body> and every callout, rule and marker downstream inherits it. */
+[data-accent='essay']       { --accent-cat: var(--accent); }
+[data-accent='field-note']  { --accent-cat: var(--oxide); }
+[data-accent='project-log'] { --accent-cat: var(--walnut); }
+
+/* --- Masthead extension -------------------------------------------------- */
+
+.masthead { flex-wrap: wrap; gap: var(--s3) var(--s6); }
+.masthead__issue {
+  margin: 0;
+  font-family: var(--face-mono);
+  font-size: var(--t-micro);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.masthead__nav a[aria-current] { text-decoration-color: var(--ink); }
+
+/* --- Ticker -------------------------------------------------------------- */
+
+/* The one marquee on the site. It stops dead under reduced motion rather than
+   slowing down, and it is aria-hidden because it is decoration. */
+.ticker {
+  overflow: hidden;
+  margin-top: var(--s7);
+  padding-block: var(--s3);
+  border-block: 1px solid var(--rule);
+}
+.ticker__track {
+  display: flex;
+  gap: var(--s5);
+  width: max-content;
+  font-family: var(--face-mono);
+  font-size: var(--t-micro);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  animation: ticker 48s linear infinite;
+}
+@keyframes ticker { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .ticker__track { animation: none; }
+  .ticker { overflow-x: auto; }
+}
+
+/* --- Label row ----------------------------------------------------------- */
+
+.labelrow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s2) var(--s3);
+  max-width: none;
+  margin: 0 0 var(--s4);
+  font-family: var(--face-mono);
+  font-size: var(--t-micro);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.labelrow__cat { color: var(--accent-cat); }
+.labelrow__sep { width: var(--s3); height: 1px; background: var(--rule); }
+
+/* --- Editorial index ----------------------------------------------------- */
+
+.index__row {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr);
+  gap: var(--s2) var(--s4);
+  padding-block: var(--s4);
+  border-top: 1px solid var(--rule);
+}
+.index .index__row:last-child { border-bottom: 1px solid var(--rule); }
+@media (min-width: 45rem) {
+  .index__row { grid-template-columns: 3rem minmax(0, 1fr) 13rem; align-items: baseline; }
+}
+.index__num {
+  font-family: var(--face-mono);
+  font-size: var(--t-micro);
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.index__link {
+  font-family: var(--face-display);
+  font-size: var(--t-h3);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  text-decoration-color: transparent;
+}
+.index__link:hover { text-decoration-color: var(--ink); }
+.index__desc {
+  display: block;
+  max-width: 52ch;
+  margin-top: var(--s2);
+  color: var(--secondary);
+}
+.index__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s3);
+  font-family: var(--face-mono);
+  font-size: var(--t-micro);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.index__cat { color: var(--accent-cat); }
+
+.more { margin-top: var(--s6); font-size: var(--t-small); }
+.empty {
+  padding: var(--s6) 0;
+  color: var(--muted);
+  font-style: italic;
+  border-top: 1px solid var(--rule);
+}
+.yearhead {
+  font-size: var(--t-h3);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  padding-bottom: var(--s3);
+  border-bottom: 1px solid var(--walnut);
+  margin-bottom: var(--s4);
+}
+
+/* --- Feature ------------------------------------------------------------- */
+
+.feature { display: grid; gap: var(--s6); margin-top: var(--s5); }
+@media (min-width: 45rem) {
+  .feature {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: var(--s7);
+    align-items: start;
+  }
+}
+.feature__media { display: block; }
+.feature__media::after { content: none; }
+.feature__title {
+  margin-top: var(--s3);
+  font-size: var(--t-h2);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+.feature__title a { color: var(--ink); text-decoration-color: transparent; }
+.feature__title a:hover { text-decoration-color: var(--ink); }
+.feature__body > p { margin-top: var(--s4); }
+
+/* --- Figures ------------------------------------------------------------- */
+
+.fig { margin: 0; }
+.fig img { width: 100%; border: 1px solid var(--rule); object-fit: cover; }
+.fig__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--s4);
+  border: 1px dashed var(--ink);
+}
+.fig figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2) var(--s4);
+  margin-top: var(--s3);
+  font-size: var(--t-micro);
+  color: var(--muted);
+}
+.fig__caption { color: var(--secondary); }
+.fig__meta,
+.fig__credit { font-family: var(--face-mono); letter-spacing: 0.06em; }
+
+/* --- Plate: generative SVG ----------------------------------------------- */
+
+.plate { margin: 0; }
+.plate svg {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--rule);
+  background: var(--bg);
+}
+.plate__grid line { stroke: var(--rule); stroke-width: 1; }
+.plate__dots circle { fill: var(--muted); opacity: 0.5; }
+.plate__dots circle.is-review { fill: var(--accent-cat); opacity: 1; }
+.plate__cut { stroke: var(--ink); stroke-width: 1; stroke-dasharray: 4 4; }
+.plate figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2) var(--s4);
+  margin-top: var(--s3);
+  font-size: var(--t-micro);
+  color: var(--muted);
+}
+
+/* --- Scraps -------------------------------------------------------------- */
+
+/* Pinned research fragments. The rotation is static, not animated, and it is
+   removed on mobile where there is no room for the overlap. */
+.scraps {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s5);
+}
+@media (min-width: 45rem) {
+  .scraps { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s6); }
+  .scrap--1 { transform: rotate(-1.5deg); }
+  .scrap--2 { transform: rotate(1deg) translateY(var(--s4)); }
+  .scrap--3 { transform: rotate(-0.5deg); }
+  .scrap--4 { transform: rotate(1.75deg) translateY(var(--s3)); }
+}
+.scrap {
+  margin: 0;
+  padding: var(--s3) var(--s3) var(--s4);
+  background: var(--bg);
+  border: 1px solid var(--rule);
+}
+.scrap figcaption {
+  display: block;
+  margin-top: var(--s3);
+  font-family: var(--face-mono);
+  font-size: var(--t-micro);
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.scrap .fig__caption,
+.scrap .fig__meta { display: block; }
+
+/* --- Callout ------------------------------------------------------------- */
+
+/* --muted is 4.03:1 on --sand and fails, so callout text is --secondary at
+   8.1:1. Same remap as .panel, same reason: a measurement said so. */
+.callout {
+  max-width: var(--read-measure);
+  margin-block: var(--s6);
+  padding: var(--s4) var(--s5);
+  border-left: 2px solid var(--accent-cat);
+  background: var(--sand);
+  color: var(--secondary);
+}
+.callout--wide { max-width: none; }
+.callout p { color: var(--secondary); max-width: none; }
+.callout__label {
+  margin: 0 0 var(--s2);
+  font-family: var(--face-mono);
+  font-size: var(--t-micro);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--secondary);
+}
+.callout--caveat { border-left-color: var(--oxide); }
+.callout--data { border-left-color: var(--accent); }
+
+/* --- Seed status --------------------------------------------------------- */
+
+.seed {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s2);
+  font-family: var(--face-mono);
+  font-size: var(--t-micro);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.seed::before {
+  content: '';
+  width: 0.5rem;
+  height: 0.5rem;
+  border: 1px solid currentColor;
+}
+.seed--seedling { color: var(--muted); }
+.seed--budding { color: var(--oxide); }
+.seed--budding::before { background: currentColor; opacity: 0.45; }
+.seed--evergreen { color: var(--accent); }
+.seed--evergreen::before { background: currentColor; }
+.seed--complete { color: var(--accent); }
+.seed--complete::before { background: currentColor; }
+.seedkey { display: grid; gap: var(--s3); font-size: var(--t-small); color: var(--secondary); }
+.seedkey li { display: flex; flex-wrap: wrap; gap: var(--s3); align-items: baseline; }
+
+/* --- Page head ----------------------------------------------------------- */
+
+.pagehead { padding-block: var(--s7) 0; }
+@media (min-width: 45rem) { .pagehead { padding-block: var(--s8) 0; } }
+.pagehead__title {
+  margin-block: var(--s4) var(--s5);
+  font-size: var(--t-h2);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+@media (min-width: 45rem) {
+  .pagehead__title { font-size: var(--t-figure); }
+}
+
+/* --- Article ------------------------------------------------------------- */
+
+.article { padding-bottom: var(--s8); }
+.article__head { padding-block: var(--s7) var(--s6); }
+@media (min-width: 45rem) { .article__head { padding-block: var(--s8) var(--s6); } }
+
+.article__title {
+  font-size: var(--t-h2);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  word-spacing: 0.04em;
+  max-width: 20ch;
+}
+@media (min-width: 45rem) {
+  .article__title { font-size: var(--t-figure); }
+}
+.article__title--note { max-width: 24ch; }
+
+.article__deck {
+  max-width: 44ch;
+  margin-top: var(--s4);
+  font-size: var(--t-lead);
+  font-weight: 300;
+  line-height: 1.35;
+  color: var(--secondary);
+}
+
+/* Article body sits in one column with the table of contents beside it on
+   wide screens only. Below 60rem the aside comes first in source order as a
+   collapsed <details>, which is where a reader expects a contents list. */
+.article__grid { display: grid; gap: var(--s6); margin-top: var(--s6); }
+.article__grid > * { min-width: 0; }
+@media (min-width: 60rem) {
+  .article__grid {
+    grid-template-columns: minmax(0, 1fr) 14rem;
+    gap: var(--s8);
+    align-items: start;
+  }
+  .article__grid .prose { grid-column: 1; grid-row: 1; }
+  .article__grid .toc { grid-column: 2; grid-row: 1; position: sticky; top: var(--s5); }
+}
+
+/* --- Table of contents --------------------------------------------------- */
+
+.toc__box { border-top: 1px solid var(--walnut); padding-top: var(--s3); }
+.toc__box summary { cursor: pointer; }
+.toc__box summary::marker { color: var(--muted); }
+.toc__list { margin-top: var(--s4); display: grid; gap: var(--s3); }
+.toc__item a {
+  font-size: var(--t-small);
+  color: var(--secondary);
+  text-decoration-color: transparent;
+}
+.toc__item a:hover { text-decoration-color: var(--secondary); }
+.toc__item--h3 { padding-left: var(--s4); }
+@media (min-width: 60rem) {
+  .toc__box summary { list-style: none; cursor: default; }
+  .toc__box summary::-webkit-details-marker { display: none; }
+}
+
+/* --- Prose --------------------------------------------------------------- */
+
+/* min-width: 0 is load-bearing. As a grid item the prose column defaults to
+   min-width: auto, so a wide <pre> forces its track open and blows the page
+   out horizontally instead of scrolling inside its own box. */
+.prose {
+  min-width: 0;
+  max-width: var(--read-measure);
+  font-size: var(--t-read);
+  line-height: 1.62;
+  font-variation-settings: 'opsz' 19;
+}
+.prose--wide { max-width: 72ch; }
+.prose > * + * { margin-top: var(--s4); }
+.prose p { max-width: none; }
+
+.prose h2 {
+  margin-top: var(--s7);
+  font-size: var(--t-h3);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.prose h3 {
+  margin-top: var(--s6);
+  font-family: var(--face-body);
+  font-size: var(--t-body);
+  font-weight: 700;
+  color: var(--ink);
+}
+.prose h2 a,
+.prose h3 a { color: inherit; text-decoration: none; }
+.prose h2 a::after,
+.prose h3 a::after { content: none; }
+
+.prose ul,
+.prose ol { padding-left: var(--s5); display: grid; gap: var(--s2); }
+.prose ul { list-style: square; }
+.prose ol { list-style: decimal; }
+.prose li::marker { color: var(--muted); }
+
+.prose em { font-style: italic; }
+.prose strong { font-weight: 700; color: var(--ink); }
+
+.prose hr {
+  margin-block: var(--s7);
+  border: 0;
+  border-top: 1px solid var(--rule);
+}
+
+/* Drop cap. Opt-in via a class, never automatic on every paragraph. */
+.prose .dropcap::first-letter {
+  float: left;
+  font-family: var(--face-display);
+  font-weight: 700;
+  font-size: 3.6em;
+  line-height: 0.78;
+  padding-right: 0.08em;
+  margin-top: 0.04em;
+  color: var(--accent-cat);
+}
+
+/* Pull quote. Not centred, not in quotation marks, and it hangs into the
+   margin on wide screens. */
+.pullquote {
+  margin-block: var(--s7);
+  padding-left: var(--s5);
+  border-left: 2px solid var(--accent-cat);
+}
+.pullquote p {
+  font-family: var(--face-display);
+  font-size: var(--t-h3);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  max-width: 26ch;
+}
+@media (min-width: 60rem) {
+  .pullquote { margin-left: calc(var(--s6) * -1); }
+}
+
+/* Margin notes. An ordinary <aside> in source order, so a screen reader meets
+   it where it belongs. It only moves into the margin when there is one. */
+.marginnote {
+  margin-block: var(--s5);
+  padding-left: var(--s4);
+  border-left: 1px solid var(--rule);
+  font-size: var(--t-small);
+  color: var(--muted);
+}
+.marginnote p { max-width: none; }
+@media (min-width: 75rem) {
+  .marginnote {
+    float: right;
+    width: 12rem;
+    margin-right: -14rem;
+    margin-top: 0;
+    padding-left: var(--s3);
+  }
+}
+
+/* Code. Highlighted at build time, so no client JavaScript ships. */
+.prose pre {
+  max-width: 100%;
+  overflow-x: auto;
+  padding: var(--s4);
+  background: var(--sand);
+  border-left: 2px solid var(--walnut);
+  font-size: var(--t-small);
+  line-height: 1.5;
+}
+.prose code {
+  font-family: var(--face-mono);
+  font-size: 0.9em;
+}
+.prose :not(pre) > code {
+  padding: 0.1em 0.3em;
+  background: var(--sand);
+  color: var(--secondary);
+}
+
+/* Footnotes. Plain links to a list, which is the version that survives a feed
+   reader and a printer. */
+.prose .footnotes {
+  margin-top: var(--s7);
+  padding-top: var(--s4);
+  border-top: 1px solid var(--rule);
+  font-size: var(--t-small);
+  color: var(--muted);
+}
+
+.prose .findings { font-size: var(--t-small); }
+
+.colophon-note {
+  margin-top: var(--s7);
+  padding-top: var(--s4);
+  border-top: 1px solid var(--walnut);
+  font-size: var(--t-small);
+  color: var(--muted);
+}
+.colophon-note p { max-width: none; }
+
+/* --- Reading progress ---------------------------------------------------- */
+
+/* Scroll-driven, CSS only, behind @supports, and gone entirely under reduced
+   motion. No JavaScript and no scroll listener. */
+.progress { display: none; }
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .progress {
+      display: block;
+      position: fixed;
+      inset-inline: 0;
+      top: 0;
+      z-index: 5;
+      height: 2px;
+      background: transparent;
+    }
+    .progress__bar {
+      height: 100%;
+      width: 100%;
+      transform-origin: left center;
+      background: var(--accent-cat);
+      animation: progress linear;
+      animation-timeline: scroll(root block);
+    }
+    @keyframes progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  }
+}
+
+/* --- Article foot -------------------------------------------------------- */
+
+.article__foot { margin-top: var(--s8); padding-top: var(--s4); border-top: 1px solid var(--rule); }
+.sharelist { display: flex; flex-wrap: wrap; gap: var(--s4); margin-top: var(--s3); font-size: var(--t-small); }
+.copylink {
+  font: inherit;
+  color: var(--accent);
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline 1px var(--rule);
+  text-underline-offset: 0.2em;
+}
+.copylink:hover { text-decoration-color: var(--accent); }
+
+.pager { display: grid; gap: var(--s5); margin-top: var(--s7); }
+@media (min-width: 45rem) { .pager { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.pager__item {
+  display: grid;
+  gap: var(--s2);
+  padding-top: var(--s4);
+  border-top: 1px solid var(--walnut);
+  text-decoration: none;
+}
+.pager__item::after { content: none; }
+.pager__item--prev { text-align: right; }
+.pager__title {
+  font-family: var(--face-display);
+  font-size: var(--t-h3);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.pager__item:hover .pager__title { text-decoration: underline 1px var(--ink); text-underline-offset: 0.2em; }
+
+.related { margin-top: var(--s8); }
+.related .index { margin-top: var(--s4); }
+
+/* --- Notes --------------------------------------------------------------- */
+
+.notegrid { display: grid; gap: var(--s6); }
+@media (min-width: 45rem) { .notegrid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s7); } }
+@media (min-width: 64rem) { .notegrid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.notecard { padding-top: var(--s4); border-top: 1px solid var(--rule); }
+.notecard__title {
+  margin-top: var(--s2);
+  font-size: var(--t-h3);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.notecard__title a { color: var(--ink); text-decoration-color: transparent; }
+.notecard__title a:hover { text-decoration-color: var(--ink); }
+.notecard__desc { margin-top: var(--s3); font-size: var(--t-small); color: var(--secondary); }
+
+/* --- Library ------------------------------------------------------------- */
+
+.libgrid { display: grid; gap: var(--s5); }
+@media (min-width: 45rem) { .libgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s5) var(--s7); } }
+.libitem { display: grid; grid-template-columns: 3rem minmax(0, 1fr); gap: var(--s4); padding-block: var(--s3); border-top: 1px solid var(--rule); }
+.libitem__thumb {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 3 / 4;
+  background: var(--sand);
+  border: 1px solid var(--rule);
+  font-family: var(--face-display);
+  font-size: var(--t-body);
+  font-weight: 600;
+  color: var(--secondary);
+}
+.libitem__body { display: grid; gap: var(--s2); }
+.libitem__title { font-size: var(--t-body); color: var(--ink); }
+.libitem__creator { font-family: var(--face-mono); font-size: var(--t-micro); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+
+/* --- Timeline and principles --------------------------------------------- */
+
+.timeline { display: grid; }
+.timeline__row,
+.timeline__run { display: grid; gap: var(--s2); padding-block: var(--s4); border-top: 1px solid var(--rule); max-width: var(--measure); }
+@media (min-width: 45rem) {
+  .timeline__row,
+  .timeline__run { grid-template-columns: 9rem minmax(0, 1fr); gap: var(--s5); align-items: baseline; }
+}
+.timeline__when { font-family: var(--face-mono); font-size: var(--t-micro); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+
+.principles { display: grid; gap: var(--s6); max-width: var(--measure); counter-reset: p; }
+.principles li { padding-top: var(--s4); border-top: 1px solid var(--rule); }
+.principles__head {
+  font-family: var(--face-body);
+  font-size: var(--t-body);
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--ink);
+  margin-bottom: var(--s3);
+}
+
+/* --- Footer -------------------------------------------------------------- */
+
+.colophon { margin-top: var(--s9); padding-block: var(--s7); border-top: 1px solid var(--walnut); background: var(--sand); }
+.colophon__grid { display: grid; gap: var(--s6); }
+@media (min-width: 45rem) { .colophon__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s7); } }
+.colophon .eyebrow { color: var(--secondary); }
+.colophon__line { margin-top: var(--s3); font-size: var(--t-small); color: var(--secondary); max-width: 34ch; }
+.colophon__list { margin-top: var(--s3); display: grid; gap: var(--s2); font-size: var(--t-small); }
+.colophon__list a { color: var(--accent); }
+.colophon__rule { margin-top: var(--s7); padding-top: var(--s3); border-top: 1px solid var(--rule); font-family: var(--face-mono); font-size: var(--t-micro); letter-spacing: 0.08em; text-transform: uppercase; color: var(--secondary); max-width: none; }
+
+/* --- Tag filters --------------------------------------------------------- */
+
+.tags--filter li a {
+  color: var(--secondary);
+  text-decoration-color: var(--rule);
+}
+.tags--filter li a:hover { text-decoration-color: var(--secondary); }
+
+/* Index pages are lists of short things, so they take the next step down the
+   section rhythm. The --s9 gap is right under a homepage section that carries
+   a paragraph and a rail; under a six-item category list it is just air. */
+.index-page .section { padding-block-start: var(--s7); }
+@media (min-width: 45rem) {
+  .index-page .section { padding-block-start: var(--s8); }
+}
+.plate__dots--review circle { fill: var(--accent-cat); opacity: 1; }

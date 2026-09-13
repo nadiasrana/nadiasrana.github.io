@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+{%- set pageTitle = title or site.title %}
+{%- set pageDesc = description or site.tagline %}
+{%- set canonical = site.url + page.url %}
+
+<title>{% if title %}{{ title }} — {{ site.title }}{% else %}{{ site.title }} — {{ site.brand }}{% endif %}</title>
+<meta name="description" content="{{ pageDesc }}">
+<link rel="canonical" href="{{ canonical }}">
+
+{# REMOVE AT LAUNCH: site.draft in src/_data/site.js gates this. #}
+{%- if site.draft %}
+<meta name="robots" content="noindex, nofollow">
+{%- endif %}
+
+<meta property="og:type" content="{% if layout == 'layouts/article.njk' %}article{% else %}website{% endif %}">
+<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:title" content="{{ title or site.title }}">
+<meta property="og:description" content="{{ pageDesc }}">
+<meta property="og:url" content="{{ canonical }}">
+{%- if coverImage %}
+<meta property="og:image" content="{{ site.url }}{{ coverImage }}">
+<meta property="og:image:alt" content="{{ coverAlt }}">
+{%- endif %}
+<meta name="twitter:card" content="{% if coverImage %}summary_large_image{% else %}summary{% endif %}">
+
+<meta name="theme-color" content="#F2EDE4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F2EDE4'/><rect x='5' y='5' width='6' height='6' fill='%231A120B'/></svg>">
+<link rel="alternate" type="application/atom+xml" title="{{ site.brand }}" href="/feed.xml">
+
+<link rel="preload" href="/assets/fonts/ClashDisplay-Variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/newsreader-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/styles.css">
+
+<script type="application/ld+json">
+{% if layout == 'layouts/article.njk' -%}
+{"@context":"https://schema.org","@type":"BlogPosting",
+"headline":{{ title | dump | safe }},
+"description":{{ pageDesc | dump | safe }},
+"datePublished":"{{ date | iso }}",
+{% if updated %}"dateModified":"{{ updated | iso }}",{% endif %}
+"author":{"@type":"Person","name":"{{ site.author.name }}","url":"{{ site.url }}/about/"},
+"mainEntityOfPage":{"@type":"WebPage","@id":"{{ canonical }}"}}
+{%- else -%}
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebSite","name":{{ site.title | dump | safe }},"url":"{{ site.url }}",
+"description":{{ site.tagline | dump | safe }}},
+{"@type":"Person","name":"{{ site.author.name }}","jobTitle":"{{ site.author.role }}",
+"email":"mailto:{{ site.author.email }}","url":"{{ site.url }}"}]}
+{%- endif %}
+</script>
+</head>
+
+<body{% if accent %} data-accent="{{ accent }}"{% endif %}>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+{%- if site.draft %}
+{# REMOVE AT LAUNCH, together with .draft-banner in styles.css. #}
+<div class="shell">
+  <p class="draft-banner">
+    Draft. Not launched, not indexed. <strong>TKTK</strong> and dashed boxes
+    mark placeholder content: sample entries exist so the templates can be
+    judged, and none of them are hers yet.
+  </p>
+</div>
+{%- endif %}
+
+<div class="shell">
+  {% include "partials/masthead.njk" %}
+</div>
+
+<main id="main">
+  {{ content | safe }}
+</main>
+
+{% include "partials/footer.njk" %}
+
+<script src="/assets/js/reveal.js" defer></script>
+</body>
+</html>

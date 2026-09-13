@@ -5,3 +5,6 @@ node_modules/
 .idea/
 *.log
 desktop.ini
+node_modules/
+_site/
+.cache/

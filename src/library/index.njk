@@ -1,0 +1,30 @@
+---
+layout: layouts/page.njk
+title: Library
+eyebrow: References
+deck: Things worth returning to. Every note below is placeholder until she writes her own.
+permalink: /library/
+---
+{%- set cats = ["Books", "Articles", "Tools", "Design references", "Media", "Datasets"] %}
+{%- for cat in cats %}
+{%- set items = [] %}
+{%- for i in library %}{% if i.category == cat %}{% set items = (items.push(i), items) %}{% endif %}{% endfor %}
+{%- if items.length %}
+<section class="section" aria-labelledby="lib-{{ loop.index }}">
+  <h2 class="yearhead" id="lib-{{ loop.index }}">{{ cat }}</h2>
+  <ul class="libgrid">
+    {%- for i in items %}
+    <li class="libitem">
+      <span class="libitem__thumb" aria-hidden="true">{{ i.title | truncate(2, true, "") }}</span>
+      <span class="libitem__body">
+        <span class="libitem__title">
+          {%- if i.url %}<a href="{{ i.url }}" rel="noopener">{{ i.title }}</a>{% else %}{{ i.title }}{% endif %}
+        </span>
+        <span class="libitem__creator">{{ i.creator }}</span>
+      </span>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
+{%- endif %}
+{%- endfor %}

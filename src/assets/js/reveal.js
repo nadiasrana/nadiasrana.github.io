@@ -7,6 +7,25 @@
  * page: with JS off, or if this file fails to load, neither class is ever
  * added and every image is simply visible. Motion is never a gate.
  */
+/* Copy-link buttons. They ship hidden and are only revealed here, so a
+ * reader without JavaScript never meets a control that does nothing. */
+(function () {
+  'use strict';
+  var buttons = document.querySelectorAll('.copylink[data-copy]');
+  if (!navigator.clipboard) return;
+  for (var b = 0; b < buttons.length; b++) {
+    buttons[b].hidden = false;
+    buttons[b].addEventListener('click', function (e) {
+      var btn = e.currentTarget;
+      navigator.clipboard.writeText(btn.dataset.copy).then(function () {
+        var was = btn.textContent;
+        btn.textContent = 'Copied';
+        window.setTimeout(function () { btn.textContent = was; }, 1600);
+      });
+    });
+  }
+})();
+
 (function () {
   'use strict';
 

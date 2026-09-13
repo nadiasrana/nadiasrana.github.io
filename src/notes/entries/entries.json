@@ -1,0 +1,4 @@
+{
+  "layout": "layouts/note.njk",
+  "eleventyComputed": { "permalink": "/notes/{{ page.fileSlug }}/" }
+}

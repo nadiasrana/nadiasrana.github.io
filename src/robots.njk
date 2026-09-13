@@ -1,0 +1,8 @@
+---
+permalink: /robots.txt
+eleventyExcludeFromCollections: true
+---
+# The site is not launched. CONTENT.md holds the launch gate.
+User-agent: *
+{% if site.draft %}Disallow: /{% else %}Allow: /
+Sitemap: {{ site.url }}/sitemap.xml{% endif %}
