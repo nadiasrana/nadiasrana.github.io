@@ -766,6 +766,41 @@ authorised 12 Sep 2026.
 
 ---
 
+## About headline ✅ CHOSEN 13 Sep 2026
+
+The About page deck reads:
+
+> A problem-solver before a tool-user. Research, evaluation, and the analytics
+> work that decides whether a number can be relied on.
+
+It replaces *"Biology, then business, then the part where somebody has to
+decide whether the number is right."*
+
+**Chosen by Ayan from three options, 13 Sep 2026. Recorded with the reasoning
+so the rejected framings are not re-proposed later.**
+
+Why this one over the two alternatives:
+
+1. **It leads with the trait, not the domain.** The rejected option A opened
+   on "Data analytics and AI" and was the longest of the three; its structure
+   also echoed the five-step *How I approach a problem* section immediately
+   below it, so the page said the same thing twice in two registers.
+2. **It makes no AI claim.** A and C both named AI as a domain she works in.
+   That is defensible — Fraqt is real — but this document blocks machine
+   learning outright and her only AI-adjacent work is structuring a retrieval
+   corpus. B avoids the word entirely, which is the safer of two defensible
+   positions.
+3. **"Before a tool-user" is a deliberate counterweight.** The Toolkit now
+   reads `Proficient` across twenty-one items, four of them with no
+   supporting work in this record. A headline that says the judgement is the
+   skill, rather than the tool list, is doing load-bearing work against that.
+
+The rejected option C led with evaluation alone, which narrows her to one of
+the four things *Positioning* names and undersells the modeling and
+reconciliation the Work section leads with.
+
+---
+
 ## "How I approach a problem" ✅ SUPPLIED BY HER, 13 Sep 2026
 
 Her words, on the About page, in the numbered treatment. Five steps:
